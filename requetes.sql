@@ -4,6 +4,7 @@ SELECT nom_film, date_sortie, DATE_FORMAT(SEC_TO_TIME(duree * 60), "%H:%i") AS d
 FROM film
 INNER JOIN realisateur r ON r.id_realisateur = film.id_realisateur
 INNER JOIN personne p ON p.id_personne = r.id_personne
+WHERE film.id_film = 4
 
 
 
@@ -164,4 +165,4 @@ FROM acteur a
 INNER JOIN personne p ON a.id_personne = p.id_personne
 INNER JOIN casting c ON c.id_acteur = a.id_acteur
 GROUP BY a.id_acteur
-HAVING nbFilms > 3
+HAVING nbFilms >= 3
