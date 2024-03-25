@@ -26,9 +26,10 @@ CREATE TABLE IF NOT EXISTS `acteur` (
   PRIMARY KEY (`id_acteur`),
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK_acteur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.acteur : ~24 rows (environ)
+DELETE FROM `acteur`;
 INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(1, 6),
 	(2, 7),
@@ -69,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `casting` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.casting : ~22 rows (environ)
+DELETE FROM `casting`;
 INSERT INTO `casting` (`id_film`, `id_acteur`, `id_role`) VALUES
 	(13, 23, 1),
 	(13, 24, 2),
@@ -109,16 +111,17 @@ CREATE TABLE IF NOT EXISTS `film` (
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.film : ~9 rows (environ)
+DELETE FROM `film`;
 INSERT INTO `film` (`id_film`, `nom_film`, `duree`, `date_sortie`, `synopsis`, `note`, `affiche`, `id_realisateur`) VALUES
-	(4, 'Dune', 155, '1984-01-01', 'L\'histoire de Paul Atreides, jeune homme aussi doué que brillant, voué à connaître un destin hors du commun qui le dépasse totalement. Car s\'il veut préserver l\'avenir de sa famille et de son peuple, il devra se rendre sur la planète la plus dangereuse de l\'univers – la seule à même de fournir la ressource la plus précieuse au monde, capable de décupler la puissance de l\'humanité. Tandis que des forces maléfiques se disputent le contrôle de cette planète, seuls ceux qui parviennent à dominer leur peur pourront survivre…', NULL, NULL, 1),
-	(5, 'Elephant Man', 124, '1980-01-01', 'Londres, 1884. Le chirurgien Frederick Treves découvre un homme complètement défiguré et difforme, devenu une attraction de foire. John Merrick, " le monstre ", doit son nom de Elephant Man au terrible accident que subit sa mère. Alors enceinte de quelques mois, elle est renversée par un éléphant.', NULL, NULL, 1),
-	(7, 'Les Dents de la mer', 124, '1975-01-01', 'Les Dents de la mer est un thriller américain sorti en 1975 et réalisé par Steven Spielberg. Le film raconte l\'histoire de la petite station balnéaire d\'Amity, où les habitants sont mis en émoi par la découverte sur le littoral du corps atrocement mutilé d\'une jeune vacancière. Pour Martin Brody, le chef de la police, il ne fait aucun doute que la jeune fille a été victime d\'un requin', NULL, NULL, 2),
-	(8, 'E.T.', 115, '1982-01-01', 'E.T., l\'extra-terrestre est un film de science-fiction américain réalisé par Steven Spielberg et sorti en 1982. Le film raconte l\'histoire d\'Elliott, un petit garçon solitaire qui se lie d\'amitié avec un extraterrestre abandonné sur Terre. Avec son frère et sa sœur, Elliott va le recueillir puis l\'aider à reprendre contact avec ses congénères, tout en essayant de le garder caché de leur mère et du gouvernement américain.', NULL, NULL, 2),
-	(9, 'Jurassic Park', 127, '1993-01-01', 'Jurassic Park est un film de science-fiction qui raconte l\'histoire de scientifiques qui ont réussi à cloner des animaux préhistoriques sur une île au large du Costa Rica. Le milliardaire John Hammond a financé leur découverte, qui a permis de créer un parc d\'attractions peuplé de dinosaures. Les dinosaures ont été clonés à partir d\'une goutte de sang absorbée par un moustique fossilisé', NULL, NULL, 2),
-	(10, 'Titanic', 195, '1997-01-01', 'Southampton, 10 avril 1912. Le paquebot le plus grand et le plus moderne du monde, réputé pour son insubmersibilité, le \'Titanic\', appareille pour son premier voyage. Quatre jours plus tard, il heurte un iceberg. A son bord, un artiste pauvre et une grande bourgeoise tombent amoureux.', NULL, NULL, 3),
-	(11, 'Avatar', 162, '2009-01-01', 'Malgré sa paralysie, Jake Sully, un ancien marine immobilisé dans un fauteuil roulant, est resté un combattant au plus profond de son être. Il est recruté pour se rendre à des années-lumière de la Terre, sur Pandora, où de puissants groupes industriels exploitent un minerai rarissime destiné à résoudre la crise énergétique sur Terre. Parce que l\'atmosphère de Pandora est toxique pour les humains, ceux-ci ont créé le Programme Avatar, qui permet à des \'pilotes\' humains de lier leur esprit à un avatar, un corps biologique commandé à distance, capable de survivre dans cette atmosphère létale. Ces avatars sont des hybrides créés génétiquement en croisant l\'ADN humain avec celui des Na\'vi, les autochtones de Pandora.', NULL, NULL, 3),
-	(12, 'Bumblebee', 114, '2018-01-01', 'Alors qu\'il est en fuite, l\'Autobot Bumblebee trouve refuge dans la décharge d\'une petite ville balnéaire de Californie. Il est découvert, brisé et couvert de blessures de guerre, par Charlie, une ado qui approche de ses 18 ans et cherche sa place dans le monde.', NULL, NULL, 5),
-	(13, 'Ninja Turtles', 101, '2014-01-01', 'Tenez-vous prêts : quatre héros de légende vont bientôt faire parler d’eux à New York… Leonardo, le leader, Michelangelo, le beau gosse, Raphael, le rebelle et Donatello, le cerveau, vont tout faire pour défendre la ville de New York, prise entre les griffes de Shredder. Entre deux dégustations de pizzas (sans anchois, bien sûr) et un entraînement intense aux arts martiaux, prodigué par leur maître Splinter, ils vont accomplir leur destin, aidés par la courageuse reporter, April O’Neil.', NULL, NULL, 5);
+	(4, 'Dune', 155, '1984-12-14', 'L\'histoire de Paul Atreides, jeune homme aussi doué que brillant, voué à connaître un destin hors du commun qui le dépasse totalement. Car s\'il veut préserver l\'avenir de sa famille et de son peuple, il devra se rendre sur la planète la plus dangereuse de l\'univers – la seule à même de fournir la ressource la plus précieuse au monde, capable de décupler la puissance de l\'humanité. Tandis que des forces maléfiques se disputent le contrôle de cette planète, seuls ceux qui parviennent à dominer leur peur pourront survivre…', NULL, NULL, 1),
+	(5, 'Elephant Man', 124, '1981-04-08', 'Londres, 1884. Le chirurgien Frederick Treves découvre un homme complètement défiguré et difforme, devenu une attraction de foire. John Merrick, " le monstre ", doit son nom de Elephant Man au terrible accident que subit sa mère. Alors enceinte de quelques mois, elle est renversée par un éléphant.', NULL, NULL, 1),
+	(7, 'Les Dents de la mer', 124, '1976-01-01', 'Les Dents de la mer est un thriller américain sorti en 1975 et réalisé par Steven Spielberg. Le film raconte l\'histoire de la petite station balnéaire d\'Amity, où les habitants sont mis en émoi par la découverte sur le littoral du corps atrocement mutilé d\'une jeune vacancière. Pour Martin Brody, le chef de la police, il ne fait aucun doute que la jeune fille a été victime d\'un requin', NULL, NULL, 2),
+	(8, 'E.T.', 115, '1982-12-01', 'E.T., l\'extra-terrestre est un film de science-fiction américain réalisé par Steven Spielberg et sorti en 1982. Le film raconte l\'histoire d\'Elliott, un petit garçon solitaire qui se lie d\'amitié avec un extraterrestre abandonné sur Terre. Avec son frère et sa sœur, Elliott va le recueillir puis l\'aider à reprendre contact avec ses congénères, tout en essayant de le garder caché de leur mère et du gouvernement américain.', NULL, NULL, 2),
+	(9, 'Jurassic Park', 127, '1993-10-20', 'Jurassic Park est un film de science-fiction qui raconte l\'histoire de scientifiques qui ont réussi à cloner des animaux préhistoriques sur une île au large du Costa Rica. Le milliardaire John Hammond a financé leur découverte, qui a permis de créer un parc d\'attractions peuplé de dinosaures. Les dinosaures ont été clonés à partir d\'une goutte de sang absorbée par un moustique fossilisé', NULL, NULL, 2),
+	(10, 'Titanic', 195, '1998-01-07', 'Southampton, 10 avril 1912. Le paquebot le plus grand et le plus moderne du monde, réputé pour son insubmersibilité, le \'Titanic\', appareille pour son premier voyage. Quatre jours plus tard, il heurte un iceberg. A son bord, un artiste pauvre et une grande bourgeoise tombent amoureux.', NULL, NULL, 3),
+	(11, 'Avatar', 162, '2009-12-16', 'Malgré sa paralysie, Jake Sully, un ancien marine immobilisé dans un fauteuil roulant, est resté un combattant au plus profond de son être. Il est recruté pour se rendre à des années-lumière de la Terre, sur Pandora, où de puissants groupes industriels exploitent un minerai rarissime destiné à résoudre la crise énergétique sur Terre. Parce que l\'atmosphère de Pandora est toxique pour les humains, ceux-ci ont créé le Programme Avatar, qui permet à des \'pilotes\' humains de lier leur esprit à un avatar, un corps biologique commandé à distance, capable de survivre dans cette atmosphère létale. Ces avatars sont des hybrides créés génétiquement en croisant l\'ADN humain avec celui des Na\'vi, les autochtones de Pandora.', NULL, NULL, 3),
+	(12, 'Bumblebee', 114, '2018-12-26', 'Alors qu\'il est en fuite, l\'Autobot Bumblebee trouve refuge dans la décharge d\'une petite ville balnéaire de Californie. Il est découvert, brisé et couvert de blessures de guerre, par Charlie, une ado qui approche de ses 18 ans et cherche sa place dans le monde.', NULL, NULL, 5),
+	(13, 'Ninja Turtles', 101, '2014-10-15', 'Tenez-vous prêts : quatre héros de légende vont bientôt faire parler d’eux à New York… Leonardo, le leader, Michelangelo, le beau gosse, Raphael, le rebelle et Donatello, le cerveau, vont tout faire pour défendre la ville de New York, prise entre les griffes de Shredder. Entre deux dégustations de pizzas (sans anchois, bien sûr) et un entraînement intense aux arts martiaux, prodigué par leur maître Splinter, ils vont accomplir leur destin, aidés par la courageuse reporter, April O’Neil.', NULL, NULL, 5);
 
 -- Listage de la structure de table cinema. filmotheque
 CREATE TABLE IF NOT EXISTS `filmotheque` (
@@ -131,6 +134,7 @@ CREATE TABLE IF NOT EXISTS `filmotheque` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.filmotheque : ~65 rows (environ)
+DELETE FROM `filmotheque`;
 INSERT INTO `filmotheque` (`id_film`, `id_genre`) VALUES
 	(4, 5),
 	(4, 11),
@@ -206,6 +210,7 @@ CREATE TABLE IF NOT EXISTS `genre` (
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.genre : ~15 rows (environ)
+DELETE FROM `genre`;
 INSERT INTO `genre` (`id_genre`, `nom_genre`) VALUES
 	(1, 'Drame'),
 	(2, 'Fantastique'),
@@ -235,6 +240,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.personne : ~29 rows (environ)
+DELETE FROM `personne`;
 INSERT INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `photo`, `date_naissance`) VALUES
 	(1, 'Lynch', 'David', 'Homme', NULL, '1946-01-20'),
 	(2, 'Spielberg', 'Steven', 'Homme', NULL, '1946-12-18'),
@@ -276,6 +282,7 @@ CREATE TABLE IF NOT EXISTS `realisateur` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.realisateur : ~5 rows (environ)
+DELETE FROM `realisateur`;
 INSERT INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
 	(1, 1),
 	(2, 2),
@@ -291,6 +298,7 @@ CREATE TABLE IF NOT EXISTS `role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema.role : ~25 rows (environ)
+DELETE FROM `role`;
 INSERT INTO `role` (`id_role`, `nom_role`) VALUES
 	(1, 'April O\'Neil'),
 	(2, 'Vern Fenwick'),
