@@ -10,15 +10,29 @@ $filmFavori = $requeteFilmFavori->fetch()
       <img src="#" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
     </figure>
     <aside>
-      <h4><?= $filmFavori["nom_film"] ?></h4>
-      <p>un film de <?= $filmFavori["rea"] ?></p>
+      <p class="title"><?= $filmFavori["nom_film"] ?></p>
+      <p class="subtitle">
+        un film de
+        <a href="index.php?action=detailRealisateur&id=<?= $filmFavori["id_realisateur"] ?>">
+          <?= $filmFavori["rea"] ?>
+        </a>
+      </p>
       <p class="synopsis"><?= $filmFavori["synopsis"] ?></p>
-      <div class="see-more">voir plus</div>
+      <div class="see-more">
+        <a href="index.php?action=detailFilm&id=<?= $filmFavori["id_film"] ?>">
+          voir plus ->
+        </a>
+      </div>
       <div class="acteurs">
         <p>Avec nos vedettes :</p>
         <div class='cards-container'>
           acteur 1 & 2
         </div>
+      </div>
+
+      <div class="note">
+        4.5/5
+        <i class="fa-solid fa-star"></i>
       </div>
     </aside>
   </article>
@@ -38,7 +52,9 @@ $filmFavori = $requeteFilmFavori->fetch()
 <section id="genresAccueil">
   <div id="genres-header">
     <h3>Parcourez nos genres :</h3>
-    <p>voir les genres -></p>
+    <a href="#">
+      voir les genres ->
+    </a>
   </div>
 
   <div id="genres-content">

@@ -15,7 +15,6 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 
-
 ul {
   list-style: none;
 }
@@ -23,7 +22,6 @@ ul {
 a {
   text-decoration: none;
 }
-
 
 /* //////////////////////////////// */
 /* //////////// HEADER //////////// */
@@ -45,7 +43,7 @@ header {
       width: 50px;
       background-color: #520000;
       border-radius: 50%;
-      margin-right: 15px;
+      margin-right: 5px;
     }
   }
 
@@ -101,24 +99,161 @@ header {
   }
 }
 
-#wrapper {
-  background-color: #8B939C;
-  min-height: 100vh;
-}
-
 /* //////////////////////////////// */
 /* ///////////// MAIN ///////////// */
 /* //////////////////////////////// */
 
+#wrapper {
+  background-color: #8B939C;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
 main {
+  width: 80%;
+}
+
+#contenu {
   display: flex;
   flex-direction: column;
 }
 
 /* //////////////////////////////// */
-/* ///////// MEDIA QUERIES //////// */
+/* /////////// ACCUEIL //////////// */
 /* //////////////////////////////// */
 
+section {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+hr {
+  margin: 20px auto 5px auto;
+  width: 60%;
+  border-width: 3px;
+}
+
+h3,
+h4 {
+  background-color: var(--darkblue);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+h3 {
+  margin: 10px auto 20px auto;
+}
+
+h4 {
+  margin-left: 15px;
+}
+
+/*/////////////// UNE ///////////////*/
+
+#une article {
+  display: flex;
+  background-color: var(--darkblue);
+  color: white;
+  border-radius: 15px;
+
+  figure {
+    width: 40%;
+  }
+
+  aside {
+    width: 60%;
+    padding: 20px;
+    position: relative;
+
+    .title {
+      padding-left: 10px;
+      font-size: 1.8rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin: 5px 0 10px 0;
+      padding-left: 10px;
+
+      a {
+        color: #89EAFF;
+      }
+    }
+
+    .synopsis {
+      text-align: justify;
+      font-size: 0.8rem;
+    }
+
+    .see-more {
+      font-size: 0.8rem;
+      margin-top: 5px;
+      text-align: end;
+
+      a {
+        color: var(--lightgrey);
+      }
+    }
+
+    .acteurs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        margin: 10px;
+      }
+    }
+
+    .note {
+      color: yellow;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+  }
+}
+
+.cards-container {
+  display: flex;
+  overflow: hidden;
+}
+
+/*//////// FILMS DU MOMENT /////////*/
+
+#filmsMoment {
+  align-items: center;
+}
+
+/*///////// PARCOURS GENRE /////////*/
+
+#genres-header {
+  background-color: var(--darkblue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 10px auto 20px auto;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  h3 {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    color: var(--lightgrey);
+  }
+}
+
+/* //////////////////////////////// */
+/* ///////// MEDIA QUERIES //////// */
+/* //////////////////////////////// */
 
 /* new order header */
 @media screen and (max-width: 800px) {
