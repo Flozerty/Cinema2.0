@@ -25,9 +25,11 @@
     </div>
 
     <nav>
-      <i class="fa-solid fa-bars"></i>
-      <ul>
+      <div id="close-button">
         <i class="fa-solid fa-x"></i>
+      </div>
+
+      <ul>
         <li><a href="index.php?action=accueil">Accueil</a></li>
         <li><a href="index.php?action=listFilms">Films</a></li>
         <li><a href="index.php?action=listActeurs">Acteurs</a></li>
@@ -35,6 +37,11 @@
         <li><a href=""></a></li>
       </ul>
     </nav>
+
+    <div id="toggle-menu">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
 
     <a href="#" id="connect-button">
       connexion
@@ -55,6 +62,8 @@
   <footer>
 
   </footer>
+
+  <script src="public/js/menuBurger.js"></script>
 </body>
 
 </html>
