@@ -49,11 +49,16 @@ header {
     }
   }
 
-  #search input {
-    height: 40px;
-    width: 250px;
-    border-radius: 15px;
-    padding: 10px;
+  #search {
+    min-width: 250px;
+    width: 25%;
+
+    input {
+      height: 40px;
+      width: 100%;
+      border-radius: 15px;
+      padding: 10px;
+    }
   }
 
   nav {
@@ -140,6 +145,7 @@ main {
     top: 0;
     right: -70%;
     background-color: var(--bluegrey);
+    backdrop-filter: blur(4px);
     width: 70%;
     padding-top: 75px;
     height: 100vh;
