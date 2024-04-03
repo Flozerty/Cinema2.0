@@ -83,6 +83,7 @@ header {
     border-radius: 50px;
   }
 
+  /* menu burger buttons */
   #close-button {
     padding: 5px;
     position: absolute;
@@ -98,7 +99,6 @@ header {
     font-size: 1.5rem;
     cursor: pointer;
   }
-
 }
 
 #wrapper {
@@ -115,8 +115,12 @@ main {
   flex-direction: column;
 }
 
-/* MEDIA QUERIES */
+/* //////////////////////////////// */
+/* ///////// MEDIA QUERIES //////// */
+/* //////////////////////////////// */
 
+
+/* new order header */
 @media screen and (max-width: 800px) {
   header {
     #logo-container {
@@ -138,6 +142,7 @@ main {
   }
 }
 
+/* menu burger positioning */
 @media screen and (max-width: 600px) {
   header nav {
 
@@ -159,11 +164,13 @@ main {
     }
   }
 
+  /* JS */
   .show-menu {
     right: 0;
   }
 }
 
+/* hide menu burger buttons  */
 @media screen and (min-width: 600px) {
 
   #close-button,
