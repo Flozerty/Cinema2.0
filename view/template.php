@@ -10,7 +10,15 @@
 </head>
 
 <body>
-  <nav></nav>
+  <nav>
+    <ul>
+      <li><a href="index.php">Accueil</a></li>
+      <li><a href="index.php?action=listFilms">Films</a></li>
+      <li><a href="index.php?action=listActeurs">Acteurs</a></li>
+      <li><a href="index.php?action=listRealisateurs">Realisateurs</a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </nav>
 
   <div id="wrapper">
     <main>
