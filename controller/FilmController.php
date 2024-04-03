@@ -5,6 +5,7 @@ use Model\Connect;
 
 class FilmController {
   
+  //////////// VIEW DE LA PAGE listFilms ////////////
   public function listFilms() {
     $pdo = Connect::seConnecter();
     $requete = $pdo->query("
@@ -16,6 +17,7 @@ class FilmController {
     require "view/listFilms.php";
   }
 
+  //////////// VIEW DE LA PAGE detailFilm ////////////
   public function detailFilm($id) {
     $pdo = Connect::seConnecter();
     $requete = $pdo->prepare('

@@ -5,6 +5,7 @@ use Model\Connect;
 
 class ActeurController {
 
+  //////////// VIEW DE LA PAGE detailActeur ////////////
   public function detailActeur($id) {
     $pdo = Connect::seConnecter();
     $requete = $pdo->prepare("
@@ -25,6 +26,7 @@ class ActeurController {
     require "view/detailActeur.php";
   }
 
+  //////////// VIEW DE LA PAGE listActeur ////////////
   public function listActeurs() {
     $pdo = Connect::seConnecter();
     $requete = $pdo->query("

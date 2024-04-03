@@ -5,6 +5,7 @@ use Model\Connect;
 
 class RealisateurController {
   
+  //////////// VIEW DE LA PAGE listRealisateurs ////////////
   public function listRealisateurs() {
     $pdo = Connect::seConnecter();
     $requete = $pdo->query("
@@ -16,8 +17,11 @@ class RealisateurController {
     require "view/listRealisateurs.php";
   }
 
+  //////////// VIEW DE LA PAGE detailRealisateur ////////////
   public function detailRealisateur($id) {
     $pdo = Connect::seConnecter();
+
+// requete infos du realisateur
     $requeteRea = $pdo->prepare('
     SELECT id_realisateur, CONCAT(p.prenom, " ", p.nom) AS rea, sexe, date_naissance, photo 
     FROM realisateur 
@@ -26,6 +30,7 @@ class RealisateurController {
 
     $requeteRea->execute(["id" => $id]);
 
+// requete films du realisateur
     $requeteFilms = $pdo->prepare('
     SELECT nom_film, CONCAT(p.prenom, " ", p.nom) AS rea, date_sortie 
     FROM film
