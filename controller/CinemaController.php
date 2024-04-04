@@ -8,6 +8,7 @@ class CinemaController {
   //////////// VIEW DE LA PAGE D'ACCUEIL ////////////
   public function Accueil() {
     $pdo = Connect::seConnecter();
+    // infos film favori
     $requeteFilmFavori = $pdo->query("
     SELECT *, CONCAT(p.prenom, ' ', p.nom) AS rea
     FROM film
@@ -16,14 +17,19 @@ class CinemaController {
     WHERE id_film = 9
     ");
 
+    // acteurs du film favori
     $requeteActeursFilmFav = $pdo->query("
-    SELECT *, CONCAT(prenom, ' ', nom) AS fullName
+    SELECT nom, prenom, photo, CONCAT(prenom, ' ', nom) AS fullName, COUNT(*) AS nbFilms
     FROM acteur
     INNER JOIN personne p ON p.id_personne = acteur.id_personne
     INNER JOIN casting ON casting.id_acteur = acteur.id_acteur
     WHERE casting.id_film = 9
+    GROUP BY acteur.id_acteur
+    ORDER BY nbFilms DESC
+    LIMIT 2
     ");
 
+    // infos des films du moment
     $requeteFilmsMoment = $pdo->query("
     SELECT *
     FROM film
@@ -31,6 +37,7 @@ class CinemaController {
     LIMIT 2
     ");
 
+    // liste films d'action
     $requeteAction = $pdo->query("
     SELECT *
     FROM film
@@ -39,6 +46,7 @@ class CinemaController {
     WHERE nom_genre = 'action'
     ");
 
+    // liste films pour enfant
     $requeteFamille = $pdo->query("
     SELECT *
     FROM film
@@ -47,7 +55,7 @@ class CinemaController {
     WHERE nom_genre = 'Film pour enfants'
     ");
 
-    require "view/Accueil.php";
+    require "view/accueil.php";
   }
 
 }
