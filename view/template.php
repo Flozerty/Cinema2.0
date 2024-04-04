@@ -13,12 +13,15 @@
 <body>
   <header>
 
-    <figure id="logo-container">
-      <img src="public/img/logo.png" alt="logo">
-      <figcaption>
-        PDO-Cinema
-      </figcaption>
-    </figure>
+    <a href="index.php?action=accueil">
+      <figure id="logo-container">
+        <img src="public/img/logo.png" alt="logo">
+        <figcaption>
+          PDO-Cinema
+        </figcaption>
+      </figure>
+    </a>
+
 
     <div id="search">
       <input type="search" placeholder="recherchez un film, un acteur, etc.">
