@@ -3,6 +3,7 @@
 use Controller\ActeurController;
 use Controller\CinemaController;
 use Controller\FilmController;
+use Controller\GenresController;
 use Controller\RealisateurController;
 
 spl_autoload_register(function ($class) {
@@ -13,6 +14,7 @@ $ctrlCinema = new CinemaController();
 $ctrlActeur = new ActeurController();
 $ctrlRea = new RealisateurController();
 $ctrlFilm = new FilmController();
+$ctrlGenre = new GenresController();
 
 $id= (isset($_GET["id"])) ? $_GET["id"] : null;
 
@@ -20,7 +22,6 @@ if(isset($_GET["action"])){
   switch($_GET["action"]){
 
     case "accueil": $ctrlCinema->Accueil();break;
-
 
     case "listFilms": $ctrlFilm->listFilms();break;
     case "detailFilm": $ctrlFilm->detailFilm($id);break;
@@ -30,5 +31,8 @@ if(isset($_GET["action"])){
 
     case "listRealisateurs": $ctrlRea->listRealisateurs(); break;
     case "detailRealisateur": $ctrlRea->detailRealisateur($id); break;
+
+    case "listGenres": $ctrlGenre->listGenres();break;
+    case "filmsGenre": $ctrlGenre->filmsGenre($id);break;
   }
 }
