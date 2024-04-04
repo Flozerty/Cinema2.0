@@ -11,7 +11,7 @@ $filmsFamille = $requeteFamille->fetchAll();
 <section id="une">
   <h3>A la une :</h3>
   <article>
-    <figure>
+    <figure id="afficheFilm1">
       <img src="<?= $filmFavori["affiche"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
     </figure>
     <aside>
@@ -67,41 +67,40 @@ $filmsFamille = $requeteFamille->fetchAll();
 <section id="genresAccueil">
   <div id="genres-header">
     <h3>Parcourez nos genres :</h3>
-    <a href="#">
+    <a href="index.php?action=listGenres">
       voir les genres ->
     </a>
   </div>
 
   <div id="genres-content">
+
     <article class="action">
       <h4>Les films d'action :</h4>
       <div class="carroussel">
-        <?php foreach($filmsAction as $film) {?>
-        <figure>
-          <img src="<?= $film["affiche"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
-          <figcaption><?= $film["nom_film"] ?></figcaption>
-          <div class="note">
-            <?= $film["note"] ?>
-            <i class="fa-solid fa-star"></i>
-          </div>
-        </figure>
-        <?php } ?>
+        <i class="fa-solid fa-circle-arrow-left arrow arrow-left"></i>
+
+        <div class="carrou-content">
+          <?php foreach($filmsAction as $film) {
+            require "view/filmCard.php";
+         } ?>
+        </div>
+
+        <i class="fa-solid fa-circle-arrow-right arrow arrow-right"></i>
       </div>
     </article>
 
     <article class="famille">
       <h4>Les films pour toute la famille :</h4>
       <div class="carroussel">
-        <?php foreach($filmsFamille as $film) {?>
-        <figure>
-          <img src="<?= $film["affiche"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
-          <figcaption><?= $film["nom_film"] ?></figcaption>
-          <div class="note">
-            <?= $film["note"] ?>
-            <i class="fa-solid fa-star"></i>
-          </div>
-        </figure>
-        <?php } ?>
+        <i class="fa-solid fa-circle-arrow-left arrow arrow-left"></i>
+
+        <div class="carrou-content">
+          <?php foreach($filmsFamille as $film) {
+            require "view/filmCard.php";
+          } ?>
+        </div>
+
+        <i class="fa-solid fa-circle-arrow-right arrow arrow-right"></i>
       </div>
     </article>
   </div>
