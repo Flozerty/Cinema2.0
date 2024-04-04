@@ -52,7 +52,16 @@ class CinemaController {
     FROM film
     INNER JOIN filmotheque f ON f.id_film = film.id_film
     INNER JOIN genre ON f.id_genre = genre.id_genre
-    WHERE nom_genre = 'Film pour enfants'
+    WHERE nom_genre = 'film pour enfants'
+    ");
+
+    // liste films de science-fiction
+    $requeteSF = $pdo->query("
+    SELECT *
+    FROM film
+    INNER JOIN filmotheque f ON f.id_film = film.id_film
+    INNER JOIN genre ON f.id_genre = genre.id_genre
+    WHERE nom_genre = 'science-fiction'
     ");
 
     require "view/accueil.php";
