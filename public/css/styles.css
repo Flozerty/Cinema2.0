@@ -245,13 +245,28 @@ h4 {
   border-radius: 5px;
 }
 
+/*//////// CARDS CONTAINER /////////*/
+
+
 .cards-container {
   display: flex;
   overflow: hidden;
 
+  figure {
+    color: var(--darkblue);
+    font-weight: 600;
+    position: relative;
+    margin: 2px;
+
+  }
+
   img {
-    margin: 15px;
-    max-width: 200px;
+    width: 200px;
+    height: 280px;
+  }
+
+  figcaption {
+    padding-left: 5px;
   }
 }
 
@@ -288,6 +303,7 @@ h4 {
   }
 }
 
+/*/////////// CARROUSSEL ///////////*/
 
 .carroussel {
   margin: 20px 0;
@@ -295,30 +311,7 @@ h4 {
   display: flex;
   align-items: center;
 
-  .carrou-content {
-    overflow: hidden;
-    display: flex;
-
-    figure {
-      color: var(--darkblue);
-      font-weight: 600;
-      position: relative;
-      margin: 2px;
-
-
-      img {
-        width: 200px;
-        height: 280px;
-      }
-
-      figcaption {
-        padding-left: 5px;
-      }
-    }
-  }
-
   .arrow {
-
     font-size: 2rem;
     color: var(--darkblue);
     position: absolute;

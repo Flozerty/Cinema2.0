@@ -76,10 +76,11 @@ $filmsFamille = $requeteFamille->fetchAll();
 
     <article class="action">
       <h4>Les films d'action :</h4>
+
       <div class="carroussel">
         <i class="fa-solid fa-circle-arrow-left arrow arrow-left"></i>
 
-        <div class="carrou-content">
+        <div class="cards-container">
           <?php foreach($filmsAction as $film) {
             require "view/filmCard.php";
          } ?>
@@ -91,10 +92,11 @@ $filmsFamille = $requeteFamille->fetchAll();
 
     <article class="famille">
       <h4>Les films pour toute la famille :</h4>
+
       <div class="carroussel">
         <i class="fa-solid fa-circle-arrow-left arrow arrow-left"></i>
 
-        <div class="carrou-content">
+        <div class="cards-container">
           <?php foreach($filmsFamille as $film) {
             require "view/filmCard.php";
           } ?>
