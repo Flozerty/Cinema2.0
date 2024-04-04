@@ -100,9 +100,7 @@ header {
   }
 }
 
-/* //////////////////////////////// */
 /* ///////////// MAIN ///////////// */
-/* //////////////////////////////// */
 
 #wrapper {
   background-color: #8B939C;
@@ -121,20 +119,8 @@ main {
 }
 
 /* //////////////////////////////// */
-/* /////////// ACCUEIL //////////// */
+/* /////////// COMMONS //////////// */
 /* //////////////////////////////// */
-
-section {
-  margin: 10px 0;
-  display: flex;
-  flex-direction: column;
-}
-
-hr {
-  margin: 20px auto 5px auto;
-  width: 60%;
-  border-width: 3px;
-}
 
 h3,
 h4 {
@@ -155,84 +141,8 @@ h4 {
   font-size: 1.5rem;
 }
 
-/*/////////////// UNE ///////////////*/
-
-#une article {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--darkblue);
-  color: white;
-  border-radius: 15px;
-  overflow: hidden;
-  max-height: 500px;
-
-  #afficheFilm1 {
-    width: fit-content;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      height: 100%;
-      max-width: 120%;
-    }
-  }
-
-  aside {
-    max-width: 60%;
-    padding: 20px;
-    position: relative;
-
-    .title {
-      padding-left: 10px;
-      font-size: 1.8rem;
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      margin: 5px 0 10px 0;
-      padding-left: 10px;
-
-      a {
-        color: #89EAFF;
-      }
-    }
-
-    .synopsis {
-      text-align: justify;
-      font-size: 0.8rem;
-    }
-
-    .see-more {
-      font-size: 0.8rem;
-      margin-top: 5px;
-      text-align: end;
-
-      a {
-        color: var(--lightgrey);
-      }
-    }
-
-    .acteurs {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      p {
-        margin: 10px;
-      }
-
-      .cards-container {
-        justify-content: center;
-      }
-
-      img {
-        width: 30%;
-      }
-    }
-  }
+.title {
+  font-weight: 600;
 }
 
 .note {
@@ -270,13 +180,109 @@ h4 {
   }
 }
 
+/* //////////////////////////////// */
+/* /////////// ACCUEIL //////////// */
+/* //////////////////////////////// */
+
+section {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+hr {
+  margin: 20px auto 5px auto;
+  width: 60%;
+  border-width: 3px;
+}
+
+/*/////////////// UNE ///////////////*/
+
+#une article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--darkblue);
+  color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 600px;
+
+  figure {
+    height: 100%;
+    width: 40%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 120%;
+      height: 100%;
+
+    }
+  }
+
+  aside {
+    max-width: 60%;
+    padding: 20px;
+    position: relative;
+
+    .title {
+      padding-left: 10px;
+    }
+
+    .subtitle {
+      margin: 5px 0 10px 0;
+      padding-left: 10px;
+
+      a {
+        color: #89EAFF;
+      }
+    }
+
+    .synopsis {
+      text-align: justify;
+    }
+
+    .see-more {
+      font-size: 0.8rem;
+      margin-top: 5px;
+      text-align: end;
+
+      a {
+        color: var(--lightgrey);
+      }
+    }
+
+    .acteurs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        margin: 10px;
+      }
+
+      .cards-container {
+        justify-content: center;
+
+        img {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
+
 /*//////// FILMS DU MOMENT /////////*/
 
 #filmsMoment {
   align-items: center;
 
   .cards-container {
-    justify-content: center;
+    justify-content: space-evenly;
+    width: 100%;
   }
 }
 
@@ -344,27 +350,21 @@ h4 {
   }
 }
 
-
 /* //////////////////////////////// */
 /* ///////// MEDIA QUERIES //////// */
 /* //////////////////////////////// */
 
-/* @media screen and (max-width: 1200px) {
-  #une article figure {
-    justify-content: center;
-  }
-} */
-
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   #une article {
     flex-direction: column;
     overflow: visible;
-    max-height: fit-content;
+    height: auto;
     background-color: var(--lightgrey);
 
-    #afficheFilm1 {
+    figure {
       padding: 50px;
       background-color: var(--lightgrey);
+      width: 90%;
 
       img {
         height: auto;
@@ -381,7 +381,7 @@ h4 {
   }
 }
 
-/* new order header */
+/* header order change */
 @media screen and (max-width: 800px) {
   header {
     #logo-container {
@@ -431,7 +431,6 @@ h4 {
   }
 }
 
-/* hide menu burger buttons  */
 @media screen and (min-width: 600px) {
 
   #close-button,
@@ -449,5 +448,32 @@ h4 {
     a {
       align-self: auto;
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  h3 {
+    font-size: 3rem;
+  }
+
+  h4 {
+    font-size: 2.2rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .synopsis {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
   }
 }
