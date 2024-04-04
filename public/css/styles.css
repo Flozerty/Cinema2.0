@@ -147,37 +147,40 @@ h4 {
 
 h3 {
   margin: 10px auto 20px auto;
+  font-size: 2.2rem;
 }
 
 h4 {
-  margin-left: 15px;
+  margin: 10px 0 10px 15px;
+  font-size: 1.5rem;
 }
 
 /*/////////////// UNE ///////////////*/
 
 #une article {
   display: flex;
+  align-items: center;
   background-color: var(--darkblue);
   color: white;
   border-radius: 15px;
   overflow: hidden;
   max-height: 500px;
 
-  figure {
-    width: 40%;
+  #afficheFilm1 {
+    width: fit-content;
     overflow: hidden;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     img {
       height: 100%;
-      max-width: 150%;
+      max-width: 120%;
     }
   }
 
   aside {
-    width: 60%;
+    max-width: 60%;
     padding: 20px;
     position: relative;
 
@@ -265,13 +268,12 @@ h4 {
 
 #genres-header {
   background-color: var(--darkblue);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 80%;
   margin: 10px auto 20px auto;
   padding: 5px 10px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 
   h3 {
     margin: 0;
@@ -279,37 +281,111 @@ h4 {
   }
 
   a {
+    align-self: flex-end;
     color: var(--lightgrey);
+    margin: 5px;
   }
 }
+
 
 .carroussel {
   margin: 20px 0;
-  overflow: hidden;
+  position: relative;
   display: flex;
+  align-items: center;
 
-  figure {
-    color: var(--darkblue);
-    font-weight: 600;
-    position: relative;
-    margin: 2px;
+  .carrou-content {
+    overflow: hidden;
+    display: flex;
+
+    figure {
+      color: var(--darkblue);
+      font-weight: 600;
+      position: relative;
+      margin: 2px;
 
 
-    img {
-      width: 200px;
-      height: 280px;
-    }
+      img {
+        width: 200px;
+        height: 280px;
+      }
 
-    figcaption {
-      padding-left: 5px;
+      figcaption {
+        padding-left: 5px;
+      }
     }
   }
 
+  .arrow {
+
+    font-size: 2rem;
+    color: var(--darkblue);
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .arrow-left {
+    left: -50px;
+  }
+
+  .arrow-right {
+    right: -50px;
+  }
 }
+
+/* //////////////////////////////// */
+/* ////////// FILMS GENRE ///////// */
+/* //////////////////////////////// */
+
+#filmsGenre .cards-container {
+  flex-wrap: wrap;
+  justify-content: center;
+
+  figcaption {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+
 
 /* //////////////////////////////// */
 /* ///////// MEDIA QUERIES //////// */
 /* //////////////////////////////// */
+
+/* @media screen and (max-width: 1200px) {
+  #une article figure {
+    justify-content: center;
+  }
+} */
+
+@media screen and (max-width: 1000px) {
+  #une article {
+    flex-direction: column;
+    overflow: visible;
+    max-height: fit-content;
+    background-color: var(--lightgrey);
+
+    #afficheFilm1 {
+      padding: 50px;
+      background-color: var(--lightgrey);
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    aside {
+      border-radius: 15px;
+      background-color: var(--darkblue);
+      overflow: hidden;
+      max-width: none;
+    }
+  }
+}
 
 /* new order header */
 @media screen and (max-width: 800px) {
@@ -367,5 +443,17 @@ h4 {
   #close-button,
   #toggle-menu {
     display: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #genres-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      align-self: auto;
+    }
   }
 }
