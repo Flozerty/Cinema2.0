@@ -11,7 +11,7 @@ $filmsFamille = $requeteFamille->fetchAll();
 <section id="une">
   <h3>A la une :</h3>
   <article>
-    <figure id="afficheFilm1">
+    <figure>
       <img src="<?= $filmFavori["affiche"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
     </figure>
     <aside>
