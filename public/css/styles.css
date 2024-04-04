@@ -170,7 +170,6 @@ h4 {
     font-weight: 600;
     position: relative;
     margin: 2px;
-
   }
 
   img {
@@ -194,7 +193,7 @@ section {
 }
 
 hr {
-  margin: 20px auto 5px auto;
+  margin: 50px auto 25px auto;
   width: 60%;
   border-width: 3px;
 }
@@ -289,6 +288,10 @@ hr {
 
 /*///////// PARCOURS GENRE /////////*/
 
+#genres-accueil h4 {
+  margin: 20px 0 20px 50px;
+}
+
 #genres-header {
   background-color: var(--darkblue);
   width: 80%;
@@ -340,14 +343,16 @@ hr {
 /* ////////// FILMS GENRE ///////// */
 /* //////////////////////////////// */
 
-#filmsGenre .cards-container {
-  flex-wrap: wrap;
-  justify-content: center;
+#filmsGenre {
+  .cards-container {
+    flex-wrap: wrap;
+    justify-content: center;
 
-  figcaption {
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 600;
+    figcaption {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
   }
 }
 
