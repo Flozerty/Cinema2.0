@@ -23,6 +23,7 @@ a {
   text-decoration: none;
 }
 
+
 /* //////////////////////////////// */
 /* //////////// HEADER //////////// */
 /* //////////////////////////////// */
@@ -159,9 +160,20 @@ h4 {
   background-color: var(--darkblue);
   color: white;
   border-radius: 15px;
+  overflow: hidden;
+  max-height: 500px;
 
   figure {
     width: 40%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 100%;
+      max-width: 150%;
+    }
   }
 
   aside {
@@ -207,26 +219,46 @@ h4 {
       p {
         margin: 10px;
       }
-    }
 
-    .note {
-      color: yellow;
-      position: absolute;
-      top: 10px;
-      right: 20px;
+      .cards-container {
+        justify-content: center;
+      }
+
+      img {
+        width: 30%;
+      }
     }
   }
+}
+
+.note {
+  color: yellow;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: var(--bluegrey);
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .cards-container {
   display: flex;
   overflow: hidden;
+
+  img {
+    margin: 15px;
+    max-width: 200px;
+  }
 }
 
 /*//////// FILMS DU MOMENT /////////*/
 
 #filmsMoment {
   align-items: center;
+
+  .cards-container {
+    justify-content: center;
+  }
 }
 
 /*///////// PARCOURS GENRE /////////*/
@@ -249,6 +281,30 @@ h4 {
   a {
     color: var(--lightgrey);
   }
+}
+
+.carroussel {
+  margin: 20px 0;
+  overflow: hidden;
+  display: flex;
+
+  figure {
+    color: var(--darkblue);
+    font-weight: 600;
+    position: relative;
+    margin: 2px;
+
+
+    img {
+      width: 200px;
+      height: 280px;
+    }
+
+    figcaption {
+      padding-left: 5px;
+    }
+  }
+
 }
 
 /* //////////////////////////////// */

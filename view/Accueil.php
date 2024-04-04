@@ -1,13 +1,18 @@
 <?php ob_start(); 
 
-$filmFavori = $requeteFilmFavori->fetch()
+$filmFavori = $requeteFilmFavori->fetch();
+$acteursFilmFav = $requeteActeursFilmFav->fetchAll();
+$filmsMoment = $requeteFilmsMoment->fetchAll();
+$filmsAction = $requeteAction->fetchAll();
+$filmsFamille = $requeteFamille->fetchAll();
+
 ?>
 
 <section id="une">
   <h3>A la une :</h3>
   <article>
     <figure>
-      <img src="#" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
+      <img src="<?= $filmFavori["affiche"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
     </figure>
     <aside>
       <p class="title"><?= $filmFavori["nom_film"] ?></p>
@@ -26,12 +31,17 @@ $filmFavori = $requeteFilmFavori->fetch()
       <div class="acteurs">
         <p>Avec nos vedettes :</p>
         <div class='cards-container'>
-          acteur 1 & 2
+          <?php 
+            foreach($acteursFilmFav as $acteurFav) {
+          ?>
+          <img src="<?= $acteurFav["photo"] ?>" alt="Photo de <?= $acteurFav["fullName"] ?>">
+
+          <?php } ?>
         </div>
       </div>
 
       <div class="note">
-        4.5/5
+        <?= $filmFavori["note"] ?>
         <i class="fa-solid fa-star"></i>
       </div>
     </aside>
@@ -44,7 +54,11 @@ $filmFavori = $requeteFilmFavori->fetch()
 <section id="filmsMoment">
   <h3>Les films du moment :</h3>
   <div class=cards-container>
-    films 1 & 2
+    <?php 
+    foreach($filmsMoment as $film) {
+    ?>
+    <img src="<?= $film["affiche"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
+    <?php } ?>
   </div>
 </section>
 
@@ -62,14 +76,32 @@ $filmFavori = $requeteFilmFavori->fetch()
     <article class="action">
       <h4>Les films d'action :</h4>
       <div class="carroussel">
-        Carroussel des films
+        <?php foreach($filmsAction as $film) {?>
+        <figure>
+          <img src="<?= $film["affiche"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
+          <figcaption><?= $film["nom_film"] ?></figcaption>
+          <div class="note">
+            <?= $film["note"] ?>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </figure>
+        <?php } ?>
       </div>
     </article>
 
     <article class="famille">
       <h4>Les films pour toute la famille :</h4>
       <div class="carroussel">
-        Carroussel des films
+        <?php foreach($filmsFamille as $film) {?>
+        <figure>
+          <img src="<?= $film["affiche"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
+          <figcaption><?= $film["nom_film"] ?></figcaption>
+          <div class="note">
+            <?= $film["note"] ?>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </figure>
+        <?php } ?>
       </div>
     </article>
   </div>
