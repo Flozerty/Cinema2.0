@@ -3,13 +3,14 @@
 $filmFavori = $requeteFilmFavori->fetch();
 $acteursFilmFav = $requeteActeursFilmFav->fetchAll();
 $filmsMoment = $requeteFilmsMoment->fetchAll();
-$filmsAction = $requeteAction->fetchAll();
-$filmsFamille = $requeteFamille->fetchAll();
-
 ?>
 
+<!------------------------------------------------>
+<!---------------------- UNE --------------------->
+<!------------------------------------------------>
+
 <section id="une">
-  <h3>A la une :</h3>
+  <h3>À la une :</h3>
   <article>
     <figure>
       <img src="<?= $filmFavori["affiche"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
@@ -48,7 +49,6 @@ $filmsFamille = $requeteFamille->fetchAll();
   </article>
 </section>
 
-
 <hr>
 
 <section id="filmsMoment">
@@ -56,15 +56,19 @@ $filmsFamille = $requeteFamille->fetchAll();
   <div class=cards-container>
     <?php 
     foreach($filmsMoment as $film) {
-    ?>
-    <img src="<?= $film["affiche"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
-    <?php } ?>
+   
+    require "templates/filmCard.php";
+   } ?>
   </div>
 </section>
 
 <hr>
 
-<section id="genresAccueil">
+<!------------------------------------------------>
+<!-------------------- GENRES -------------------->
+<!------------------------------------------------>
+
+<section id="genres-accueil">
   <div id="genres-header">
     <h3>Parcourez nos genres :</h3>
     <a href="index.php?action=listGenres">
@@ -74,15 +78,39 @@ $filmsFamille = $requeteFamille->fetchAll();
 
   <div id="genres-content">
 
-    <article class="action">
-      <h4>Les films d'action :</h4>
+    <?php $genresFavoris = [
+      "action" => "action",
+      "famille" => "film pour enfants",
+      "science-fiction" => "science-fiction"];
+
+$filmsAction = $requeteAction->fetchAll();
+$filmsFamille = $requeteFamille->fetchAll();
+$filmsSf = $requeteSF->fetchAll();
+
+    foreach($genresFavoris as $key => $value) { 
+
+      switch($key) {
+        case 'action':
+          $films = $filmsAction;
+          break;
+      case 'famille':
+          $films = $filmsFamille;
+          break;
+      case 'science-fiction':
+          $films = $filmsSf;
+          break;
+      } ?>
+
+    <article class="<?= $value ?>">
+      <h4>Les films du genre <?= ucwords($key) ?> :</h4>
 
       <div class="carroussel">
         <i class="fa-solid fa-circle-arrow-left arrow arrow-left"></i>
 
         <div class="cards-container">
-          <?php foreach($filmsAction as $film) {
-            require "view/filmCard.php";
+          <?php foreach( $films as $film) {
+
+            require "templates/filmCard.php";
          } ?>
         </div>
 
@@ -90,22 +118,7 @@ $filmsFamille = $requeteFamille->fetchAll();
       </div>
     </article>
 
-    <article class="famille">
-      <h4>Les films pour toute la famille :</h4>
-
-      <div class="carroussel">
-        <i class="fa-solid fa-circle-arrow-left arrow arrow-left"></i>
-
-        <div class="cards-container">
-          <?php foreach($filmsFamille as $film) {
-            require "view/filmCard.php";
-          } ?>
-        </div>
-
-        <i class="fa-solid fa-circle-arrow-right arrow arrow-right"></i>
-      </div>
-    </article>
-  </div>
+    <?php } ?>
 
 </section>
 
@@ -113,4 +126,4 @@ $filmsFamille = $requeteFamille->fetchAll();
 $titre = "Accueil";
 $titre_secondaire = "Accueil";
 $contenu = ob_get_clean();
-require "view/template.php";
+require "templates/template.php";
