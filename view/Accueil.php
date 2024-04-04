@@ -38,6 +38,7 @@ $filmFavori = $requeteFilmFavori->fetch()
   </article>
 </section>
 
+
 <hr>
 
 <section id="filmsMoment">
