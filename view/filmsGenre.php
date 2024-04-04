@@ -23,4 +23,4 @@ $films = $requeteFilmsGenre->fetchAll();
 $titre = $films[0]["nom_genre"];
 $titre_secondaire = "Les films du genre ".$films[0]["nom_genre"];
 $contenu = ob_get_clean();
-require "view/template.php";
+require "templates/template.php";

@@ -15,4 +15,4 @@ foreach($listGenres as $genre){ ?>
 $titre = "liste genres";
 $titre_secondaire = "liste des genres";
 $contenu = ob_get_clean();
-require "view/template.php";
+require "templates/template.php";

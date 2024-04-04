@@ -26,4 +26,4 @@ echo $detailRealisateur["rea"];
 $titre = "détail Realisateur";
 $titre_secondaire = $detailRealisateur["rea"];
 $contenu = ob_get_clean();
-require "view/template.php";
+require "templates/template.php";

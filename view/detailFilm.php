@@ -10,4 +10,4 @@ $titre_secondaire = $detailFilm["nom_film"];
 <p><?= $detailFilm["rea"] ?></p>
 <?php
 $contenu = ob_get_clean();
-require "view/template.php";
+require "templates/template.php";
