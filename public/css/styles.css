@@ -160,6 +160,7 @@ h4 {
 #une article {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: var(--darkblue);
   color: white;
   border-radius: 15px;
@@ -382,7 +383,7 @@ h4 {
       border-radius: 15px;
       background-color: var(--darkblue);
       overflow: hidden;
-      max-width: none;
+      max-width: 80%;
     }
   }
 }
