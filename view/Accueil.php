@@ -81,9 +81,11 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 <section id="genres-accueil">
   <div id="genres-header">
     <h3>Parcourez nos genres :</h3>
-    <a href="index.php?action=listGenres">
-      voir les genres ->
-    </a>
+    <div class="link">
+      <a href="index.php?action=listGenres">
+        voir les genres ->
+      </a>
+    </div>
   </div>
 
   <div id="genres-content">

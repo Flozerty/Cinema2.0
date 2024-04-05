@@ -291,11 +291,11 @@ hr {
         a {
           color: var(--lightgrey);
         }
+      }
 
-        &:hover {
-          a {
-            color: aqua;
-          }
+      &:hover {
+        a {
+          color: aqua;
         }
       }
     }
@@ -355,11 +355,20 @@ hr {
     padding: 0;
   }
 
-  a {
-    align-self: flex-end;
-    color: var(--lightgrey);
-    margin: 5px;
+  .link {
+    a {
+      color: var(--lightgrey);
+    }
+
+    &:hover {
+      a {
+        color: aqua;
+      }
+    }
   }
+
+
+
 }
 
 /*/////////// CARROUSSEL ///////////*/
@@ -517,11 +526,12 @@ hr {
     align-items: center;
     justify-content: space-between;
 
-    a {
-      align-self: auto;
-    }
   }
 }
+
+/* //////////////////////////////// */
+/* ///////////// FONTS //////////// */
+/* //////////////////////////////// */
 
 @media screen and (min-width: 800px) {
 
