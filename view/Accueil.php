@@ -12,7 +12,7 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 <section id="une">
   <h3>À la une :</h3>
   <article>
-    <figure>
+    <figure id="afficheFilmFav">
       <img src="<?= $filmFavori["affiche"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
     </figure>
     <aside>
@@ -33,11 +33,11 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
         <p>Avec nos vedettes :</p>
         <div class='cards-container'>
           <?php 
-            foreach($acteursFilmFav as $acteurFav) {
-          ?>
-          <img src="<?= $acteurFav["photo"] ?>" alt="Photo de <?= $acteurFav["fullName"] ?>">
+            foreach($acteursFilmFav as $acteur) {
+       
+          require "templates/acteurCard.php";
 
-          <?php } ?>
+      } ?>
         </div>
       </div>
 
@@ -51,8 +51,8 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 
 <hr>
 
-<section id="filmsMoment">
-  <h3>Les films du moment :</h3>
+<section id="dernieresSorties">
+  <h3>Les dernières sorties :</h3>
   <div class=cards-container>
     <?php 
     foreach($filmsMoment as $film) {
@@ -101,7 +101,7 @@ $filmsSf = $requeteSF->fetchAll();
           break;
       } ?>
 
-    <article class="<?= $value ?>">
+    <article id="accueil-<?= $key ?>">
       <h4>Les films du genre <?= ucwords($key) ?> :</h4>
 
       <div class="carroussel">
