@@ -122,11 +122,11 @@ hr {
 
 .cards-container {
   display: flex;
-  overflow: hidden;
   padding: 20px 0;
   padding-left: 10px;
   margin-right: 10px;
   width: 100%;
+  transition: var(--transitionTime);
 
   figure {
     color: var(--darkblue);
@@ -137,7 +137,7 @@ hr {
 
     &:hover {
       transform: scale(1.1);
-      z-index: 3;
+      z-index: 2;
     }
   }
 
@@ -430,6 +430,7 @@ header {
     color: var(--darkblue);
     position: absolute;
     cursor: pointer;
+    z-index: 3;
 
     /* white back */
     width: 1.8rem;
@@ -448,6 +449,11 @@ header {
   .arrow-right {
     right: -50px;
   }
+}
+
+.carroussel-wrapper {
+  overflow: hidden;
+  width: 100%;
 }
 
 /* //////////////////////////////// */
