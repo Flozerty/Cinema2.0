@@ -60,20 +60,22 @@ h4 {
 
 h3 {
   margin: 10px auto 50px auto;
-  font-size: 2.2rem;
+  font-size: 1.5rem;
 }
 
 h4 {
-  margin: 10px auto 10px 5%;
-  font-size: 1.5rem;
+  margin: 10px 5% 10px 5%;
+  font-size: 1.2rem;
 }
 
 .title {
   font-weight: 600;
+  font-size: 1.8rem;
 }
 
 .subtitle {
   font-weight: 600;
+  font-size: 1rem;
   margin: 5px 0 10px 0;
   padding: 0 5%;
 }
@@ -592,43 +594,13 @@ header {
 /* ///////////// FONTS //////////// */
 /* //////////////////////////////// */
 
-@media screen and (min-width: 600px) {}
-
-@media screen and (min-width: 800px) {
-
+@media screen and (min-width: 600px) {
   h3 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   h4 {
-    font-size: 1.5rem;
-  }
-
-  .title {
-    font-size: 1.7rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .synopsis {
-    font-size: 0.8rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (min-width: 1000px) {
-
-  h3 {
-    font-size: 2.8rem;
-  }
-
-  h4 {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
   }
 
   .title {
@@ -640,20 +612,45 @@ header {
   }
 
   .synopsis {
-    font-size: 1.2rem;
-  }
-
-  p {
     font-size: 1rem;
   }
 }
 
-@media screen and (min-width: 1200px) {}
-
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 800px) {
 
   h3 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  /* .title {} */
+
+  /* .subtitle {} */
+
+  /* .synopsis {} */
+}
+
+@media screen and (min-width: 1000px) {
+
+  /* h3 {} */
+
+  /* h4 {} */
+
+  /* .title {} */
+
+  /* .subtitle {} */
+
+  .synopsis {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h3 {
+    font-size: 3rem;
   }
 
   h4 {
@@ -668,11 +665,27 @@ header {
     font-size: 1.5rem;
   }
 
-  .synopsis {
-    font-size: 1rem;
+  /* .synopsis {} */
+
+}
+
+@media screen and (min-width: 1500px) {
+
+  h3 {
+    font-size: 3.5rem;
   }
 
-  p {
-    font-size: 1.2rem;
+  /* h4 {} */
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+  }
+
+  .synopsis {
+    font-size: 1.5rem;
   }
 }
