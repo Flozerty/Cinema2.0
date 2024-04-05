@@ -55,8 +55,13 @@
   <div id="wrapper">
     <main>
       <div id="contenu">
-        <h1>PDO-Cinema</h1>
-        <h2><?= $titre_secondaire ?></h2>
+        <div id="header-template">
+          <h1 class="title">PDO-Cinema</h1>
+          <h2 class="subtitle"><?= $titre_secondaire ?></h2>
+        </div>
+
+        <hr>
+
         <?= $contenu ?>
       </div>
     </main>
