@@ -80,12 +80,12 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 
 <section id="genres-accueil">
   <div id="genres-header">
-    <h3>Parcourez nos genres :</h3>
-    <div class="link">
+    <h3>Parcourez les genres :</h3>
+    <span class="link">
       <a href="index.php?action=listGenres">
         voir les genres ->
       </a>
-    </div>
+    </span>
   </div>
 
   <div id="genres-content">
@@ -114,7 +114,14 @@ $filmsSf = $requeteSF->fetchAll();
       } ?>
 
     <article id="accueil-<?= $key ?>">
-      <h4>Les films du genre <?= ucwords($key) ?> :</h4>
+      <h4>
+        Les films du genre
+        <span class="link">
+          <a href="index.php?action=filmsGenre&id=<?= $films[0]["id_genre"] ?>">
+            <?= ucwords($key) ?>
+          </a>
+        </span> :
+      </h4>
 
       <div class="carroussel">
         <i class="fa-solid fa-circle-arrow-left arrow arrow-left"></i>
