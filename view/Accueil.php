@@ -13,11 +13,16 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
   <h3>À la une :</h3>
   <article>
 
+    <!------------- AFFICHE ------------->
+
     <figure id="afficheFilmFav">
       <a href="index.php?action=detailFilm&id=<?= $filmFavori["id_film"] ?>">
         <img src="<?= $filmFavori["affiche"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
       </a>
     </figure>
+
+    <!-------------- ASIDE -------------->
+
     <aside>
       <p class="title">
         <?= $filmFavori["nom_film"] ?>
@@ -42,6 +47,8 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
         </span>
       </p>
 
+      <!-- 2 Acteurs les plus "connus" -->
+
       <div class="acteurs">
         <p>Avec nos vedettes :</p>
         <div class='cards-container'>
@@ -54,6 +61,8 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
         </div>
       </div>
 
+      <!-- Note -->
+
       <div class="note">
         <?= $filmFavori["note"] ?>
         <i class="fa-solid fa-star"></i>
@@ -63,6 +72,10 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 </section>
 
 <hr>
+
+<!------------------------------------------------>
+<!-------------- DERNIERES SORTIES --------------->
+<!------------------------------------------------>
 
 <section id="dernieresSorties">
   <h3>Les dernières sorties :</h3>
@@ -93,6 +106,7 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 
   <div id="genres-content">
 
+    <!-- Liste des genres de l'accueil -->
     <?php $genresFavoris = [
       "action" => "action",
       "famille" => "film pour enfants",
@@ -102,16 +116,18 @@ $filmsAction = $requeteAction->fetchAll();
 $filmsFamille = $requeteFamille->fetchAll();
 $filmsSf = $requeteSF->fetchAll();
 
+    ////// Un carrousel par genre //////
+
     foreach($genresFavoris as $key => $value) { 
 
       switch($key) {
         case 'action':
           $films = $filmsAction;
           break;
-      case 'famille':
+        case 'famille':
           $films = $filmsFamille;
           break;
-      case 'science-fiction':
+        case 'science-fiction':
           $films = $filmsSf;
           break;
       } ?>
@@ -126,20 +142,10 @@ $filmsSf = $requeteSF->fetchAll();
         </span> :
       </h4>
 
-      <div class="carroussel">
-        <i class="fa-solid fa-circle-arrow-left arrow arrow-left"></i>
+      <!-- Intégration du carrousel -->
 
-        <div class="carroussel-wrapper">
-          <div class="cards-container">
-            <?php foreach( $films as $film) {
+      <?php require "templates/carrousel.php"; ?>
 
-            require "templates/filmCard.php";
-         } ?>
-          </div>
-        </div>
-
-        <i class="fa-solid fa-circle-arrow-right arrow arrow-right"></i>
-      </div>
     </article>
 
     <?php } ?>
