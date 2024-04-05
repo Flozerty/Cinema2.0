@@ -19,7 +19,7 @@ class CinemaController {
 
     // acteurs du film favori
     $requeteActeursFilmFav = $pdo->query("
-    SELECT nom, prenom, photo, CONCAT(prenom, ' ', nom) AS fullName, COUNT(*) AS nbFilms
+    SELECT acteur.id_acteur, nom, prenom, photo, CONCAT(prenom, ' ', nom) AS fullName, COUNT(*) AS nbFilms
     FROM acteur
     INNER JOIN personne p ON p.id_personne = acteur.id_personne
     INNER JOIN casting ON casting.id_acteur = acteur.id_acteur
