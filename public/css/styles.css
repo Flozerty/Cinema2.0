@@ -2,6 +2,8 @@
   --darkblue: #2B2D42;
   --bluegrey: rgba(42, 44, 65, 0.75);
   --lightgrey: #8B939C;
+
+  --transitionTime: 0.3s
 }
 
 /* /////// BASE /////// */
@@ -41,6 +43,80 @@ main {
 }
 
 /* //////////////////////////////// */
+/* /////////// COMMONS //////////// */
+/* //////////////////////////////// */
+
+h3,
+h4 {
+  background-color: var(--darkblue);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+h3 {
+  margin: 10px auto 20px auto;
+  font-size: 2.2rem;
+}
+
+h4 {
+  margin: 10px auto 10px 5%;
+  font-size: 1.5rem;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.subtitle {
+  font-weight: 600;
+  margin: 5px 0 10px 0;
+  padding: 0 5%;
+}
+
+.note {
+  color: yellow;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: var(--bluegrey);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/*//////// CARDS CONTAINER /////////*/
+
+
+
+.cards-container {
+  display: flex;
+  overflow: hidden;
+  padding: 20px 0;
+  padding-left: 10px;
+  margin-right: 10px;
+  width: 100%;
+
+  figure {
+    color: var(--darkblue);
+    font-weight: 600;
+    position: relative;
+    margin: 2px;
+    transition: var(--transitionTime);
+
+    &:hover {
+      transform: scale(1.1);
+      z-index: 3;
+    }
+  }
+
+  img {
+    width: 200px;
+    height: 280px;
+  }
+}
+
+/* //////////////////////////////// */
 /* //////////// HEADER //////////// */
 /* //////////////////////////////// */
 header {
@@ -61,12 +137,17 @@ header {
     color: white;
     display: flex;
     align-items: center;
+    transition: var(--transitionTime);
 
     img {
       width: 50px;
       background-color: #520000;
       border-radius: 50%;
       margin-right: 5px;
+    }
+
+    &:hover {
+      transform: scale(1.25)
     }
   }
 
@@ -83,14 +164,30 @@ header {
   }
 
   nav {
-    transition: 0.3s;
+    height: 100%;
 
     ul {
       display: flex;
+      height: 100%;
+      align-items: center;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
       a {
         color: white;
         padding: 5px;
+        transition: var(--transitionTime);
+      }
+
+      li:hover {
+        a {
+          color: aqua;
+          transform: scale(1.25)
+        }
       }
     }
   }
@@ -119,66 +216,6 @@ header {
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
-  }
-}
-
-/* //////////////////////////////// */
-/* /////////// COMMONS //////////// */
-/* //////////////////////////////// */
-
-h3,
-h4 {
-  background-color: var(--darkblue);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  width: fit-content;
-}
-
-h3 {
-  margin: 10px auto 20px auto;
-  font-size: 2.2rem;
-}
-
-h4 {
-  margin: 10px 0 10px 15px;
-  font-size: 1.5rem;
-}
-
-.title {
-  font-weight: 600;
-}
-
-.note {
-  color: yellow;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  background-color: var(--bluegrey);
-  padding: 5px;
-  border-radius: 5px;
-}
-
-/*//////// CARDS CONTAINER /////////*/
-
-.cards-container {
-  display: flex;
-  overflow: hidden;
-
-  figure {
-    color: var(--darkblue);
-    font-weight: 600;
-    position: relative;
-    margin: 2px;
-  }
-
-  img {
-    width: 200px;
-    height: 280px;
-  }
-
-  figcaption {
-    padding: 0 5px;
   }
 }
 
@@ -230,14 +267,10 @@ hr {
       padding-left: 5%;
     }
 
-    .subtitle {
-      margin: 5px 0 10px 0;
-      padding-left: 5%;
-
-      a {
-        color: #89EAFF;
-      }
+    .subtitle a {
+      color: #89EAFF;
     }
+
 
     .synopsis {
       text-align: justify;
@@ -262,6 +295,10 @@ hr {
         margin: 10px;
       }
 
+      .subtitle {
+        color: white;
+      }
+
       .cards-container {
         justify-content: center;
 
@@ -275,9 +312,9 @@ hr {
   }
 }
 
-/*//////// FILMS DU MOMENT /////////*/
+/*/////// DERNIERES SORTIES ////////*/
 
-#filmsMoment {
+#dernieresSorties {
   align-items: center;
 
   .cards-container {
@@ -287,10 +324,6 @@ hr {
 }
 
 /*///////// PARCOURS GENRE /////////*/
-
-#genres-accueil h4 {
-  margin: 20px 0 20px 50px;
-}
 
 #genres-header {
   background-color: var(--darkblue);
@@ -367,7 +400,7 @@ hr {
     height: auto;
     background-color: var(--lightgrey);
 
-    figure {
+    #afficheFilmFav {
       padding: 50px;
       background-color: var(--lightgrey);
       width: 90%;
@@ -387,8 +420,17 @@ hr {
   }
 }
 
-/* header order change */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
+  main {
+    width: 100%;
+  }
+
+  #genres-content {
+    width: 80%;
+    align-self: center;
+  }
+
+  /* header order change */
   header {
     #logo-container {
       order: 1;
@@ -399,20 +441,13 @@ hr {
       order: 2;
     }
 
-    #search {
-      display: none;
-    }
-
     #toggle-menu {
       order: 3;
     }
   }
-}
 
-/* menu burger positioning */
-@media screen and (max-width: 600px) {
+  /* menu burger positioning */
   header nav {
-
     position: absolute;
     top: 0;
     right: -70%;
@@ -420,10 +455,12 @@ hr {
     backdrop-filter: blur(4px);
     width: 70%;
     padding-top: 75px;
+    transition: var(--transitionTime);
     height: 100vh;
 
     ul {
       flex-direction: column;
+      align-items: baseline;
 
       li {
         padding: 20px;
@@ -437,15 +474,28 @@ hr {
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 800px) {
+  #une figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
-  #close-button,
-  #toggle-menu {
+@media screen and (max-width: 600px) {
+
+  #search {
     display: none;
   }
 }
 
 @media screen and (min-width: 1000px) {
+
+  #close-button,
+  #toggle-menu {
+    display: none;
+  }
+
   #genres-header {
     flex-direction: row;
     align-items: center;
@@ -457,10 +507,64 @@ hr {
   }
 }
 
+@media screen and (min-width: 800px) {
+
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.7rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .synopsis {
+    font-size: 0.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+
+  h3 {
+    font-size: 2.8rem;
+  }
+
+  h4 {
+    font-size: 1.8rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .synopsis {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
 @media screen and (min-width: 1200px) {
 
   h3 {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
 
   h4 {
