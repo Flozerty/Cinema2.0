@@ -7,15 +7,17 @@
   --transitionTime: 0.3s
 }
 
-/* /////// BASE /////// */
+/* /////// GENERAL /////// */
 * {
   margin: 0;
   padding: 0;
+  vertical-align: top;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
-  font-family: "Montserrat", sans-serif;
 }
 
 ul {
@@ -31,10 +33,10 @@ a {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding-top: 180px;
 }
 
 main {
+  padding-top: 120px;
   width: 80%;
 }
 
@@ -57,7 +59,7 @@ h4 {
 }
 
 h3 {
-  margin: 10px auto 20px auto;
+  margin: 10px auto 50px auto;
   font-size: 2.2rem;
 }
 
@@ -86,8 +88,9 @@ h4 {
   border-radius: 5px;
 }
 
+/*///////// LINKS /////////*/
 .link {
-  display: flex;
+  display: inline-flex;
   transition: var(--transitionTime);
   margin: 0 1%;
 
@@ -103,9 +106,19 @@ h4 {
   }
 }
 
+section {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+hr {
+  margin: 50px auto 25px auto;
+  width: 60%;
+  border-width: 3px;
+}
+
 /*//////// CARDS CONTAINER /////////*/
-
-
 
 .cards-container {
   display: flex;
@@ -131,12 +144,14 @@ h4 {
   img {
     width: 200px;
     height: 280px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }
 
 /* //////////////////////////////// */
 /* //////////// HEADER //////////// */
 /* //////////////////////////////// */
+
 header {
   z-index: 5;
   position: fixed;
@@ -181,6 +196,7 @@ header {
     }
   }
 
+  /*////////// NAV //////////*/
   nav {
     height: 100%;
 
@@ -224,21 +240,19 @@ header {
   }
 }
 
+/* ////////// TEMPLATE /////////// */
+
+#header-template {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+}
+
 /* //////////////////////////////// */
 /* /////////// ACCUEIL //////////// */
 /* //////////////////////////////// */
 
-section {
-  margin: 10px 0;
-  display: flex;
-  flex-direction: column;
-}
 
-hr {
-  margin: 50px auto 25px auto;
-  width: 60%;
-  border-width: 3px;
-}
 
 /*/////////////// UNE ///////////////*/
 
@@ -264,6 +278,7 @@ hr {
     }
   }
 
+  /*//////// ASIDE ////////*/
   aside {
     padding: 20px;
     position: relative;
@@ -286,21 +301,20 @@ hr {
       .link {
         font-size: 0.8rem;
         margin-top: 5px;
+        display: flex;
         justify-content: flex-end;
 
         a {
           color: var(--lightgrey);
         }
-      }
 
-      &:hover {
-        a {
-          color: aqua;
+        &:hover {
+          a {
+            color: aqua;
+          }
         }
       }
     }
-
-
 
     .acteurs {
       display: flex;
@@ -319,7 +333,6 @@ hr {
         justify-content: center;
 
         img {
-          padding: 20px;
           width: 115px;
           height: 150px;
         }
@@ -344,7 +357,7 @@ hr {
 #genres-header {
   background-color: var(--darkblue);
   width: 80%;
-  margin: 10px auto 20px auto;
+  margin: 10px auto 50px auto;
   padding: 5px 10px;
   border-radius: 5px;
   display: flex;
@@ -356,19 +369,52 @@ hr {
   }
 
   .link {
+    justify-content: flex-end;
+
     a {
       color: var(--lightgrey);
     }
+  }
 
-    &:hover {
+  &:hover {
+    a {
+      color: aqua;
+    }
+  }
+}
+
+#genres-content {
+  article {
+    margin: 25px 0 75px 0;
+
+    h4 {
+      width: auto;
+
+      .link {
+        margin: 0;
+        transition: var(--transitionTime);
+      }
+
       a {
-        color: aqua;
+        color: white;
+      }
+    }
+
+    /* LINKS HOVER SCALING */
+    &:hover {
+      .link {
+        margin: 0 5px;
+
+        a {
+          color: aqua;
+
+          &:hover {
+            margin: 0 15px;
+          }
+        }
       }
     }
   }
-
-
-
 }
 
 /*/////////// CARROUSSEL ///////////*/
@@ -383,9 +429,16 @@ hr {
     font-size: 2rem;
     color: var(--darkblue);
     position: absolute;
-    background-color: white;
-    border-radius: 50%;
     cursor: pointer;
+
+    /* white back */
+    width: 1.8rem;
+    height: 1.8rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
   }
 
   .arrow-left {
@@ -533,6 +586,8 @@ hr {
 /* ///////////// FONTS //////////// */
 /* //////////////////////////////// */
 
+@media screen and (min-width: 600px) {}
+
 @media screen and (min-width: 800px) {
 
   h3 {
@@ -587,7 +642,9 @@ hr {
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {}
+
+@media screen and (min-width: 1500px) {
 
   h3 {
     font-size: 3.5rem;
