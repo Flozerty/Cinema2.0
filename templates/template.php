@@ -33,11 +33,11 @@
       </div>
 
       <ul>
-        <li><a href="index.php?action=accueil">Accueil</a></li>
-        <li><a href="index.php?action=listFilms">Films</a></li>
-        <li><a href="index.php?action=listActeurs">Acteurs</a></li>
-        <li><a href="index.php?action=listRealisateurs">Réalisateurs</a></li>
-        <li><a href="index.php?action=listGenres">Genres</a></li>
+        <li class="link"><a href="index.php?action=accueil">Accueil</a></li>
+        <li class="link"><a href="index.php?action=listFilms">Films</a></li>
+        <li class="link"><a href="index.php?action=listActeurs">Acteurs</a></li>
+        <li class="link"><a href="index.php?action=listRealisateurs">Réalisateurs</a></li>
+        <li class="link"><a href="index.php?action=listGenres">Genres</a></li>
       </ul>
     </nav>
 

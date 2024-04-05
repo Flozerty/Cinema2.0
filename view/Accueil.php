@@ -16,19 +16,29 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
       <img src="<?= $filmFavori["affiche"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
     </figure>
     <aside>
-      <p class="title"><?= $filmFavori["nom_film"] ?></p>
+      <p class="title">
+        <?= $filmFavori["nom_film"] ?>
+      </p>
+
       <p class="subtitle">
         un film de
-        <a href="index.php?action=detailRealisateur&id=<?= $filmFavori["id_realisateur"] ?>">
-          <?= $filmFavori["rea"] ?>
-        </a>
+        <span class="link">
+          <a href="index.php?action=detailRealisateur&id=<?= $filmFavori["id_realisateur"] ?>">
+            <?= $filmFavori["rea"] ?>
+          </a>
+        </span>
       </p>
-      <p class="synopsis"><?= $filmFavori["synopsis"] ?></p>
-      <div class="see-more">
-        <a href="index.php?action=detailFilm&id=<?= $filmFavori["id_film"] ?>">
-          voir plus ->
-        </a>
-      </div>
+
+      <p class="synopsis">
+        <?= $filmFavori["synopsis"] ?>
+
+        <span class="link">
+          <a href="index.php?action=detailFilm&id=<?= $filmFavori["id_film"] ?>">
+            voir plus ->
+          </a>
+        </span>
+      </p>
+
       <div class="acteurs">
         <p>Avec nos vedettes :</p>
         <div class='cards-container'>
