@@ -72,6 +72,7 @@
   </footer>
 
   <script src="public/js/menuBurger.js"></script>
+  <script src="public/js/carrousel.js"></script>
 </body>
 
 </html>
