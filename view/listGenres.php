@@ -2,16 +2,23 @@
 
 
 $listGenres = $requeteGenres->fetchAll();
+?>
 
+<ul id="genres-list">
 
-foreach($listGenres as $genre){ ?>
+  <?php foreach($listGenres as $genre){ ?>
 
-<a href="index.php?action=filmsGenre&id=<?= $genre["id_genre"] ?>">
-  <?= $genre["nom_genre"]; ?>
-</a>
+  <li class="link genre-card">
+    <a href="index.php?action=filmsGenre&id=<?= $genre["id_genre"] ?>">
+      <?= $genre["nom_genre"]; ?>
+    </a>
+  </li>
 
-<?php }
+  <?php } ?>
 
+</ul>
+
+<?php
 $titre = "liste genres";
 $titre_secondaire = "liste des genres";
 $contenu = ob_get_clean();
