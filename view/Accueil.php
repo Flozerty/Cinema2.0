@@ -12,8 +12,11 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 <section id="une">
   <h3>À la une :</h3>
   <article>
+
     <figure id="afficheFilmFav">
-      <img src="<?= $filmFavori["affiche"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
+      <a href="index.php?action=detailFilm&id=<?= $filmFavori["id_film"] ?>">
+        <img src="<?= $filmFavori["affiche"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
+      </a>
     </figure>
     <aside>
       <p class="title">
