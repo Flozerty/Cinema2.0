@@ -1,14 +1,16 @@
 <?php ob_start();
+$realisateurs = $requete->fetchAll() ?>
 
-foreach($requete->fetchAll() as $rea){
-  ?>
-<p>
-  <a href="index.php?action=detailRealisateur&id=<?= $rea['id_realisateur'] ?>">
-    <?= $rea["full_name"] ?>
-  </a>
-</p>
-<?php } ?>
+<section id="listActeurs">
+  <div class="cards-container">
 
+    <?php foreach($realisateurs as $person){
+      $type = "realisateur";
+require "templates/personCard.php";
+} ?>
+
+  </div>
+</section>
 <?php
 $titre = "Liste des realisateurs";
 $titre_secondaire = "Liste des realisateurs";

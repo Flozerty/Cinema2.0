@@ -9,7 +9,7 @@ class RealisateurController {
   public function listRealisateurs() {
     $pdo = Connect::seConnecter();
     $requete = $pdo->query("
-    SELECT *, CONCAT(nom, ' ', prenom) AS full_name
+    SELECT *, CONCAT(nom, ' ', prenom) AS fullName
     FROM realisateur r
     INNER JOIN personne p ON p.id_personne = r.id_personne
     ORDER BY nom
