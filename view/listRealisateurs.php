@@ -3,7 +3,9 @@
 foreach($requete->fetchAll() as $rea){
   ?>
 <p>
-  <?= $rea["full_name"] ?>
+  <a href="index.php?action=detailRealisateur&id=<?= $rea['id_realisateur'] ?>">
+    <?= $rea["full_name"] ?>
+  </a>
 </p>
 <?php } ?>
 

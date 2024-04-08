@@ -23,7 +23,7 @@ class RealisateurController {
 
 // requete infos du realisateur
     $requeteRea = $pdo->prepare('
-    SELECT id_realisateur, CONCAT(p.prenom, " ", p.nom) AS rea, sexe, date_naissance, photo 
+    SELECT id_realisateur, CONCAT(p.prenom, " ", p.nom) AS fullName, sexe, date_naissance, photo 
     FROM realisateur 
     INNER JOIN personne p ON p.id_personne = realisateur.id_personne
     WHERE id_realisateur = :id');
@@ -32,7 +32,7 @@ class RealisateurController {
 
 // requete films du realisateur
     $requeteFilms = $pdo->prepare('
-    SELECT nom_film, CONCAT(p.prenom, " ", p.nom) AS rea, date_sortie 
+    SELECT *, CONCAT(p.prenom, " ", p.nom) AS fullName
     FROM film
     INNER JOIN realisateur r ON film.id_realisateur = r.id_realisateur
     INNER JOIN personne p ON r.id_personne = p.id_personne 
