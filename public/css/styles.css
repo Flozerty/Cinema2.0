@@ -591,10 +591,12 @@ header {
 }
 
 /* //////////////////////////////// */
-/* ////////// FILMS GENRE ///////// */
+/* ////// FILMS GENRE & LISTS ///// */
 /* //////////////////////////////// */
 
-#filmsGenre {
+#filmsGenre,
+#listActeurs,
+#listRealisateurs {
   .cards-container {
     flex-wrap: wrap;
     justify-content: center;
