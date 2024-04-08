@@ -1,11 +1,17 @@
 <?php ob_start();
+$acteurs = $requete->fetchAll();
+?>
+<section id="listActeurs">
+  <div class="cards-container">
 
-foreach($requete->fetchAll() as $acteur){
-  ?>
-<p>
-  <?= $acteur["full_name"] ?>
-</p>
-<?php } ?>
+    <?php foreach($acteurs as $person){
+      $type = "acteur";
+
+require "templates/personCard.php";
+} ?>
+
+  </div>
+</section>
 
 <?php
 $titre = "Liste des acteurs";

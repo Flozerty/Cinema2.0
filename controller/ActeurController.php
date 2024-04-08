@@ -36,7 +36,7 @@ $requeteFilms = $pdo->prepare('
   public function listActeurs() {
     $pdo = Connect::seConnecter();
     $requete = $pdo->query("
-    SELECT *, CONCAT(nom, ' ', prenom) AS full_name
+    SELECT *, CONCAT(nom, ' ', prenom) AS fullName
     FROM acteur
     INNER JOIN personne p ON p.id_personne = acteur.id_personne
     ORDER BY nom

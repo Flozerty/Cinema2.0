@@ -38,7 +38,7 @@ $acteurFilms = $requeteFilms->fetchAll(); ?>
     <thead>
       <tr>
         <th colspan="2">TITRE</th>
-        <th>DATE SORTIE</th>
+        <th>ROLE</th>
       </tr>
     </thead>
 
@@ -65,7 +65,7 @@ $acteurFilms = $requeteFilms->fetchAll(); ?>
         </td>
 
         <td class="filmPersonDate">
-          <?= $film["date_sortie"] ?>
+          <?= $film["nom_role"] ?>
         </td>
       </tr>
 
