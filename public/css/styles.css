@@ -90,6 +90,22 @@ h4 {
   border-radius: 5px;
 }
 
+section {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+hr {
+  margin: 50px auto 25px auto;
+  width: 60%;
+  border-width: 3px;
+}
+
+.synopsis {
+  text-align: justify;
+}
+
 /*///////// LINKS /////////*/
 .link {
   display: inline-flex;
@@ -108,16 +124,46 @@ h4 {
   }
 }
 
-section {
-  margin: 10px 0;
+/*/////////// CARROUSSEL ///////////*/
+
+.carroussel {
+  margin: 20px 0;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+
+  .arrow {
+    font-size: 2rem;
+    color: var(--darkblue);
+    position: absolute;
+    cursor: pointer;
+    z-index: 3;
+
+    /* white back */
+    width: 1.8rem;
+    height: 1.8rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .arrow-left {
+    left: -50px;
+  }
+
+  .arrow-right {
+    right: -50px;
+  }
+
+
 }
 
-hr {
-  margin: 50px auto 25px auto;
-  width: 60%;
-  border-width: 3px;
+
+.carroussel-wrapper {
+  overflow: hidden;
+  width: 100%;
 }
 
 /*//////// CARDS CONTAINER /////////*/
@@ -127,7 +173,6 @@ hr {
   padding: 20px 0;
   padding-left: 10px;
   margin-right: 10px;
-  width: 100%;
   transition: var(--transitionTime);
 
   figure {
@@ -135,7 +180,6 @@ hr {
     font-weight: 600;
     position: relative;
     margin: 2px;
-    width: 200px;
     transition: var(--transitionTime);
 
     &:hover {
@@ -154,6 +198,7 @@ hr {
     width: 100%;
   }
 }
+
 
 /* //////////////////////////////// */
 /* //////////// HEADER //////////// */
@@ -216,7 +261,6 @@ header {
         color: white;
         padding: 5px;
       }
-
     }
   }
 
@@ -281,13 +325,9 @@ header {
     align-items: center;
     justify-content: center;
 
-
     a {
       width: auto;
       height: 100%;
-
-
-
 
       img {
         height: 100%;
@@ -312,23 +352,19 @@ header {
       }
     }
 
-    .synopsis {
-      text-align: justify;
+    .synopsis .link {
+      font-size: 0.8rem;
+      margin-top: 5px;
+      display: flex;
+      justify-content: flex-end;
 
-      .link {
-        font-size: 0.8rem;
-        margin-top: 5px;
-        display: flex;
-        justify-content: flex-end;
+      a {
+        color: var(--lightgrey);
+      }
 
+      &:hover {
         a {
-          color: var(--lightgrey);
-        }
-
-        &:hover {
-          a {
-            color: aqua;
-          }
+          color: aqua;
         }
       }
     }
@@ -346,13 +382,9 @@ header {
         color: white;
       }
 
-      .cards-container {
-        justify-content: center;
-
-        img {
-          width: 115px;
-          height: 150px;
-        }
+      .cards-container img {
+        width: 115px;
+        height: 150px;
       }
     }
   }
@@ -364,8 +396,8 @@ header {
   align-items: center;
 
   .cards-container {
-    justify-content: space-evenly;
     width: 100%;
+    justify-content: space-evenly;
   }
 }
 
@@ -434,43 +466,65 @@ header {
   }
 }
 
-/*/////////// CARROUSSEL ///////////*/
+/* //////////////////////////////// */
+/* ///////// DETAIL FILM ////////// */
+/* //////////////////////////////// */
 
-.carroussel {
-  margin: 20px 0;
-  position: relative;
+#detailFilm {
+  width: 100%;
   display: flex;
-  align-items: center;
 
-  .arrow {
-    font-size: 2rem;
-    color: var(--darkblue);
-    position: absolute;
-    cursor: pointer;
-    z-index: 3;
-
-    /* white back */
-    width: 1.8rem;
-    height: 1.8rem;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  }
-
-  .arrow-left {
-    left: -50px;
-  }
-
-  .arrow-right {
-    right: -50px;
+  p {
+    margin-bottom: 10px;
   }
 }
 
-.carroussel-wrapper {
-  overflow: hidden;
-  width: 100%;
+#detailFilm-details,
+#detailFilm-synopsis {
+  width: 32%;
+
+  .link a {
+    color: aqua;
+  }
+
+  #filmGenres {
+    .link a {
+      color: white;
+    }
+  }
+}
+
+#detailFilm-affiche {
+  width: 36%;
+  margin: 0 25px;
+
+  img {
+    width: 100%;
+  }
+
+  figcaption {
+    text-align: center;
+    margin-top: 25px;
+    color: yellow;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+}
+
+.acteurCard {
+  /* Empeche les cards de rétrécir à cause du flex de cardsContainer */
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  margin: 0 25px;
+  border: 2px solid #2B2D42;
+  border-radius: 20px;
+
+  figure {
+    margin-right: 20px;
+  }
 }
 
 /* //////////////////////////////// */
@@ -640,6 +694,7 @@ header {
     font-size: 1.2rem;
   }
 
+  p,
   .synopsis {
     font-size: 1rem;
   }
@@ -672,6 +727,7 @@ header {
 
   /* .subtitle {} */
 
+  p,
   .synopsis {
     font-size: 1.2rem;
   }
@@ -714,6 +770,7 @@ header {
     font-size: 1.8rem;
   }
 
+  p,
   .synopsis {
     font-size: 1.5rem;
   }
