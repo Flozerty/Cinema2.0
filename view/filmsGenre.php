@@ -10,16 +10,9 @@ $films = $requeteFilmsGenre->fetchAll();
   </p>
   <div class="cards-container">
 
-    <?php foreach ($films as $film) { ?>
-
-    <figure>
-      <img src="<?= $film["affiche"]; ?>" alt="affiche du film  <?= $film["nom_film"]; ?>">
-      <figcaption>
-        <?= $film["nom_film"]; ?>
-      </figcaption>
-
-    </figure>
-    <?php } ?>
+    <?php foreach ($films as $film) {
+      require "templates/filmCard.php";
+    } ?>
 
   </div>
 </section>
