@@ -36,6 +36,7 @@ class FilmController {
       INNER JOIN film ON film.id_film = f.id_film
       INNER JOIN genre ON genre.id_genre = f.id_genre
       WHERE film.id_film = :id
+      ORDER BY nom_genre
     ");
     $requeteGenres->execute(["id" => $id]);
 
@@ -47,6 +48,7 @@ class FilmController {
     INNER JOIN film ON c.id_film = film.id_film
     INNER JOIN role ON role.id_role = c.id_role
     WHERE film.id_film = :id
+    ORDER BY nom
     ");
     $requeteActeurs->execute(["id" => $id]);
 
