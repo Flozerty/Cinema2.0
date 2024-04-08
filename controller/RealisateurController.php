@@ -12,6 +12,7 @@ class RealisateurController {
     SELECT *, CONCAT(nom, ' ', prenom) AS full_name
     FROM realisateur r
     INNER JOIN personne p ON p.id_personne = r.id_personne
+    ORDER BY nom
     ");
 
     require "view/listRealisateurs.php";
@@ -36,7 +37,8 @@ class RealisateurController {
     FROM film
     INNER JOIN realisateur r ON film.id_realisateur = r.id_realisateur
     INNER JOIN personne p ON r.id_personne = p.id_personne 
-    WHERE r.id_realisateur = :id');
+    WHERE r.id_realisateur = :id
+    ORDER BY date_sortie DESC');
 
     $requeteFilms->execute(["id" => $id]);
 
