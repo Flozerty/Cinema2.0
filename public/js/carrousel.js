@@ -8,11 +8,14 @@ carrousel.forEach(container => {
 
   let translateValue = 0
 
+  // Value changera en fonction du type de carrousel (acteur/film/role...)
+  const translateNb = 200
+
   // défilement à gauche
 
   previousButton.addEventListener("click", () => {
     if (translateValue < 0) {
-      translateValue += 200
+      translateValue += translateNb
       cardsContainer.style.transform = `translateX(${translateValue}px)`
     }
   })
@@ -23,7 +26,7 @@ carrousel.forEach(container => {
     // console.log(cardsContainer.offsetWidth - ((cardsContainer.children.length) * 200))
     if (translateValue > (cardsContainer.offsetWidth - (cardsContainer.children.length * 200))) {
 
-      translateValue -= 200
+      translateValue -= translateNb
       cardsContainer.style.transform = `translateX(${translateValue}px)`
     }
   });
