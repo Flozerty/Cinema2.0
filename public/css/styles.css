@@ -135,6 +135,7 @@ hr {
     font-weight: 600;
     position: relative;
     margin: 2px;
+    width: 200px;
     transition: var(--transitionTime);
 
     &:hover {
@@ -147,6 +148,10 @@ hr {
     width: 200px;
     height: 280px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  figcaption {
+    width: 100%;
   }
 }
 
