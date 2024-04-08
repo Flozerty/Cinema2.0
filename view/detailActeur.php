@@ -1,9 +1,81 @@
 <?php ob_start(); 
-$detailsActeur = $requete->fetch();
+$detailActeur = $requete->fetch();
+$acteurFilms = $requeteFilms->fetchAll(); ?>
 
-echo $detailsActeur["nom"];
+<!-- infos du realisateur -->
+<section id="personInfos">
+  <figure>
+    <img src="<?= $detailActeur["photo"] ?>" alt="photo de <?= $detailActeur["fullName"] ?>">
+    <figcaption>
+      <p>
+        <?= $detailActeur["fullName"] ?> est
+        <!-- vérification du sexe -->
+        <?php switch ( $detailActeur["sexe"] ) {
+          case "Homme": 
+            echo "un homme, né";
+            break;
+          case "Femme": 
+            echo "une femme, née";
+            break;
+          default:
+            echo "quelqu'un né";
+            break;
+        } ?>
 
+        le <?= $detailActeur["date_naissance"] ?>.
+      </p>
+    </figcaption>
+  </figure>
+</section>
+
+<hr>
+<!-- Films avec l'acteur -->
+<section id="personFilms">
+  <h4>Ses participations :</h4>
+  <p class="subtitle">Il a participé à <?= $requeteFilms->rowCount() ?> films :</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">TITRE</th>
+        <th>DATE SORTIE</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <?php foreach ($acteurFilms as $film) { 
+        $href = "index.php?action=detailFilm&id=".$film["id_film"];
+        ?>
+
+      <tr>
+        <td class="affichePersonFilm">
+          <div class="link">
+            <a class href="<?= $href ?>">
+              <img src="<?= $film["affiche"] ?>" alt="affiche du film <?= $film["nom_film"] ?>">
+            </a>
+          </div>
+        </td>
+
+        <td class="filmPersonNom">
+          <div class="link subtitle">
+            <a href="<?= $href ?>">
+              <?= $film["nom_film"] ?>
+            </a>
+          </div>
+        </td>
+
+        <td class="filmPersonDate">
+          <?= $film["date_sortie"] ?>
+        </td>
+      </tr>
+
+      <?php  } ?>
+    </tbody>
+  </table>
+</section>
+
+<?php
 $titre = "détail Acteur";
-$titre_secondaire = $detailsActeur["nom"]." ".$detailsActeur["prenom"];
+$titre_secondaire = $detailActeur["nom"]." ".$detailActeur["prenom"];
 $contenu = ob_get_clean();
 require "templates/template.php";
