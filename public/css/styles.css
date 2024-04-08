@@ -177,6 +177,7 @@ hr {
 
   figure {
     color: var(--darkblue);
+    width: 200px;
     font-weight: 600;
     position: relative;
     margin: 2px;
