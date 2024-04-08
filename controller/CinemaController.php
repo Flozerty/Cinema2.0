@@ -44,6 +44,7 @@ class CinemaController {
     INNER JOIN filmotheque f ON f.id_film = film.id_film
     INNER JOIN genre ON f.id_genre = genre.id_genre
     WHERE nom_genre = 'action'
+    ORDER BY date_sortie DESC
     ");
 
     // liste films pour enfant
@@ -53,6 +54,7 @@ class CinemaController {
     INNER JOIN filmotheque f ON f.id_film = film.id_film
     INNER JOIN genre ON f.id_genre = genre.id_genre
     WHERE nom_genre = 'film pour enfants'
+    ORDER BY date_sortie DESC
     ");
 
     // liste films de science-fiction
@@ -62,6 +64,7 @@ class CinemaController {
     INNER JOIN filmotheque f ON f.id_film = film.id_film
     INNER JOIN genre ON f.id_genre = genre.id_genre
     WHERE nom_genre = 'science-fiction'
+    ORDER BY date_sortie DESC
     ");
 
     require "view/accueil.php";
