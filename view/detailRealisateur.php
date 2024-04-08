@@ -5,7 +5,7 @@ $reaFilms = $requeteFilms->fetchAll(); ?>
 <h3><?= $detailRealisateur["fullName"] ?></h3>
 
 <!-- infos du realisateur -->
-<section id="reaInfos">
+<section id="personInfos">
   <figure>
     <img src="<?= $detailRealisateur["photo"] ?>" alt="photo de <?= $detailRealisateur["fullName"] ?>">
     <figcaption>
@@ -32,7 +32,7 @@ $reaFilms = $requeteFilms->fetchAll(); ?>
 
 <hr>
 <!-- Films du realisateur -->
-<section id="reaFilms">
+<section id="personFilms">
   <h4>Ses réalisations :</h4>
   <p class="subtitle">Il a réalisé <?= $requeteFilms->rowCount() ?> films :</p>
 
@@ -50,7 +50,7 @@ $reaFilms = $requeteFilms->fetchAll(); ?>
         ?>
 
       <tr>
-        <td class="afficheReaFilm">
+        <td class="affichePersonFilm">
           <div class="link">
             <a class href="<?= $href ?>">
               <img src="<?= $film["affiche"] ?>" alt="affiche du film <?= $film["nom_film"] ?>">
@@ -58,7 +58,7 @@ $reaFilms = $requeteFilms->fetchAll(); ?>
           </div>
         </td>
 
-        <td class="filmReaNom">
+        <td class="filmPersonNom">
           <div class="link subtitle">
             <a href="<?= $href ?>">
               <?= $film["nom_film"] ?>
@@ -66,7 +66,7 @@ $reaFilms = $requeteFilms->fetchAll(); ?>
           </div>
         </td>
 
-        <td class="filmReaDate">
+        <td class="filmPersonDate">
           <?= $film["date_sortie"] ?>
         </td>
       </tr>

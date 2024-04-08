@@ -533,7 +533,7 @@ header {
 /* ////// DETAIL REALISATEUR ////// */
 /* //////////////////////////////// */
 
-#reaInfos {
+#personInfos {
   display: flex;
   align-items: center;
 
@@ -551,7 +551,7 @@ header {
   }
 }
 
-#reaFilms {
+#personFilms {
   th {
     border: 1px solid black;
   }
@@ -724,7 +724,7 @@ header {
     display: none;
   }
 
-  #reaInfos figure {
+  #personInfos figure {
     width: 80%;
   }
 
@@ -773,7 +773,7 @@ header {
 }
 
 @media screen and (min-width: 1200px) {
-  #reaFilms {
+  #personFilms {
     td {
       padding: 35px 0;
     }
