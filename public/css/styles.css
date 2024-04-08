@@ -613,6 +613,8 @@ header {
 /* ///////// MEDIA QUERIES //////// */
 /* //////////////////////////////// */
 
+/* ////////// MAX to MIN ////////// */
+
 @media screen and (max-width: 1200px) {
   #une article {
     flex-direction: column;
@@ -688,16 +690,13 @@ header {
     }
   }
 
+  #detailFilm {
+    padding: 0 5%;
+  }
+
   /* JS */
   .show-menu {
     right: 0;
-  }
-
-
-  /*//////// detailFilm ////////*/
-
-  #detailFilm {
-    padding: 0 5%;
   }
 }
 
@@ -758,6 +757,9 @@ header {
     }
   }
 }
+
+/* ////////// MIN to MAX ////////// */
+
 
 @media screen and (min-width: 1000px) {
 
