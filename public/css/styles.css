@@ -703,6 +703,10 @@ header {
   #search {
     display: none;
   }
+
+  #reaInfos figure {
+    width: 80%;
+  }
 }
 
 @media screen and (min-width: 1000px) {

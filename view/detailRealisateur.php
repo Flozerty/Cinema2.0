@@ -50,7 +50,7 @@ $reaFilms = $requeteFilms->fetchAll(); ?>
         ?>
 
       <tr>
-        <td class="afficheRea">
+        <td class="afficheReaFilm">
           <div class="link">
             <a class href="<?= $href ?>">
               <img src="<?= $film["affiche"] ?>" alt="affiche du film <?= $film["nom_film"] ?>">
