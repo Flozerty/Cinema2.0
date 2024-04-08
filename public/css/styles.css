@@ -435,6 +435,8 @@ header {
 #genres-content {
   article {
     margin: 25px 0 75px 0;
+    display: flex;
+    flex-direction: column;
 
     h4 {
       width: auto;
@@ -641,7 +643,7 @@ header {
     width: 100%;
   }
 
-  #genres-content {
+  .carroussel {
     width: 80%;
     align-self: center;
   }
@@ -666,10 +668,10 @@ header {
   header nav {
     position: absolute;
     top: 0;
-    right: -70%;
+    right: -60%;
     background-color: var(--bluegrey);
     backdrop-filter: blur(4px);
-    width: 70%;
+    width: 60%;
     padding-top: 75px;
     transition: var(--transitionTime);
     height: 100vh;
@@ -688,6 +690,13 @@ header {
   .show-menu {
     right: 0;
   }
+
+
+  /*//////// detailFilm ////////*/
+
+  #detailFilm {
+    padding: 0 5%;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -695,6 +704,17 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  #detailFilm {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    section,
+    figure {
+      width: 80%;
+    }
   }
 }
 
@@ -706,6 +726,34 @@ header {
 
   #reaInfos figure {
     width: 80%;
+  }
+
+  #detailFilm {
+
+    section,
+    figure {
+      width: 90%;
+    }
+  }
+
+  .acteurCard {
+    flex-direction: column;
+    text-align: center;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    figcaption {
+      margin: 15px 0;
+    }
   }
 }
 
