@@ -49,7 +49,7 @@ $acteurs = $requeteActeurs->fetchAll();
   </section>
 
   <figure id="detailFilm-affiche">
-    <img src="<?= $detailFilm["affiche"] ?>" alt="">
+    <img src="<?= $detailFilm["affiche"] ?>" alt="Affiche de <?= $detailFilm["nom_film"] ?>">
     <figcaption class="detailFilm-note">
       <?= $detailFilm["note"] ?>
       <i class="fa-solid fa-star"></i>

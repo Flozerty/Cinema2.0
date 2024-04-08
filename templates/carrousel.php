@@ -17,15 +17,17 @@
         case "acteurs" :
 
           // Carrousel Acteurs
-          foreach( $acteurs as $acteur) { ?>
+          foreach( $acteurs as $person) { 
+            $type = "acteur";
+            ?>
 
       <div class="acteurCard">
         <!-- import cartes -->
-        <?php require "templates/acteurCard.php"; ?>
+        <?php require "templates/personCard.php"; ?>
 
         <div class="castingRole">
           <p>Dans le rôle de :</p>
-          <p class="subtitle"><?= $acteur["nom_role"] ?></p>
+          <p class="subtitle"><?= $person["nom_role"] ?></p>
         </div>
       </div>
       <?php } 
