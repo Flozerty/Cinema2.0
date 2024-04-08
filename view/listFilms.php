@@ -13,8 +13,14 @@
     <?php
       foreach ($requete->fetchAll() as $film) { ?>
     <tr>
-      <td><?= $film["nom_film"] ?></td>
-      <td><?= $film["annee_sortie"] ?></td>
+      <td>
+        <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>">
+          <?= $film["nom_film"] ?>
+        </a>
+      </td>
+      <td>
+        <?= $film["annee_sortie"] ?>
+      </td>
     </tr>
     <?php } ?>
   </tbody>
