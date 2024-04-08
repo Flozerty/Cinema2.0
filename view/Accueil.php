@@ -53,9 +53,9 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
         <p>Avec nos vedettes :</p>
         <div class='cards-container'>
           <?php 
-            foreach($acteursFilmFav as $acteur) {
-       
-          require "templates/acteurCard.php";
+            foreach($acteursFilmFav as $person) {
+       $type = "acteur";
+          require "templates/personCard.php";
 
       } ?>
         </div>
