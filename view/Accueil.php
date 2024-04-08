@@ -144,7 +144,9 @@ $filmsSf = $requeteSF->fetchAll();
 
       <!-- Intégration du carrousel -->
 
-      <?php require "templates/carrousel.php"; ?>
+      <?php $typeCarrousel = "films";
+        require "templates/carrousel.php"; 
+      ?>
 
     </article>
 
