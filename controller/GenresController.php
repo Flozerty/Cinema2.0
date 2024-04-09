@@ -4,6 +4,9 @@ namespace Controller;
 use Model\Connect;
 
 class GenresController {
+
+// Liste des genres
+
   public function listGenres() {
     $pdo = Connect::seConnecter();
 
@@ -14,7 +17,7 @@ class GenresController {
 
     require "view/listGenres.php";
   }
-
+// Liste des Films d'1 genre
   public function filmsGenre($id) {
     $pdo = Connect::seConnecter();
     $requeteFilmsGenre = $pdo->prepare("
@@ -27,8 +30,28 @@ class GenresController {
     ");
 
     $requeteFilmsGenre->execute(["id" => $id]);
-
     require "view/filmsGenre.php";
+  }
 
+  // Formulaire ajout genre
+  public function ajouterGenre($nom_genre) {
+
+    $pdo = Connect::seConnecter();
+    $requete = $pdo->prepare("
+    INSERT INTO genre (nom_genre)
+    VALUES (:nom_genre)
+    ");
+    $requete->execute(["nom_genre"=>$nom_genre]);
+  }
+
+  // Formulaire suppression genre
+  public function supprimerGenre($nom_genre) {
+
+    $pdo = Connect::seConnecter();
+    $requete = $pdo->prepare("
+    DELETE FROM genre
+    WHERE nom_genre = :nom_genre
+    ");
+    $requete->execute(["nom_genre"=>$nom_genre]);
   }
 }

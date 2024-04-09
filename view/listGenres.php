@@ -18,7 +18,35 @@ $listGenres = $requeteGenres->fetchAll();
 
 <hr>
 
+<!-- Formulaires Genre -->
+<section id="formsGenre">
 
+  <!-- ajouter -->
+  <form id="addGenre" action="traitement.php?action=addGenre" method="post">
+    <label for="nom_genre" class="subtitle"> Ajouter un genre </label>
+    <input type="text" name="nom_genre" id="nom_genre">
+    <input type="submit" value="ajouter" class="buttonForm" />
+  </form>
+
+  <!-- supprimer -->
+  <form id="removeGenre" action="traitement.php?action=removeGenre" method="post">
+    <label for="nom_genre" class="subtitle"> Supprimer un genre </label>
+
+    <select name="nom_genre" id="genres-select">
+      <option value="default">Choisissez un genre</option>
+
+      <?php foreach($listGenres as $genre){ ?>
+
+      <option value="<?= $genre["nom_genre"]; ?>">
+        <?= $genre["nom_genre"]; ?>
+      </option>
+      <?php } ?>
+    </select>
+
+    <input type="submit" value="supprimer" class="buttonForm" />
+
+  </form>
+</section>
 
 <?php
 $titre = "liste genres";

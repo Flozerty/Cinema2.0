@@ -651,6 +651,51 @@ header {
 }
 
 /* //////////////////////////////// */
+/* ///////////// FORMS //////////// */
+/* //////////////////////////////// */
+
+.buttonForm {
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: 2px solid var(--darkblue);
+  background-color: var(--lightgrey);
+  transition: var(--transitionTime);
+
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.8);
+    transition: 0s;
+  }
+}
+
+#formsGenre {
+  flex-direction: row;
+
+  form {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  #nom_genre,
+  #genres-select {
+    margin: 20px;
+    font-size: 1.2rem;
+    background-color: var(--lightgrey);
+  }
+
+  #genres-select {
+    border-width: 2px;
+  }
+}
+
+/* //////////////////////////////// */
 /* ///////// MEDIA QUERIES //////// */
 /* //////////////////////////////// */
 
