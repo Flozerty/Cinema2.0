@@ -552,7 +552,7 @@ header {
   }
 }
 
-#personFilms {
+.tableFilms {
   th {
     border: 1px solid black;
   }
@@ -585,10 +585,50 @@ header {
 #genres-list {
   width: 100%;
   padding-left: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .genre-card {
-  width: 250px;
+  background-color: var(--bluegrey);
+  padding: 8px 20px;
+  margin: 10px;
+  width: auto;
+  transition: var(--transitionTime);
+  border-radius: 20px;
+
+  a {
+    transition: var(--transitionTime);
+    color: white;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+
+    a {
+      color: aqua;
+    }
+  }
+}
+
+/* //////////////////////////////// */
+/* ////////// LIST FILMS ////////// */
+/* //////////////////////////////// */
+
+#listFilms {
+  p {
+    margin-bottom: 50px;
+  }
+
+  th {
+    border: 1px solid black;
+  }
+
+  td {
+    text-align: center;
+    padding: 20px 0;
+  }
 }
 
 /* //////////////////////////////// */
@@ -778,7 +818,7 @@ header {
 }
 
 @media screen and (min-width: 1200px) {
-  #personFilms {
+  #tableFilms {
     td {
       padding: 35px 0;
     }
