@@ -1,30 +1,52 @@
-<?php ob_start(); ?>
+<?php ob_start(); 
+$films = $requete->fetchAll();
+?>
 
-<p>Il y a <?= $requete->rowCount() ?> films</p>
+<section id="listFilms">
+  <h3> Liste des films </h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>TITRE</th>
-      <th>DATE SORTIE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-      foreach ($requete->fetchAll() as $film) { ?>
-    <tr>
-      <td>
-        <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>">
-          <?= $film["nom_film"] ?>
-        </a>
-      </td>
-      <td>
-        <?= $film["annee_sortie"] ?>
-      </td>
-    </tr>
-    <?php } ?>
-  </tbody>
-</table>
+  <p class="nbInfo">Il y a <?= $requete->rowCount() ?> films dans la base de données.</p>
+  <p class="subtitle">Sélectionnez un film :</p>
+
+  <table class="tableFilms">
+    <thead>
+      <tr>
+        <th colspan="2">TITRE</th>
+        <th>DATE SORTIE</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <?php foreach ($films as $film) { 
+        $href = "index.php?action=detailFilm&id=".$film["id_film"];
+        ?>
+
+      <tr>
+        <td class="afficheTableFilm">
+          <div class="link">
+            <a class href="<?= $href ?>">
+              <img src="<?= $film["affiche"] ?>" alt="affiche du film <?= $film["nom_film"] ?>">
+            </a>
+          </div>
+        </td>
+
+        <td class="filmTableNom">
+          <div class="link subtitle">
+            <a href="<?= $href ?>">
+              <?= $film["nom_film"] ?>
+            </a>
+          </div>
+        </td>
+
+        <td class="filmTableDate">
+          <?= $film["date_sortie"] ?>
+        </td>
+      </tr>
+
+      <?php  } ?>
+    </tbody>
+  </table>
+</section>
 
 <?php
 $titre = "Liste des films";
