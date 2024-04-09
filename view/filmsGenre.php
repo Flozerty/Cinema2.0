@@ -4,10 +4,16 @@ $films = $requeteFilmsGenre->fetchAll();
 ?>
 
 <section id="filmsGenre">
-  <h3><?= $films[0]["nom_genre"] ?></h3>
+
   <p class="subtitle">
     Parcourez les films du genre <?= $films[0]["nom_genre"] ?> :
   </p>
+
+  <div class='buttons'>
+    <button class="addButton">ajouter un réalisateur</button>
+    <button class="removeButton">supprimer un réalisateur</button>
+  </div>
+
   <div class="cards-container">
 
     <?php foreach ($films as $film) {
@@ -16,6 +22,7 @@ $films = $requeteFilmsGenre->fetchAll();
 
   </div>
 </section>
+
 <?php
 $titre = $films[0]["nom_genre"];
 $titre_secondaire = $films[0]["nom_genre"];

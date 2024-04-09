@@ -34,5 +34,11 @@ if(isset($_GET["action"])){
 
     case "listGenres": $ctrlGenre->listGenres();break;
     case "filmsGenre": $ctrlGenre->filmsGenre($id);break;
-  }
+
+    // Formulaires post
+    case "ajouterGenre": $ctrlGenre->ajouterGenre();break;
+    case "supprimerGenre": $ctrlGenre->supprimerGenre();break;
+
+    case "ajouterFilm": $ctrlFilm->ajoutFilmForm($id);break;
+    case "ajoutFilm": $ctrlFilm->ajoutFilm($id);break;  }
 }

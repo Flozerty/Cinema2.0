@@ -124,6 +124,8 @@ hr {
   }
 }
 
+
+
 /*/////////// CARROUSSEL ///////////*/
 
 .carroussel {
@@ -584,7 +586,7 @@ header {
 
 #genres-list {
   width: 100%;
-  padding-left: 10%;
+  padding: 0 10%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

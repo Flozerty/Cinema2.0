@@ -56,4 +56,15 @@ class FilmController {
     require "view/detailFilm.php";
   }
 
+
+  function ajoutFilmForm($id){
+
+
+  }
+
+
+  function ajoutFilm($id){
+    
+  }
+
 }

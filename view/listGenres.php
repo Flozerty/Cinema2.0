@@ -1,7 +1,6 @@
 <?php ob_start();
 $listGenres = $requeteGenres->fetchAll();
 ?>
-<h3> Les genres </h3>
 <p class="subtitle">Sélectionnez un genre :</p>
 <ul id="genres-list">
 
@@ -12,7 +11,6 @@ $listGenres = $requeteGenres->fetchAll();
       <?= $genre["nom_genre"]; ?>
     </a>
   </li>
-
   <?php } ?>
 </ul>
 
@@ -22,14 +20,14 @@ $listGenres = $requeteGenres->fetchAll();
 <section id="formsGenre">
 
   <!-- ajouter -->
-  <form id="addGenre" action="traitement.php?action=addGenre" method="post">
+  <form id="addGenre" action="index.php?action=ajouterGenre" method="post">
     <label for="nom_genre" class="subtitle"> Ajouter un genre </label>
     <input type="text" name="nom_genre" id="nom_genre">
     <input type="submit" value="ajouter" class="buttonForm" />
   </form>
 
   <!-- supprimer -->
-  <form id="removeGenre" action="traitement.php?action=removeGenre" method="post">
+  <form id="removeGenre" action="index.php?action=supprimerGenre" method="post">
     <label for="nom_genre" class="subtitle"> Supprimer un genre </label>
 
     <select name="nom_genre" id="genres-select">
@@ -44,7 +42,6 @@ $listGenres = $requeteGenres->fetchAll();
     </select>
 
     <input type="submit" value="supprimer" class="buttonForm" />
-
   </form>
 </section>
 
