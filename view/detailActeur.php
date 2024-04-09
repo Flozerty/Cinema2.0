@@ -30,11 +30,11 @@ $acteurFilms = $requeteFilms->fetchAll(); ?>
 
 <hr>
 <!-- Films avec l'acteur -->
-<section id="personFilms">
+<section>
   <h4>Ses participations :</h4>
   <p class="subtitle">Il a participé à <?= $requeteFilms->rowCount() ?> films :</p>
 
-  <table>
+  <table class="tableFilms">
     <thead>
       <tr>
         <th colspan="2">TITRE</th>
