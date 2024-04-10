@@ -269,22 +269,6 @@ hr {
   }
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
-
-  button {
-    padding: 6px 15px;
-    background-color: var(--lightgrey);
-    color: var(--darkblue);
-    border: 2px solid var(--darkblue);
-    border-radius: 10px;
-    cursor: pointer;
-  }
-}
-
-
 /* //////////////////////////////// */
 /* //////////// HEADER //////////// */
 /* //////////////////////////////// */
@@ -734,9 +718,36 @@ header {
   }
 }
 
+
 /* //////////////////////////////// */
-/* ///////////// FORMS //////////// */
+/* //////// BUTTONS & FORMS /////// */
 /* //////////////////////////////// */
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+
+  button {
+    padding: 6px 15px;
+    margin-bottom: 10px;
+    background-color: var(--lightgrey);
+    color: var(--darkblue);
+    border: 2px solid var(--darkblue);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form {
+    display: none;
+  }
+}
 
 .buttonForm {
   padding: 8px 15px;

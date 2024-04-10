@@ -1,27 +1,20 @@
-const container = document.querySelector('.addFilmContainer');
+const addContainer = document.querySelector('.addFilmContainer');
+const removeContainer = document.querySelector('.removeFilmContainer');
 
-if (container) {
-  const button = container.querySelector('.addButton')
-  console.log(button)
+if (addContainer) {
+  const addButton = addContainer.querySelector('.addButton')
+  const form = addContainer.querySelector('form')
 
-  //   button.addEventListener('click', () => {
-  //     const content = document.createElement('div');
+  addButton.addEventListener('click', () => {
+    form.style.display = "contents";
+  })
+}
 
-  //     content.innerHTML = `
-  // <select name="film" required>
-  //   <option selected="true" value="" disabled="disabled">
-  //     Choisissez un film
-  //   </option>
-  //   <?php foreach($films as $film) { ?>
+if (removeContainer) {
+  const removeButton = removeContainer.querySelector('.removeButton')
+  const form = removeContainer.querySelector('form')
 
-  //   <option value="<?= $film["nom_film"] ?>">
-  //     <?= $film["nom_film"] ?>
-  //   </option>
-
-  //   <?php } ?>
-  // </select>
-  // `;
-
-  //     container.appendChild(content)
-  //   })
+  removeButton.addEventListener('click', () => {
+    form.style.display = "contents";
+  })
 }

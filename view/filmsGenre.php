@@ -16,9 +16,7 @@ $otherFilms = $requeteOtherFilms->fetchAll();
     </a>
 
     <div class="addFilmContainer">
-      <a href="#">
-        <button class="addButton">ajouter un film</button>
-      </a>
+      <button class="addButton">ajouter un film</button>
 
       <!-- insertion des films nonexistants dans la liste -->
       <form id="addFilm" action="">
@@ -39,9 +37,7 @@ $otherFilms = $requeteOtherFilms->fetchAll();
     </div>
 
     <div class="removeFilmContainer">
-      <a href="">
-        <button class="removeButton">retirer un film</button>
-      </a>
+      <button class="removeButton">retirer un film</button>
 
       <!-- insertion des films existants dans la liste -->
       <form id="removeFilm" action="">
@@ -62,13 +58,11 @@ $otherFilms = $requeteOtherFilms->fetchAll();
     </div>
   </div>
 
-
   <div class="cards-container">
 
     <?php foreach ($films as $film) {
       require "templates/filmCard.php";
     } ?>
-
   </div>
 </section>
 
