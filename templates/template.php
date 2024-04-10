@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="PDO-Cinéma, un projet de wiki concernant le cinéma, recensant les acteurs, réalisateurs, et rôles en tout genres des films du monde entier! :o">
   <title><?= $titre ?></title>
 
   <script src="https://kit.fontawesome.com/7252ea4d54.js" crossorigin="anonymous"></script>
