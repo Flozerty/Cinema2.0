@@ -56,7 +56,7 @@ class FilmController {
   }
 
   
-  function ajoutFilmForm($id){
+  function ajoutFilmForm(){
     $pdo = Connect::seconnecter();
     
     // Récupération de tous les réalisateurs
@@ -98,12 +98,11 @@ class FilmController {
     ");
     $requeteGetActeur->execute(["id" => $id]);
 
-        
     require "view/formFilm.php";
   }
 
   function ajoutFilm($id){
-    
+
   }
 
 }
