@@ -45,27 +45,26 @@ if(isset($_GET["acteur"])) {
   </div>
 
   <div id="formRea">
+
     <label for="realisateur">Réalisateur :</label>
 
+    <!-- Si on créait un film à partir d'un réa -->
+    <?php if(isset($_GET["rea"])) { ?>
+    Vous avez sélectionné <?= $rea["fullName"] ?>.
+
+    <!-- Si non on récupère tous les réa-->
+    <?php } else { ?>
     <select name="realisateur">
 
-      <!-- Si on créait un film à partir d'un réalisateur -->
-      <?php if(isset($_GET["rea"])) { ?>
-      <!-- récupération du réa -->
+      <?php foreach($realisateurs as $rea) { ?>
 
-      <option value="<?= $rea["fullName"] ?>"><?= $rea["fullName"] ?></option>
-
-      <?php } else {
-
-// Si on ne créait pas un film à partir d'un réalisateur
-        foreach($realisateurs as $rea) { ?>
       <option value="<?= $rea["fullName"] ?>">
         <?= $rea["fullName"] ?>
       </option>
-      <?php }
-      
-      } ?>
+
+      <?php } ?>
     </select>
+    <?php } ?>
   </div>
 
   <div id="formGenres">
