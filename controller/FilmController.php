@@ -113,7 +113,7 @@ class FilmController {
       $requeteGetActeur->execute(["id" => $id]);
     }
 
-    require "view/formCreerFilm.php";
+    require "view/form/formCreerFilm.php";
   }
 
   // 
