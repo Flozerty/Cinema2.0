@@ -17,6 +17,8 @@ class GenresController {
     require "view/listGenres.php";
   }
   
+  ///////// View FilmsGenre /////////
+
 // Liste des Films d'un genre
   public function filmsGenre($id) {
     $pdo = Connect::seConnecter();
@@ -51,10 +53,11 @@ class GenresController {
 
     // Formulaire ajout genre
   public function ajouterGenre() {
-
+    $pdo = Connect::seConnecter();
+    
+    // récupération du genre
     $nom_genre = filter_input(INPUT_POST,'nom_genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    $pdo = Connect::seConnecter();
     $requete = $pdo->prepare("
     INSERT INTO genre (nom_genre)
     VALUES ('$nom_genre')
@@ -66,10 +69,11 @@ class GenresController {
 
   // Formulaire suppression genre
   public function supprimerGenre() {
+    $pdo = Connect::seConnecter();
 
+    // récupération du genre
     $nom_genre = filter_input(INPUT_POST,'nom_genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    $pdo = Connect::seConnecter();
     $requete = $pdo->prepare("
     DELETE FROM genre
     WHERE nom_genre = '$nom_genre'
@@ -77,5 +81,37 @@ class GenresController {
     $requete->execute();
 
     header('Location:index.php?action=listGenres');
+  }
+
+  // Ajouter Genre à un film
+  public function ajouterGenreFilm($id) {
+    $pdo = Connect::seconnecter();
+
+    $film = filter_input(INPUT_POST,'film', FILTER_VALIDATE_INT);
+
+    $requete = $pdo->prepare("
+    INSERT INTO filmotheque (id_film, id_genre)
+    VALUES ('$film', :id) 
+    ");
+    $requete->execute(["id" => $id]);
+
+    header('Location:index.php?action=filmsGenre&id='.$id);
+
+  }
+
+  // Supprimer Genre à un film
+  public function supprimerGenreFilm($id) {
+    $pdo = Connect::seconnecter();
+
+    $film = filter_input(INPUT_POST,'film', FILTER_VALIDATE_INT);
+
+    $requete = $pdo->prepare("
+    DELETE FROM filmotheque
+    WHERE id_genre = :id
+    AND id_film = '$film'
+    ");
+    $requete->execute(["id" => $id]);
+
+    header('Location:index.php?action=filmsGenre&id='.$id);
   }
 }

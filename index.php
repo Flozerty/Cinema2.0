@@ -35,10 +35,17 @@ if(isset($_GET["action"])){
     case "listGenres": $ctrlGenre->listGenres();break;
     case "filmsGenre": $ctrlGenre->filmsGenre($id);break;
 
-    // Formulaires
+    ////////// Formulaires //////////
+
+    // genre
     case "ajouterGenre": $ctrlGenre->ajouterGenre();break;
     case "supprimerGenre": $ctrlGenre->supprimerGenre();break;
 
+// genre film
+case "ajouterGenreFilm": $ctrlGenre->ajouterGenreFilm($id);break;
+case "supprimerGenreFilm": $ctrlGenre->supprimerGenreFilm($id);break;
+
+// créer film
     case "creerFilm": $ctrlFilm->creerFilmForm();break;
     case "creationFilm": $ctrlFilm->creationFilm();break;  
   }

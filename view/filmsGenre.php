@@ -19,14 +19,14 @@ $otherFilms = $requeteOtherFilms->fetchAll();
       <button class="addButton">ajouter un film</button>
 
       <!-- insertion des films nonexistants dans la liste -->
-      <form id="addFilm" action="">
+      <form id="addFilm" action="index.php?action=ajouterGenreFilm&id=<?= $films[0]["id_genre"] ?>" method="post">
         <select name="film" required>
           <option selected="true" value="" disabled="disabled">
             Choisissez un film
           </option>
           <?php foreach($otherFilms as $film) { ?>
 
-          <option value="<?= $film["nom_film"] ?>">
+          <option value="<?= $film["id_film"] ?>">
             <?= $film["nom_film"] ?>
           </option>
 
@@ -40,14 +40,14 @@ $otherFilms = $requeteOtherFilms->fetchAll();
       <button class="removeButton">retirer un film</button>
 
       <!-- insertion des films existants dans la liste -->
-      <form id="removeFilm" action="">
+      <form id="removeFilm" action="index.php?action=supprimerGenreFilm&id=<?= $films[0]["id_genre"] ?>" method="post">
         <select name="film" required>
           <option selected="true" value="" disabled="disabled">
             Choisissez un film
           </option>
           <?php foreach($films as $film) { ?>
 
-          <option value="<?= $film["nom_film"] ?>">
+          <option value="<?= $film["id_film"] ?>">
             <?= $film["nom_film"] ?>
           </option>
 
