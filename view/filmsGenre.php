@@ -10,8 +10,17 @@ $films = $requeteFilmsGenre->fetchAll();
   </p>
 
   <div class='buttons'>
-    <button class="addButton">ajouter un réalisateur</button>
-    <button class="removeButton">supprimer un réalisateur</button>
+    <a href="index.php?action=ajouterFilm&genre=<?= $films[0]["id_genre"] ?>">
+      <button class="addButton">ajouter un film</button>
+    </a>
+
+    <a href="#">
+      <button class="modifyButton">modifier un film</button>
+    </a>
+
+    <a href="#">
+      <button class="removeButton">supprimer un film</button>
+    </a>
   </div>
 
   <div class="cards-container">

@@ -202,6 +202,20 @@ hr {
   }
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-around;
+
+  button {
+    padding: 6px 15px;
+    background-color: var(--lightgrey);
+    color: var(--darkblue);
+    border: 2px solid var(--darkblue);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+
 
 /* //////////////////////////////// */
 /* //////////// HEADER //////////// */
@@ -694,6 +708,31 @@ header {
 
   #genres-select {
     border-width: 2px;
+  }
+}
+
+#addFilm {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-self: center;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+
+    label {
+      margin: 10px 0;
+    }
+  }
+
+  #formDate,
+  #formDuree,
+  #formRea,
+  #formNote {
+    width: auto;
+    align-self: baseline;
   }
 }
 
