@@ -30,11 +30,27 @@ class GenresController {
     ");
 
     $requeteFilmsGenre->execute(["id" => $id]);
+
+    // Liste des films non dans le genre
+    $requeteOtherFilms = $pdo->prepare("
+    SELECT nom_film, id_film
+    FROM film
+    WHERE film.id_film NOT IN (
+      SELECT film.id_film
+      FROM film
+      INNER JOIN filmotheque f ON f.id_film = film.id_film
+      INNER JOIN genre ON genre.id_genre = f.id_genre
+      WHERE genre.id_genre = :id
+    )
+    ORDER BY nom_film
+     ");
+     $requeteOtherFilms->execute(["id" => $id]);
+
     require "view/filmsGenre.php";
   }
 
     // Formulaire ajout genre
-  function ajouterGenre() {
+  public function ajouterGenre() {
 
     $nom_genre = filter_input(INPUT_POST,'nom_genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -49,7 +65,7 @@ class GenresController {
   }
 
   // Formulaire suppression genre
-  function supprimerGenre() {
+  public function supprimerGenre() {
 
     $nom_genre = filter_input(INPUT_POST,'nom_genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 

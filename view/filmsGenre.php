@@ -1,6 +1,7 @@
 <?php ob_start();
 
 $films = $requeteFilmsGenre->fetchAll();
+$otherFilms = $requeteOtherFilms->fetchAll();
 ?>
 
 <section id="filmsGenre">
@@ -18,13 +19,47 @@ $films = $requeteFilmsGenre->fetchAll();
       <a href="#">
         <button class="addButton">ajouter un film</button>
       </a>
-      <!-- insertion des films ajoutables a la liste -->
-      
+
+      <!-- insertion des films nonexistants dans la liste -->
+      <form id="addFilm" action="">
+        <select name="film" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un film
+          </option>
+          <?php foreach($otherFilms as $film) { ?>
+
+          <option value="<?= $film["nom_film"] ?>">
+            <?= $film["nom_film"] ?>
+          </option>
+
+          <?php } ?>
+        </select>
+        <input type="submit" value="valider">
+      </form>
     </div>
 
-    <a href="index.php?action=supprimerFilm&genre=<?= $films[0]["id_genre"] ?>">
-      <button class="removeButton">retirer un film</button>
-    </a>
+    <div class="removeFilmContainer">
+      <a href="">
+        <button class="removeButton">retirer un film</button>
+      </a>
+
+      <!-- insertion des films existants dans la liste -->
+      <form id="removeFilm" action="">
+        <select name="film" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un film
+          </option>
+          <?php foreach($films as $film) { ?>
+
+          <option value="<?= $film["nom_film"] ?>">
+            <?= $film["nom_film"] ?>
+          </option>
+
+          <?php } ?>
+        </select>
+        <input type="submit" value="valider">
+      </form>
+    </div>
   </div>
 
 
