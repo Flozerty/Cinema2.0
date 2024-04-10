@@ -4,7 +4,7 @@ $realisateurs = $requete->fetchAll() ?>
 <section id="listActeurs">
 
   <div class='buttons'>
-    <button class="addButton">ajouter un réalisateur</button>
+    <button class="addButton">créer un réalisateur</button>
     <button class="removeButton">supprimer un réalisateur</button>
   </div>
 

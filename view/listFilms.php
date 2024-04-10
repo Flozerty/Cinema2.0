@@ -11,10 +11,6 @@ $films = $requete->fetchAll();
       <button class="createButton">créer un film</button>
     </a>
 
-    <a href="index.php?action=ajouterFilm">
-      <button class="addButton">ajouter un film</button>
-    </a>
-
     <a href="index.php?action=supprimerFilm?>">
       <button class="removeButton">retirer un film</button>
     </a>

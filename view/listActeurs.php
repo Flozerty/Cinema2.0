@@ -5,7 +5,7 @@ $acteurs = $requete->fetchAll();
 
   <div class='buttons'>
     <a href="#">
-      <button class="addButton">ajouter un acteur</button>
+      <button class="addButton">créer un acteur</button>
     </a>
 
     <a href="#">
