@@ -1,5 +1,6 @@
 <?php ob_start();
 
+$genre = $requeteGenre->fetch();
 $films = $requeteFilmsGenre->fetchAll();
 $otherFilms = $requeteOtherFilms->fetchAll();
 ?>
@@ -7,11 +8,11 @@ $otherFilms = $requeteOtherFilms->fetchAll();
 <section id="filmsGenre">
 
   <p class="subtitle">
-    Parcourez les films du genre <?= $films[0]["nom_genre"] ?> :
+    Parcourez les films du genre <?= $genre["nom_genre"] ?> :
   </p>
 
   <div class='buttons'>
-    <a href="index.php?action=creerFilm&genre=<?= $films[0]["id_genre"] ?>">
+    <a href="index.php?action=creerFilm&genre=<?= $genre["id_genre"] ?>">
       <button class="createButton">créer un film</button>
     </a>
 
@@ -19,7 +20,7 @@ $otherFilms = $requeteOtherFilms->fetchAll();
       <button class="addButton">ajouter un film</button>
 
       <!-- insertion des films nonexistants dans la liste -->
-      <form id="addFilm" action="index.php?action=ajouterGenreFilm&id=<?= $films[0]["id_genre"] ?>" method="post">
+      <form id="addFilm" action="index.php?action=ajouterGenreFilm&id=<?= $genre["id_genre"] ?>" method="post">
         <select name="film" required>
           <option selected="true" value="" disabled="disabled">
             Choisissez un film
@@ -36,38 +37,53 @@ $otherFilms = $requeteOtherFilms->fetchAll();
       </form>
     </div>
 
-    <div class="removeFilmContainer">
-      <button class="removeButton">retirer un film</button>
+    <?php
+if(!$films) { ?>
+    <!-- Si le genre n'a aucun film -->
+  </div>
+  <p>
+    Pas de film dans cette catégorie.
+  </p>
 
-      <!-- insertion des films existants dans la liste -->
-      <form id="removeFilm" action="index.php?action=supprimerGenreFilm&id=<?= $films[0]["id_genre"] ?>" method="post">
-        <select name="film" required>
-          <option selected="true" value="" disabled="disabled">
-            Choisissez un film
-          </option>
-          <?php foreach($films as $film) { ?>
 
-          <option value="<?= $film["id_film"] ?>">
-            <?= $film["nom_film"] ?>
-          </option>
+  <!-- Si le genre a déja des films -->
+  <?php
+} else { ?>
 
-          <?php } ?>
-        </select>
-        <input type="submit" value="valider">
-      </form>
-    </div>
+
+  <div class="removeFilmContainer">
+    <button class="removeButton">retirer un film</button>
+
+    <!-- insertion des films existants dans la liste -->
+    <form id="removeFilm" action="index.php?action=supprimerGenreFilm&id=<?= $genre["id_genre"] ?>" method="post">
+      <select name="film" required>
+        <option selected="true" value="" disabled="disabled">
+          Choisissez un film
+        </option>
+        <?php foreach($films as $film) { ?>
+
+        <option value="<?= $film["id_film"] ?>">
+          <?= $film["nom_film"] ?>
+        </option>
+
+        <?php } ?>
+      </select>
+      <input type="submit" value="valider">
+    </form>
+  </div>
   </div>
 
   <div class="cards-container">
 
     <?php foreach ($films as $film) {
-      require "templates/filmCard.php";
-    } ?>
+        require "templates/filmCard.php";
+      } ?>
   </div>
 </section>
 
-<?php
-$titre = $films[0]["nom_genre"];
-$titre_secondaire = $films[0]["nom_genre"];
+
+<?php }
+$titre = $genre["nom_genre"];
+$titre_secondaire = $genre["nom_genre"];
 $contenu = ob_get_clean();
 require "templates/template.php";

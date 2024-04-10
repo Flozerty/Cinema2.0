@@ -22,6 +22,15 @@ class GenresController {
 // Liste des Films d'un genre
   public function filmsGenre($id) {
     $pdo = Connect::seConnecter();
+
+    $requeteGenre = $pdo->prepare("
+    SELECT *
+    FROM genre
+    WHERE id_genre = :id
+    ");
+
+    $requeteGenre->execute(["id" => $id]);
+
     $requeteFilmsGenre = $pdo->prepare("
     SELECT * 
     FROM genre
