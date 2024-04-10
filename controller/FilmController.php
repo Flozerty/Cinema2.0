@@ -55,8 +55,8 @@ class FilmController {
     require "view/detailFilm.php";
   }
 
-  
-  function ajoutFilmForm(){
+  ////////// VIEW DE LA PAGE DU FORMULAIRE //////////
+  function creerFilmForm(){
     $pdo = Connect::seconnecter();
     
     // Récupération de tous les réalisateurs
@@ -66,42 +66,58 @@ class FilmController {
     INNER JOIN personne p ON p.id_personne = r.id_personne
     ORDER BY nom");
 
-    // On vérifie l'existance des attributs de GET
-    // (il n'y en aura qu'un) et $id prendra sa valeur
-    isset($_GET["genre"]) ? $id = $_GET["genre"] : null;
-    isset($_GET["rea"]) ? $id = $_GET["rea"] : null;
-    isset($_GET["acteur"]) ? $id = $_GET["acteur"] : null;
+    // Récupération de tous les genres
+    $requeteGenres = $pdo->query("
+      SELECT *
+      FROM genre
+      ORDER BY nom_genre");
 
-    // Récupération du rea en fonction de id
-    $requeteGetRea = $pdo->prepare("
-    SELECT *, CONCAT(prenom, ' ', nom) AS fullName
-    FROM realisateur r
-    INNER JOIN personne p ON p.id_personne = r.id_personne
-    WHERE id_realisateur = :id
-    ");
-    $requeteGetRea->execute(["id" => $id]);
+    // On vérifie l'existance des attributs dans le GET
+    // (il n'y en aura qu'un et $id prendra sa valeur)
 
-    // Récupération du genre en fonction de id
-    $requeteGetGenre = $pdo->prepare("
-    SELECT *
-    FROM genre
-    WHERE id_genre = :id
-    ");
-    $requeteGetGenre->execute(["id" => $id]);
+    // Récupération du rea si dans url
+    if (isset($_GET["rea"])) { 
+      $id = $_GET["rea"];
+    
+      $requeteGetRea = $pdo->prepare("
+      SELECT *, CONCAT(prenom, ' ', nom) AS fullName
+      FROM realisateur r
+      INNER JOIN personne p ON p.id_personne = r.id_personne
+      WHERE id_realisateur = :id
+      ");
+      $requeteGetRea->execute(["id" => $id]);
+    }
+    
+    // Récupération du genre si dans url
+    if (isset($_GET["genre"])) { 
+      $id = $_GET["genre"];
+    
+      $requeteGetGenre = $pdo->prepare("
+      SELECT *
+      FROM genre
+      WHERE id_genre = :id
+      ");
+      $requeteGetGenre->execute(["id" => $id]);
+    }
 
-    // Récupération du acteur en fonction de id
-    $requeteGetActeur = $pdo->prepare("
-    SELECT *, CONCAT(prenom, ' ', nom) AS fullName
-    FROM acteur a
-    INNER JOIN personne p ON p.id_personne = a.id_personne
-    WHERE id_acteur = :id
-    ");
-    $requeteGetActeur->execute(["id" => $id]);
+    // Récupération du acteur si dans url
+    if (isset($_GET["acteur"])) { 
+      $id = $_GET["acteur"];
 
-    require "view/formFilm.php";
+      $requeteGetActeur = $pdo->prepare("
+      SELECT *, CONCAT(prenom, ' ', nom) AS fullName
+      FROM acteur a
+      INNER JOIN personne p ON p.id_personne = a.id_personne
+      WHERE id_acteur = :id
+      ");
+      $requeteGetActeur->execute(["id" => $id]);
+    }
+
+    require "view/formCreerFilm.php";
   }
 
-  function ajoutFilm($id){
+  // 
+  function creationFilm(){
 
   }
 

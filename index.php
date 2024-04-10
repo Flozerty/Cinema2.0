@@ -39,7 +39,7 @@ if(isset($_GET["action"])){
     case "ajouterGenre": $ctrlGenre->ajouterGenre();break;
     case "supprimerGenre": $ctrlGenre->supprimerGenre();break;
 
-    case "ajouterFilm": $ctrlFilm->ajoutFilmForm();break;
-    case "ajoutFilm": $ctrlFilm->ajoutFilm($id);break;  
+    case "creerFilm": $ctrlFilm->creerFilmForm();break;
+    case "creationFilm": $ctrlFilm->creationFilm();break;  
   }
 }
