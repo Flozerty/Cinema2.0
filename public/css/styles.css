@@ -711,29 +711,59 @@ header {
   }
 }
 
-#addFilm {
+#createFilm {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 80%;
   align-self: center;
+  margin-bottom: 50px;
 
+  fieldset,
   div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin: 10px;
 
     label {
       margin: 10px 0;
     }
+
+    input {
+      padding: 5px;
+    }
+
+    input,
+    select {
+      width: fit-content;
+    }
   }
 
-  #formDate,
-  #formDuree,
-  #formRea,
-  #formNote {
-    width: auto;
-    align-self: baseline;
+  fieldset {
+    align-items: center;
+    padding: 20px 0;
   }
+
+  div {
+    width: 80%
+  }
+
+  #formGenres {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    span {
+      margin: 2px 4px;
+      padding: 2px 4px;
+      border: 1px solid #2B2D42;
+    }
+  }
+}
+
+.submit-button {
+  align-self: center;
+  padding: 2px 8px;
+  margin: 20px;
 }
 
 /* //////////////////////////////// */
