@@ -205,6 +205,7 @@ hr {
 .buttons {
   display: flex;
   justify-content: space-around;
+  margin: 20px 0;
 
   button {
     padding: 6px 15px;
@@ -579,13 +580,13 @@ header {
     border-bottom: 1px solid var(--bluegrey);
     text-align: center;
     vertical-align: middle;
+  }
 
-    a {
-      color: var(--bluegrey);
+  a {
+    color: var(--bluegrey);
 
-      &:hover {
-        color: aqua;
-      }
+    &:hover {
+      color: aqua;
     }
   }
 
@@ -634,7 +635,7 @@ header {
 
 #listFilms {
   p {
-    margin-bottom: 50px;
+    margin-bottom: 15px;
   }
 
   th {

@@ -32,7 +32,17 @@ $acteurFilms = $requeteFilms->fetchAll(); ?>
 <!-- Films avec l'acteur -->
 <section>
   <h4>Ses participations :</h4>
-  <p class="subtitle">Il a participé à <?= $requeteFilms->rowCount() ?> films :</p>
+  <p class="subtitle">Il a joué dans <?= $requeteFilms->rowCount() ?> films :</p>
+
+  <div class='buttons'>
+    <a href="#">
+      <button class="addButton">ajouter un rôle</button>
+    </a>
+
+    <a href="#">
+      <button class="removeButton">supprimer un rôle</button>
+    </a>
+  </div>
 
   <table class="tableFilms">
     <thead>
@@ -44,7 +54,7 @@ $acteurFilms = $requeteFilms->fetchAll(); ?>
 
     <tbody>
       <?php foreach ($acteurFilms as $film) { 
-        $href = "index.php?action=detailFilm&id=".$film["id_film"];
+        $href = "index.php?action=detailFilm&id=".$film["id_film"]
         ?>
 
       <tr>

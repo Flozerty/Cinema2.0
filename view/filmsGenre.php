@@ -11,14 +11,14 @@ $films = $requeteFilmsGenre->fetchAll();
 
   <div class='buttons'>
     <a href="index.php?action=creerFilm&genre=<?= $films[0]["id_genre"] ?>">
-      <button class="addButton">créer un film</button>
+      <button class="createButton">créer un film</button>
     </a>
 
-    <a href="#">
-      <button class="modifyButton">ajouter un film</button>
+    <a href="index.php?action=ajouterFilm&genre=<?= $films[0]["id_genre"] ?>">
+      <button class="addButton">ajouter un film</button>
     </a>
 
-    <a href="#">
+    <a href="index.php?action=supprimerFilm&genre=<?= $films[0]["id_genre"] ?>">
       <button class="removeButton">retirer un film</button>
     </a>
   </div>

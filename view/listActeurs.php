@@ -2,6 +2,17 @@
 $acteurs = $requete->fetchAll();
 ?>
 <section id="listActeurs">
+
+  <div class='buttons'>
+    <a href="#">
+      <button class="addButton">ajouter un acteur</button>
+    </a>
+
+    <a href="#">
+      <button class="removeButton">supprimer un acteur</button>
+    </a>
+  </div>
+
   <div class="cards-container">
 
     <?php foreach($acteurs as $person){

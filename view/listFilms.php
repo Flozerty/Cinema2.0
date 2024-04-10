@@ -3,9 +3,23 @@ $films = $requete->fetchAll();
 ?>
 
 <section id="listFilms">
-  <h3> Liste des films </h3>
 
   <p class="nbInfo">Il y a <?= $requete->rowCount() ?> films dans la base de données.</p>
+
+  <div class='buttons'>
+    <a href="index.php?action=creerFilm">
+      <button class="createButton">créer un film</button>
+    </a>
+
+    <a href="index.php?action=ajouterFilm">
+      <button class="addButton">ajouter un film</button>
+    </a>
+
+    <a href="index.php?action=supprimerFilm?>">
+      <button class="removeButton">retirer un film</button>
+    </a>
+  </div>
+
   <p class="subtitle">Sélectionnez un film :</p>
 
   <table class="tableFilms">

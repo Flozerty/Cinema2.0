@@ -32,11 +32,26 @@ $reaFilms = $requeteFilms->fetchAll(); ?>
 
 <hr>
 <!-- Films du realisateur -->
-<section>
+<section id="realisations">
   <h4>Ses réalisations :</h4>
+
   <p class="subtitle">Il a réalisé <?= $requeteFilms->rowCount() ?> films :</p>
 
-  <table id="tableFilms">
+  <div class='buttons'>
+    <a href="index.php?action=creerFilm&genre=<?= $films[0]["id_genre"] ?>">
+      <button class="createButton">créer un film</button>
+    </a>
+
+    <a href="index.php?action=ajouterFilm&genre=<?= $films[0]["id_genre"] ?>">
+      <button class="addButton">ajouter un film</button>
+    </a>
+
+    <a href="index.php?action=supprimerFilm&genre=<?= $films[0]["id_genre"] ?>">
+      <button class="removeButton">retirer un film</button>
+    </a>
+  </div>
+
+  <table class="tableFilms">
     <thead>
       <tr>
         <th colspan="2">TITRE</th>
