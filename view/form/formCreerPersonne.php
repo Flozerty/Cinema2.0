@@ -24,13 +24,13 @@
         <option selected="true" value="" disabled="disabled">
           Quel sexe ?
         </option>
-        <option value="homme">
+        <option value="Homme">
           Homme
         </option>
-        <option value="femme">
+        <option value="Femme">
           Femme
         </option>
-        <option value="other">
+        <option value="autre">
           Autre
         </option>
       </select>
@@ -42,16 +42,16 @@
     </div>
 
     <div id="formImg">
-      <label for="affiche">url d'une photo :</label>
-      <input type="text" name="affiche">
+      <label for="photo">url d'une photo :</label>
+      <input type="text" name="photo">
     </div>
 
     <div id="isReaActeur">
       <span>
-        <input type="checkbox" name="ReaActeur">
+        <input type="checkbox" name="reaActeur">
 
         <!-- Vérification si acteur & réalisateur -->
-        <label for="ReaActeur">
+        <label for="reaActeur">
           Cochez la case si c'est également un
           <?php
           echo ($type == "acteur" ? "réalisateur": "acteur")
