@@ -5,7 +5,7 @@ use Model\Connect;
 
 class GenresController {
 
-// View Liste des genres
+////////// View ListGenres //////////
   public function listGenres() {
     $pdo = Connect::seConnecter();
 
@@ -13,7 +13,6 @@ class GenresController {
     SELECT * FROM genre
     ORDER BY nom_genre
     ");
-
     require "view/listGenres.php";
   }
   
@@ -24,115 +23,121 @@ class GenresController {
     $pdo = Connect::seConnecter();
 
     $requeteGenre = $pdo->prepare("
-    SELECT *
-    FROM genre
-    WHERE id_genre = :id
-    ");
-
+      SELECT *
+      FROM genre
+      WHERE id_genre = :id
+      ");
     $requeteGenre->execute(["id" => $id]);
 
     $requeteFilmsGenre = $pdo->prepare("
-    SELECT * 
-    FROM genre
-    INNER JOIN filmotheque f ON f.id_genre = genre.id_genre
-    INNER JOIN film ON film.id_film = f.id_film
-    WHERE genre.id_genre = :id
-    ORDER BY date_sortie DESC
-    ");
-
+      SELECT * 
+      FROM genre
+      INNER JOIN filmotheque f ON f.id_genre = genre.id_genre
+      INNER JOIN film ON film.id_film = f.id_film
+      WHERE genre.id_genre = :id
+      ORDER BY date_sortie DESC
+      ");
     $requeteFilmsGenre->execute(["id" => $id]);
 
-    // Liste des films non dans le genre
+    // Liste des films qui ne sont pas dans le genre
     $requeteOtherFilms = $pdo->prepare("
-    SELECT nom_film, id_film
-    FROM film
-    WHERE film.id_film NOT IN (
-      SELECT film.id_film
+      SELECT nom_film, id_film
       FROM film
-      INNER JOIN filmotheque f ON f.id_film = film.id_film
-      INNER JOIN genre ON genre.id_genre = f.id_genre
-      WHERE genre.id_genre = :id
-    )
-    ORDER BY nom_film
-     ");
-     $requeteOtherFilms->execute(["id" => $id]);
+      WHERE film.id_film NOT IN (
+        SELECT film.id_film
+        FROM film
+        INNER JOIN filmotheque f ON f.id_film = film.id_film
+        INNER JOIN genre ON genre.id_genre = f.id_genre
+        WHERE genre.id_genre = :id
+      )
+      ORDER BY nom_film
+      ");
+    $requeteOtherFilms->execute(["id" => $id]);
 
     require "view/filmsGenre.php";
   }
+  
+      /////////////////////////////////////////////
+      /////////// CREATION & SUPPRESSION //////////
+      /////////////////////////////////////////////
 
-    // Formulaire ajout genre
+    //////////// Formulaire ajout genre ////////////
   public function ajouterGenre() {
     $pdo = Connect::seConnecter();
-    
+
     // récupération du genre
     $nom_genre = filter_input(INPUT_POST,'nom_genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     $requete = $pdo->prepare("
-    INSERT INTO genre (nom_genre)
-    VALUES ('$nom_genre')
-    ");
+      INSERT INTO genre (nom_genre)
+      VALUES ('$nom_genre')
+      ");
     $requete->execute();
 
     header('Location:index.php?action=listGenres');
   }
 
-  // Formulaire suppression genre
+  ////////// Formulaire suppression genre //////////
   public function supprimerGenre() {
     $pdo = Connect::seConnecter();
 
-$nom_genre = filter_input(INPUT_POST,'nom_genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $nom_genre = filter_input(INPUT_POST,'nom_genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-// On va récupérer l'id du genre
-$requeteGenre = $pdo->prepare("
-    SELECT id_genre
-    FROM genre
-    WHERE nom_genre = :nom_genre
-");
-$requeteGenre->execute(['nom_genre' => $nom_genre]);
+    // On va récupérer l'id du genre
+    $requeteGenre = $pdo->prepare("
+      SELECT id_genre
+      FROM genre
+      WHERE nom_genre = :nom_genre
+    ");
+    $requeteGenre->execute(['nom_genre' => $nom_genre]);
 
-$genre = $requeteGenre->fetch();
-$id = $genre["id_genre"];
+    $genre = $requeteGenre->fetch();
+    $id = $genre["id_genre"];
 
-// Suppression des films associés avant de supprimer le genre
-$requeteDel = $pdo->prepare("
-    DELETE FROM filmotheque
-    WHERE id_genre = :id;
+    // Suppression des films associés avant de supprimer le genre
+    $requeteDel = $pdo->prepare("
+      DELETE FROM filmotheque
+      WHERE id_genre = :id;
 
-    DELETE FROM genre
-    WHERE id_genre = :id;
-");
+      DELETE FROM genre
+      WHERE id_genre = :id;
+    ");
 
-$requeteDel->execute(['id' => $id]);
+    $requeteDel->execute(['id' => $id]);
 
-header('Location:index.php?action=listGenres');
-}
+    header('Location:index.php?action=listGenres');
+  }
 
-  // Ajouter Genre à un film
+        /////////////////////////////////////////////
+        ////////////// GENRES D'1 FILM //////////////
+        /////////////////////////////////////////////
+
+  /////////////// Ajouter le genre d'un film ///////////////
   public function ajouterGenreFilm($id) {
     $pdo = Connect::seconnecter();
 
     $film = filter_input(INPUT_POST,'film', FILTER_VALIDATE_INT);
 
     $requete = $pdo->prepare("
-    INSERT INTO filmotheque (id_film, id_genre)
-    VALUES ('$film', :id) 
-    ");
+      INSERT INTO filmotheque (id_film, id_genre)
+      VALUES ('$film', :id) 
+      ");
     $requete->execute(["id" => $id]);
 
     header('Location:index.php?action=filmsGenre&id='.$id);
   }
 
-  // Supprimer Genre à un film
+  ////////////// Supprimer le genre d'un film //////////////
   public function supprimerGenreFilm($id) {
     $pdo = Connect::seconnecter();
 
     $film = filter_input(INPUT_POST,'film', FILTER_VALIDATE_INT);
 
     $requete = $pdo->prepare("
-    DELETE FROM filmotheque
-    WHERE id_genre = :id
-    AND id_film = '$film'
-    ");
+      DELETE FROM filmotheque
+      WHERE id_genre = :id
+      AND id_film = '$film'
+      ");
     $requete->execute(["id" => $id]);
 
     header('Location:index.php?action=filmsGenre&id='.$id);

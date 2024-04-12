@@ -4,7 +4,7 @@ namespace Controller;
 use Model\Connect;
 
 class FilmController {
-  
+
   //////////// VIEW DE LA PAGE listFilms ////////////
   public function listFilms() {
     $pdo = Connect::seConnecter();
@@ -27,7 +27,7 @@ class FilmController {
       INNER JOIN personne p ON p.id_personne = r.id_personne
       WHERE film.id_film = :id
       ');
-      
+
     $requeteFilm->execute(["id" => $id]);
 
     $requeteGenres = $pdo->prepare("
@@ -51,20 +51,20 @@ class FilmController {
     ORDER BY nom
     ");
     $requeteActeurs->execute(["id" => $id]);
-    
+
     require "view/detailFilm.php";
   }
 
   ////////// VIEW DE LA PAGE DU FORMULAIRE //////////
   function creerFilmForm(){
     $pdo = Connect::seconnecter();
-    
+
     // Récupération de tous les réalisateurs
     $requeteRealisateurs = $pdo->query("
-    SELECT *, CONCAT(p.prenom, ' ', p.nom) AS fullName
-    FROM realisateur r
-    INNER JOIN personne p ON p.id_personne = r.id_personne
-    ORDER BY nom");
+      SELECT *, CONCAT(p.prenom, ' ', p.nom) AS fullName
+      FROM realisateur r
+      INNER JOIN personne p ON p.id_personne = r.id_personne
+      ORDER BY nom");
 
     // Récupération de tous les genres
     $requeteGenres = $pdo->query("
@@ -78,25 +78,25 @@ class FilmController {
     // Récupération du rea si dans url
     if (isset($_GET["rea"])) { 
       $id = $_GET["rea"];
-    
+
       $requeteGetRea = $pdo->prepare("
-      SELECT *, CONCAT(prenom, ' ', nom) AS fullName
-      FROM realisateur r
-      INNER JOIN personne p ON p.id_personne = r.id_personne
-      WHERE id_realisateur = :id
-      ");
+        SELECT *, CONCAT(prenom, ' ', nom) AS fullName
+        FROM realisateur r
+        INNER JOIN personne p ON p.id_personne = r.id_personne
+        WHERE id_realisateur = :id
+        ");
       $requeteGetRea->execute(["id" => $id]);
     }
-    
+
     // Récupération du genre si dans url
     if (isset($_GET["genre"])) { 
       $id = $_GET["genre"];
-    
+
       $requeteGetGenre = $pdo->prepare("
-      SELECT *
-      FROM genre
-      WHERE id_genre = :id
-      ");
+        SELECT *
+        FROM genre
+        WHERE id_genre = :id
+        ");
       $requeteGetGenre->execute(["id" => $id]);
     }
 
@@ -105,20 +105,19 @@ class FilmController {
       $id = $_GET["acteur"];
 
       $requeteGetActeur = $pdo->prepare("
-      SELECT *, CONCAT(prenom, ' ', nom) AS fullName
-      FROM acteur a
-      INNER JOIN personne p ON p.id_personne = a.id_personne
-      WHERE id_acteur = :id
-      ");
+        SELECT *, CONCAT(prenom, ' ', nom) AS fullName
+        FROM acteur a
+        INNER JOIN personne p ON p.id_personne = a.id_personne
+        WHERE id_acteur = :id
+        ");
       $requeteGetActeur->execute(["id" => $id]);
     }
 
     require "view/form/formCreerFilm.php";
   }
 
-  // 
+  // Création du film
   function creationFilm(){
 
   }
-
 }
