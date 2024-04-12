@@ -317,12 +317,22 @@ header {
   #search {
     min-width: 250px;
     width: 25%;
+    position: relative;
 
     input {
       height: 40px;
       width: 100%;
       border-radius: 15px;
       padding: 10px;
+      padding-left: 50px;
+    }
+
+    img {
+      position: absolute;
+      left: 10px;
+      top: 10%;
+      bottom: 10%;
+      height: 80%;
     }
   }
 

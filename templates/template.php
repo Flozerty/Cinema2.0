@@ -32,6 +32,7 @@
 
 
     <div id="search">
+      <img src="public/img/wenSearch.png" alt="image loupe de la barre de recherche">
       <input type="search" placeholder="recherchez un film, un acteur, etc.">
     </div>
 
