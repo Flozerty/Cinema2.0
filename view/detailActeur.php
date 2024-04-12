@@ -2,6 +2,8 @@
 $detailActeur = $requete->fetch();
 $acteurFilms = $requeteFilms->fetchAll(); ?>
 
+<h3><?= $detailActeur["fullName"] ?></h3>
+
 <!-- infos du realisateur -->
 <section id="personInfos">
   <figure>

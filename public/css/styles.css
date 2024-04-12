@@ -76,6 +76,7 @@
 
 /* /////// GENERAL /////// */
 * {
+  color: #2B2D42;
   margin: 0;
   padding: 0;
   vertical-align: top;
@@ -118,15 +119,9 @@ main {
 
 h3,
 h4 {
-  color: var(--darkblue);
   padding: 5px 10px;
   border-radius: 5px;
   width: fit-content;
-}
-
-h1,
-h2 {
-  color: var(--darkblue);
 }
 
 h2,
@@ -169,6 +164,7 @@ h4 {
   align-items: center;
 
   i {
+    color: yellow;
     margin-left: 5px;
   }
 }
@@ -219,7 +215,6 @@ hr {
 
   .arrow {
     font-size: 2rem;
-    color: var(--darkblue);
     position: absolute;
     cursor: pointer;
     z-index: 3;
@@ -261,7 +256,7 @@ hr {
   transition: var(--transitionTime);
 
   figure {
-    color: var(--darkblue);
+
     width: 200px;
     font-weight: 600;
     position: relative;
@@ -427,29 +422,35 @@ header {
 
     .title {
       padding-left: 5%;
+      color: white;
     }
 
     .subtitle {
       display: flex;
+      color: white;
 
       a {
         color: #89EAFF;
       }
     }
 
-    .synopsis .link {
-      font-size: 0.8rem;
-      margin-top: 5px;
-      display: flex;
-      justify-content: flex-end;
+    .synopsis {
+      color: white;
 
-      a {
-        color: var(--lightgrey);
-      }
+      .link {
+        font-size: 0.8rem;
+        margin-top: 5px;
+        display: flex;
+        justify-content: flex-end;
 
-      &:hover {
         a {
-          color: aqua;
+          color: var(--lightgrey);
+        }
+
+        &:hover {
+          a {
+            color: aqua;
+          }
         }
       }
     }
@@ -460,6 +461,8 @@ header {
       align-items: center;
 
       p {
+        color: white;
+
         margin: 10px;
       }
 
@@ -583,17 +586,26 @@ header {
 #detailFilm-affiche {
   width: 36%;
   margin: 0 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   img {
     width: 100%;
   }
 
-  figcaption {
-    text-align: center;
+  .detailFilm-note {
     margin-top: 25px;
     color: yellow;
     font-weight: 600;
     font-size: 2rem;
+    display: flex;
+    align-items: center;
+
+    i {
+      color: yellow;
+      margin-left: 5px;
+    }
   }
 }
 
@@ -636,6 +648,7 @@ header {
 }
 
 .tableFilms {
+
   th {
     border: 1px solid black;
   }
@@ -721,6 +734,7 @@ header {
 #filmsGenre,
 #listActeurs,
 #listRealisateurs {
+
   .cards-container {
     flex-wrap: wrap;
     justify-content: center;
@@ -747,7 +761,6 @@ header {
     padding: 6px 15px;
     margin-bottom: 10px;
     background-color: var(--lightgrey);
-    color: var(--darkblue);
     border: 2px solid var(--darkblue);
     border-radius: 10px;
     cursor: pointer;
@@ -1028,6 +1041,7 @@ header {
 
 @media screen and (min-width: 1200px) {
   #tableFilms {
+
     td {
       padding: 35px 0;
     }
