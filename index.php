@@ -4,6 +4,7 @@ use Controller\ActeurController;
 use Controller\CinemaController;
 use Controller\FilmController;
 use Controller\GenresController;
+use Controller\PersonneController;
 use Controller\RealisateurController;
 
 spl_autoload_register(function ($class) {
@@ -15,12 +16,14 @@ $ctrlActeur = new ActeurController();
 $ctrlRea = new RealisateurController();
 $ctrlFilm = new FilmController();
 $ctrlGenre = new GenresController();
+$ctrlPersonne = new PersonneController();
 
 $id= (isset($_GET["id"])) ? $_GET["id"] : null;
 
 if(isset($_GET["action"])){
   switch($_GET["action"]){
 
+    ///////////// VIEWS /////////////
     case "accueil": $ctrlCinema->Accueil();break;
 
     case "listFilms": $ctrlFilm->listFilms();break;
@@ -50,9 +53,9 @@ if(isset($_GET["action"])){
     case "creationFilm": $ctrlFilm->creationFilm();break;  
 
     // créer personne
-    case "creerFormActeur": $ctrlCinema->creerFormPersonne("acteur");break;
-    case "creerFormRealisateur": $ctrlCinema->creerFormPersonne("realisateur");break;  
-    case "creerPersonne": $ctrlCinema->creerPersonne();break;
-
+    case "creerFormActeur": $ctrlPersonne->creerFormPersonne("acteur");break;
+    case "creerFormRealisateur": $ctrlPersonne->creerFormPersonne("realisateur");break;  
+    case "creerPersonne": $ctrlPersonne->creerPersonne();break;
+    
   }
 }
