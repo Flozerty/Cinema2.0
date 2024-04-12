@@ -35,7 +35,15 @@ $reaFilms = $requeteFilms->fetchAll(); ?>
 <section id="realisations">
   <h4>Ses réalisations :</h4>
 
-  <p class="subtitle">Il a réalisé <?= $requeteFilms->rowCount() ?> films :</p>
+  <p class="subtitle">
+    <?php switch($detailRealisateur["sexe"]) {
+      case "Homme" : echo "Il a"; break;
+      case "Femme" : echo "Elle a"; break;
+      default : echo "A"; break;
+    }
+    ?>
+    réalisé <?= $requeteFilms->rowCount() ?> films :
+  </p>
 
   <div class='buttons'>
     <a href="index.php?action=creerFilm&rea=<?= $detailRealisateur["id_realisateur"] ?>">

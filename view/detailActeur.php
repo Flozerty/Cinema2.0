@@ -34,7 +34,15 @@ $acteurFilms = $requeteFilms->fetchAll(); ?>
 <!-- Films avec l'acteur -->
 <section>
   <h4>Ses participations :</h4>
-  <p class="subtitle">Il a joué dans <?= $requeteFilms->rowCount() ?> films :</p>
+  <p class="subtitle">
+    <?php switch($detailActeur["sexe"]) {
+      case "Homme" : echo "Il a"; break;
+      case "Femme" : echo "Elle a"; break;
+      default : echo "A"; break;
+    }
+    ?>
+    joué dans <?= $requeteFilms->rowCount() ?> films :
+  </p>
 
   <div class='buttons'>
     <a href="#">
