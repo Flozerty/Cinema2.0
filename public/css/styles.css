@@ -297,10 +297,13 @@ header {
   box-shadow: rgb(35, 51, 67) 0px 20px 30px -10px;
 
   #logo-container {
-    color: white;
     display: flex;
     align-items: center;
     transition: var(--transitionTime);
+
+    figcaption {
+      color: white;
+    }
 
     img {
       width: 50px;
@@ -350,6 +353,10 @@ header {
         padding: 5px;
       }
     }
+
+    i {
+      color: white;
+    }
   }
 
   #connect-button {
@@ -373,9 +380,13 @@ header {
   }
 
   #toggle-menu {
-    color: white;
     font-size: 1.5rem;
     cursor: pointer;
+
+
+    i {
+      color: white;
+    }
   }
 }
 
@@ -941,6 +952,9 @@ header {
 
     #toggle-menu {
       order: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
