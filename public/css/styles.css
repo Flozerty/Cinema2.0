@@ -118,11 +118,21 @@ main {
 
 h3,
 h4 {
-  background-color: var(--darkblue);
-  color: white;
+  color: var(--darkblue);
   padding: 5px 10px;
   border-radius: 5px;
   width: fit-content;
+}
+
+h1,
+h2 {
+  color: var(--darkblue);
+}
+
+h2,
+h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
 }
 
 h3 {
@@ -155,6 +165,12 @@ h4 {
   background-color: var(--bluegrey);
   padding: 5px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+
+  i {
+    margin-left: 5px;
+  }
 }
 
 section {
@@ -473,7 +489,6 @@ header {
 /*///////// PARCOURS GENRE /////////*/
 
 #genres-header {
-  background-color: var(--darkblue);
   width: 80%;
   margin: 10px auto 50px auto;
   padding: 5px 10px;
@@ -490,7 +505,7 @@ header {
     justify-content: flex-end;
 
     a {
-      color: var(--lightgrey);
+      color: var(--bluegrey);
     }
   }
 
