@@ -41,12 +41,18 @@ if(isset($_GET["action"])){
     case "ajouterGenre": $ctrlGenre->ajouterGenre();break;
     case "supprimerGenre": $ctrlGenre->supprimerGenre();break;
 
-// genre film
-case "ajouterGenreFilm": $ctrlGenre->ajouterGenreFilm($id);break;
-case "supprimerGenreFilm": $ctrlGenre->supprimerGenreFilm($id);break;
+    // genre film
+    case "ajouterGenreFilm": $ctrlGenre->ajouterGenreFilm($id);break;
+    case "supprimerGenreFilm": $ctrlGenre->supprimerGenreFilm($id);break;
 
-// créer film
+    // créer film
     case "creerFilm": $ctrlFilm->creerFilmForm();break;
     case "creationFilm": $ctrlFilm->creationFilm();break;  
+
+    // créer personne
+    case "creerFormActeur": $ctrlCinema->creerFormPersonne("acteur");break;
+    case "creerFormRealisateur": $ctrlCinema->creerFormPersonne("realisateur");break;  
+    case "creerPersonne": $ctrlCinema->creerPersonne();break;
+
   }
 }

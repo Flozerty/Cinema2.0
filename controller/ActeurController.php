@@ -44,4 +44,5 @@ $requeteFilms = $pdo->prepare('
 
     require "view/listActeurs.php";
   }
+
 }

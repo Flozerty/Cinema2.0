@@ -13,7 +13,7 @@ if(isset($_GET["acteur"])) {
   $acteurGet = $requeteGetActeur->fetch();
 } ?>
 
-<form id="createFilm" action="index.php?action=creationFilm" method="post">
+<form id="create" action="index.php?action=creationFilm" method="post">
 
   <fieldset id="globalFormInfo">
     <legend>Merci de renseigner tous les champs</legend>

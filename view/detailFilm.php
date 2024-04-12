@@ -42,7 +42,7 @@ $acteurs = $requeteActeurs->fetchAll();
         if ($i == count($genresFilm)-1) {
           echo ".";
         } else {
-          echo ", ";
+          echo "-";
         }
       } ?>
     </p>

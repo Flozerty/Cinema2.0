@@ -4,7 +4,7 @@ $acteurs = $requete->fetchAll();
 <section id="listActeurs">
 
   <div class='buttons'>
-    <a href="#">
+    <a href="index.php?action=creerFormActeur">
       <button class="addButton">créer un acteur</button>
     </a>
 

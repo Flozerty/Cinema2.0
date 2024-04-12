@@ -4,9 +4,15 @@ $realisateurs = $requete->fetchAll() ?>
 <section id="listActeurs">
 
   <div class='buttons'>
-    <button class="addButton">créer un réalisateur</button>
-    <button class="removeButton">supprimer un réalisateur</button>
+    <a href="index.php?action=creerFormRealisateur">
+      <button class="addButton">créer un réalisateur</button>
+    </a>
+
+    <a href="#">
+      <button class="removeButton">supprimer un réalisateur</button>
+    </a>
   </div>
+
 
   <div class="cards-container">
 
