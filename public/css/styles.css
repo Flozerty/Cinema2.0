@@ -117,7 +117,9 @@ p,
 h1,
 h2,
 h3,
-h4 {
+h4,
+span,
+legend {
   cursor: default;
 }
 
@@ -209,6 +211,15 @@ hr {
       transform: scale(1.25)
     }
   }
+}
+
+/*//////// Warning Message ////////*/
+.warningMessage {
+  color: #520000;
+}
+
+.warningCache {
+  display: none;
 }
 
 /*/////////// CARROUSSEL ///////////*/
@@ -842,6 +853,11 @@ header {
 
   #genres-select {
     border-width: 2px;
+  }
+
+  span {
+    margin-bottom: 15px;
+    width: 50%;
   }
 }
 

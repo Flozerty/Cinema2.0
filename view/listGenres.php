@@ -27,11 +27,13 @@ $listGenres = $requeteGenres->fetchAll();
   </form>
 
   <!-- supprimer -->
-  <form id="removeGenre" action="index.php?action=supprimerGenre" method="post">
+  <form id="removeGenre" class="divWarning" action="index.php?action=supprimerGenre" method="post">
     <label for="nom_genre" class="subtitle"> Supprimer un genre </label>
 
-    <select name="nom_genre" id="genres-select">
-      <option value="default">Choisissez un genre</option>
+    <select name="nom_genre" class="warner" id="genres-select">
+      <option selected="true" value="" disabled="disabled">
+        Choisissez un genre
+      </option>
 
       <?php foreach($listGenres as $genre){ ?>
 
@@ -40,6 +42,8 @@ $listGenres = $requeteGenres->fetchAll();
       </option>
       <?php } ?>
     </select>
+
+    <span class="warningMessage warningCache">Attention, supprimer un genre le supprimera de tous les films</span>
 
     <input type="submit" value="supprimer" class="buttonForm" />
   </form>
