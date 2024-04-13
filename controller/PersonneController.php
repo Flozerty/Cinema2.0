@@ -17,16 +17,44 @@ class PersonneController {
 
     $nom = filter_input(INPUT_POST,'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $prenom = filter_input(INPUT_POST,'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $sex = filter_input(INPUT_POST,'sex');
+    $sexe = filter_input(INPUT_POST,'sex');
     $date = filter_input(INPUT_POST,'date_naissance');
     $photo = filter_input(INPUT_POST,'photo', FILTER_SANITIZE_URL);
 
-    $isReaActeur = $_GET['$reaActeur'];
+    $type =  filter_input(INPUT_POST,'type');;
+    $isReaActeur = isset($_POST["reaActeur"]) ? true : false;
 
-    // $requete = $pdo->query('');
+// On créait la nouvelle personne
+    $requetePersonne = $pdo->prepare("
+    INSERT INTO personne
+    (nom, prenom, sexe, photo, date_naissance)
+    VALUES ('$nom', '$prenom', '$sexe', '$photo', '$date')
+    ");
+    $requetePersonne->execute();
 
-    var_dump($isReaActeur);
+    // On peut récupérer l'id directement!
+    $id = $pdo->lastInsertId();
 
-    // header("Location:index.php?action=accueil");
+// On créait le nouveau acteur ou réa en fonction du type choisi
+    $requeteType = $pdo->prepare("
+      INSERT INTO $type (id_personne)
+      VALUES ('$id')
+      ");
+    $requeteType->execute();
+
+// Si c'est les 2 types, alors on le créait dans l'autre table.
+
+    if($isReaActeur) {
+      $otherType = (($type == 'acteur') ? "realisateur" : "acteur");
+      
+      $requeteOtherType = $pdo->prepare("
+        INSERT INTO $otherType (id_personne)
+        VALUES ('$id')
+        ");
+      $requeteOtherType->execute();
+    }
+
+    // Retour a la page de liste du type sélectionné
+    header("Location:index.php?action=list".ucwords($type)."s");
   }
 }

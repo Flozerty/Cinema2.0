@@ -38,12 +38,12 @@
 
     <div id="formDate">
       <label for="date_naissance">Date de naissance :</label>
-      <input type="date" name="date_naissance">
+      <input type="date" name="date_naissance" required>
     </div>
 
     <div id="formImg">
       <label for="photo">url d'une photo :</label>
-      <input type="text" name="photo">
+      <input type="text" name="photo" required>
     </div>
 
     <div id="isReaActeur">
@@ -62,6 +62,8 @@
     </div>
 
   </fieldset>
+  <!-- envoi caché du type (acteur ou rea) -->
+  <input type="hidden" name="type" value="<?= $type ?>">
 
   <input type="submit" value="Créer nouveau <?= $type ?>" class="submit-button">
 </form>
