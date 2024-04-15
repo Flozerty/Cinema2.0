@@ -2,6 +2,7 @@
 $detailFilm = $requeteFilm->fetch();
 $genresFilm = $requeteGenres->fetchAll();
 $acteurs = $requeteActeurs->fetchAll();
+$acteursAll = $requeteActeursAll->fetchAll();
 ?>
 
 <h3 class="title">
@@ -76,12 +77,35 @@ $acteurs = $requeteActeurs->fetchAll();
 <div class='buttons'>
 
   <!-- ajouter casting -->
-  <a href="#">
-    <button class="addButton">créer un casting</button>
-  </a>
+  <div class="addContainer">
+    <button class="addButton">ajouter un casting</button>
+
+    <form id="addCasting" action="index.php?action=creerCastingFilm&id=<?= $detailFilm["id_film"] ?>" method="post">
+
+      <!-- choix acteur -->
+      <select name="acteur" required>
+        <option selected="true" value="" disabled="disabled">
+          Choisissez un acteur
+        </option>
+        <?php foreach($acteursAll as $acteur) { ?>
+
+        <option value="<?= $acteur["id_acteur"] ?>">
+          <?= $acteur["fullName"] ?>
+        </option>
+        <?php } ?>
+      </select>
+
+      <!-- choix role -->
+      <div id="castingRole">
+        <label for="role">Quel rôle joué ?</label>
+        <input type="text" id="role" name="role" required>
+      </div>
+
+      <input type="submit" value="valider">
+    </form>
+  </div>
 
   <!-- supprimer casting -->
-
   <div class="removeContainer">
     <button class="removeButton">retirer un casting</button>
 

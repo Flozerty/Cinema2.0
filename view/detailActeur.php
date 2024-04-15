@@ -50,7 +50,6 @@ $films = $requeteAllFilms->fetchAll(); ?>
     <div class="addContainer">
       <button class="addButton">ajouter un casting</button>
 
-      <!-- insertion des films nonexistants dans la liste -->
       <form id="addCasting" action="index.php?action=creerCastingActeur&id=<?= $detailActeur["id_acteur"] ?>"
         method="post">
 
