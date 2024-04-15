@@ -121,8 +121,22 @@ class FilmController {
     require "view/form/formCreerFilm.php";
   }
 
+  public function supprimerCasting($id) {
+    $pdo = Connect::seconnecter();
+
+  $acteur = filter_input(INPUT_POST, "acteur", FILTER_SANITIZE_NUMBER_INT);
+
+    $requete = $pdo->prepare("
+    DELETE FROM casting
+    WHERE id_film = :id
+    AND id_acteur = $acteur
+    ");
+    $requete->execute(["id"=>$id]);
+
+    header("Location:index.php?action=detailFilm&id=$id");
+  }
+
   // Création du film
   function creationFilm(){
-
   }
 }

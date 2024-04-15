@@ -15,8 +15,8 @@ $acteurs = $requete->fetchAll();
     <div class="removeContainer">
       <button class="removeButton">retirer un acteur</button>
 
-      <form id="removeActeur" action="index.php?action=supprimerActeur" method="post">
-        <select name="acteur" required>
+      <form id="removeActeur" class="divWarning" action="index.php?action=supprimerActeur" method="post">
+        <select name="acteur" class="warner" required>
           <option selected="true" value="" disabled="disabled">
             Choisissez un acteur
           </option>
@@ -28,6 +28,9 @@ $acteurs = $requete->fetchAll();
 
           <?php } ?>
         </select>
+
+        <span class="warningMessage warningCache">Attention, supprimer un acteur le supprimera de tous les films</span>
+
         <input type="submit" value="valider">
       </form>
     </div>

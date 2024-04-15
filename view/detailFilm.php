@@ -73,6 +73,38 @@ $acteurs = $requeteActeurs->fetchAll();
 
 <h4>Les acteurs :</h4>
 
+<div class='buttons'>
+
+  <!-- ajouter casting -->
+  <a href="#">
+    <button class="addButton">créer un casting</button>
+  </a>
+
+  <!-- supprimer casting -->
+
+  <div class="removeContainer">
+    <button class="removeButton">retirer un casting</button>
+
+    <form id="removeCasting" class="divWarning"
+      action="index.php?action=supprimerCastingFilm&id=<?= $detailFilm["id_film"] ?>" method="post">
+      <select name="acteur" class="warner" required>
+        <option selected="true" value="" disabled="disabled">
+          Choisissez un acteur
+        </option>
+        <?php foreach($acteurs as $acteur) { ?>
+
+        <option value="<?= $acteur["id_acteur"] ?>">
+          <?= $acteur["fullName"] ?>
+        </option>
+
+        <?php } ?>
+      </select>
+      <span class="warningMessage warningCache">Supprimer ce casting?</span>
+      <input type="submit" value="valider">
+    </form>
+  </div>
+</div>
+
 <?php $typeCarrousel = "acteurs";
   require "templates/carrousel.php";
   

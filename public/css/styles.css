@@ -216,6 +216,8 @@ hr {
 /*//////// Warning Message ////////*/
 .warningMessage {
   color: #520000;
+  width: 75%;
+  text-align: center;
 }
 
 .warningCache {

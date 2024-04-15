@@ -58,9 +58,8 @@ if(isset($_GET["action"])){
     case "creerPersonne": $ctrlPersonne->creerPersonne();break;
 
     // supprimer personne
-
     case "supprimerActeur": $ctrlActeur->supprimerActeur();break;
     case "supprimerRealisateur": $ctrlRea->supprimerRealisateur();break;
-    
+    case "supprimerCastingFilm": $ctrlFilm->supprimerCasting($id);break;
   }
 }
