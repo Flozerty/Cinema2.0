@@ -52,6 +52,10 @@ class RealisateurController {
 
     // on supprime toute trace de l'acteur
     $requete = $pdo->prepare("
+    UPDATE film
+    SET id_realisateur = NULL
+    WHERE id_realisateur = :id;
+
     DELETE FROM realisateur
     WHERE id_realisateur = :id;
     ");
