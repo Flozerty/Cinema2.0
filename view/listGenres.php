@@ -28,16 +28,16 @@ $listGenres = $requeteGenres->fetchAll();
 
   <!-- supprimer -->
   <form id="removeGenre" class="divWarning" action="index.php?action=supprimerGenre" method="post">
-    <label for="nom_genre" class="subtitle"> Supprimer un genre </label>
+    <label for="genre" class="subtitle"> Supprimer un genre </label>
 
-    <select name="nom_genre" class="warner" id="genres-select">
+    <select name="genre" class="warner" id="genres-select">
       <option selected="true" value="" disabled="disabled">
         Choisissez un genre
       </option>
 
       <?php foreach($listGenres as $genre){ ?>
 
-      <option value="<?= $genre["nom_genre"]; ?>">
+      <option value="<?= $genre["id_genre"]; ?>">
         <?= $genre["nom_genre"]; ?>
       </option>
       <?php } ?>

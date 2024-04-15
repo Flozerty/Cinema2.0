@@ -81,18 +81,7 @@ class GenresController {
   public function supprimerGenre() {
     $pdo = Connect::seConnecter();
 
-    $nom_genre = filter_input(INPUT_POST,'nom_genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-    // On va récupérer l'id du genre
-    $requeteGenre = $pdo->prepare("
-      SELECT id_genre
-      FROM genre
-      WHERE nom_genre = :nom_genre
-    ");
-    $requeteGenre->execute(['nom_genre' => $nom_genre]);
-
-    $genre = $requeteGenre->fetch();
-    $id = $genre["id_genre"];
+    $id_genre = filter_input(INPUT_POST,'genre', FILTER_SANITIZE_NUMBER_INT);
 
     // Suppression des films associés avant de supprimer le genre
     $requeteDel = $pdo->prepare("
@@ -103,7 +92,7 @@ class GenresController {
       WHERE id_genre = :id;
     ");
 
-    $requeteDel->execute(['id' => $id]);
+    $requeteDel->execute(['id' => $id_genre]);
 
     header('Location:index.php?action=listGenres');
   }
