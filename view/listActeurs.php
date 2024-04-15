@@ -15,7 +15,6 @@ $acteurs = $requete->fetchAll();
     <div class="removeContainer">
       <button class="removeButton">retirer un acteur</button>
 
-      <!-- insertion des films existants dans la liste -->
       <form id="removeActeur" action="index.php?action=supprimerActeur" method="post">
         <select name="acteur" required>
           <option selected="true" value="" disabled="disabled">

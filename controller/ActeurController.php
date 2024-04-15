@@ -50,7 +50,7 @@ $requeteFilms = $pdo->prepare('
   public function supprimerActeur() {
     $pdo = Connect::seconnecter();
 
-    $id_acteur = filter_input(INPUT_POST,'acteur', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $id_acteur = filter_input(INPUT_POST,'acteur', FILTER_SANITIZE_NUMBER_INT);
 
     // on supprime toute trace de l'acteur
     $requete = $pdo->prepare("
