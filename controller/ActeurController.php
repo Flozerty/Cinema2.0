@@ -45,4 +45,23 @@ $requeteFilms = $pdo->prepare('
     require "view/listActeurs.php";
   }
 
+
+  // Supprimer un acteur
+  public function supprimerActeur() {
+    $pdo = Connect::seconnecter();
+
+    $id_acteur = filter_input(INPUT_POST,'acteur', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    // on supprime toute trace de l'acteur
+    $requete = $pdo->prepare("
+    DELETE FROM casting
+    WHERE id_acteur = :id;
+
+    DELETE FROM acteur
+    WHERE id_acteur = :id;
+    ");
+    $requete->execute(["id"=>$id_acteur]);
+
+    header("Location:index.php?action=listActeurs");
+  }
 }

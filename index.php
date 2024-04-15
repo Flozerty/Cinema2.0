@@ -56,6 +56,10 @@ if(isset($_GET["action"])){
     case "creerFormActeur": $ctrlPersonne->creerFormPersonne("acteur");break;
     case "creerFormRealisateur": $ctrlPersonne->creerFormPersonne("realisateur");break;  
     case "creerPersonne": $ctrlPersonne->creerPersonne();break;
+
+    // supprimer personne
+
+    case "supprimerActeur": $ctrlActeur->supprimerActeur();break;
     
   }
 }
