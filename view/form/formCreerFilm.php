@@ -55,10 +55,11 @@ if(isset($_GET["acteur"])) {
       <!-- Si on créait un film à partir d'un réa -->
       <?php if(isset($_GET["rea"])) { ?>
       Vous avez sélectionné <?= $reaGet["fullName"] ?>.
+      <input type="hidden" value="<?= $reaGet["id_realisateur"] ?>" name="realisateur">
 
       <!-- Si non on récupère tous les réa-->
       <?php } else { ?>
-      <select name="realisateur" required>
+      <select name="realisateur">
 
         <!-- value="" permet de forcer un autre choix avec le required -->
         <option selected="true" value="" disabled="disabled">
@@ -67,11 +68,15 @@ if(isset($_GET["acteur"])) {
 
         <?php foreach($realisateurs as $rea) { ?>
 
-        <option value="<?= $rea["fullName"] ?>">
+        <option value="<?= $rea["id_realisateur"] ?>">
           <?= $rea["fullName"] ?>
         </option>
 
         <?php } ?>
+
+        <option value="">
+          autre
+        </option>
       </select>
 
       <?php } ?>
@@ -80,7 +85,7 @@ if(isset($_GET["acteur"])) {
 
   <fieldset id="formGenres">
 
-    <legend>Sélectionnez les genres</legend>
+    <legend>Sélectionnez les genres (en développement, ne marche pas)</legend>
 
     <!-- Récupération des genres -->
     <?php foreach($genres as $genre) {?>

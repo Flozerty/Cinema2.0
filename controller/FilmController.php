@@ -123,5 +123,37 @@ class FilmController {
 
   // Création du film
   function creationFilm(){
+    $pdo = Connect::seconnecter();
+
+    $nom = filter_input(INPUT_POST, "nom_film", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
+    $date = filter_input(INPUT_POST, "date_sortie");
+    $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_URL);
+    $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_FLOAT);
+    $reaId = filter_input(INPUT_POST, "realisateur");
+
+    // $film = [
+    //   "nom_film" => $nom,
+    //   "duree" => $duree,
+    //   "date_sortie" => $date,
+    //   "synopsis" => $synopsis,
+    //   "affiche" => $affiche,
+    //   "note" => $note,
+    //   "id_realisateur" => $reaId
+    // ];
+    var_dump($reaId);
+    
+    $requeteCreation = $pdo->prepare("
+    INSERT INTO film
+    (nom_film, duree, date_sortie, synopsis, affiche, note, id_realisateur)
+    VALUES ('$nom', '$duree', '$date', '$synopsis', '$affiche', '$note', ".($reaId == "" ? "NULL" : "'$reaId'").")
+    ");
+    $requeteCreation->execute();
+
+// A VOIR PLUS TARD POUR LES GENRES!!!
+// $genres = filter_input(INPUT_POST, "genre");
+
+    header("Location:index.php?action=listFilms");
   }
 }
