@@ -11,12 +11,17 @@ $acteurs = $requeteActeurs->fetchAll();
 <article id="detailFilm">
   <section id="detailFilm-details">
     <p>
+      <!-- vérification de l'existance d'un réalisateur -->
       <b>Réalisateur : </b>
+      <?php if($detailFilm["rea"]) { ?>
       <span class="link">
         <a href="index.php?action=detailRealisateur&id=<?= $detailFilm["id_realisateur"] ?>">
           <?= $detailFilm["rea"] ?>
         </a>
       </span>
+      <?php } else { ?>
+      <span>inconnu</span>
+      <?php } ?>
     </p>
 
     <p>

@@ -20,16 +20,20 @@ class FilmController {
   //////////// VIEW DE LA PAGE detailFilm ////////////
   public function detailFilm($id) {
     $pdo = Connect::seConnecter();
+
+    // LEFT JOIN pour remédier a la 
+    // non-existance d'un realisateur
     $requeteFilm = $pdo->prepare('
       SELECT *, DATE_FORMAT(SEC_TO_TIME(duree * 60), "%H:%i") AS duree, CONCAT(p.prenom, " ", p.nom) AS rea
       FROM film
-      INNER JOIN realisateur r ON r.id_realisateur = film.id_realisateur
-      INNER JOIN personne p ON p.id_personne = r.id_personne
+      LEFT JOIN realisateur r ON r.id_realisateur = film.id_realisateur
+      LEFT JOIN personne p ON p.id_personne = r.id_personne
       WHERE film.id_film = :id
       ');
 
     $requeteFilm->execute(["id" => $id]);
 
+    // requete des genres du film
     $requeteGenres = $pdo->prepare("
       SELECT *
       FROM filmotheque f
@@ -40,6 +44,7 @@ class FilmController {
     ");
     $requeteGenres->execute(["id" => $id]);
 
+    // requete des castings
     $requeteActeurs = $pdo->prepare("
     SELECT *, CONCAT(prenom, ' ', nom) AS fullName
     FROM casting c 
