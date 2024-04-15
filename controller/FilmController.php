@@ -132,17 +132,6 @@ class FilmController {
     $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_URL);
     $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_FLOAT);
     $reaId = filter_input(INPUT_POST, "realisateur");
-
-    // $film = [
-    //   "nom_film" => $nom,
-    //   "duree" => $duree,
-    //   "date_sortie" => $date,
-    //   "synopsis" => $synopsis,
-    //   "affiche" => $affiche,
-    //   "note" => $note,
-    //   "id_realisateur" => $reaId
-    // ];
-    var_dump($reaId);
     
     $requeteCreation = $pdo->prepare("
     INSERT INTO film
@@ -154,6 +143,28 @@ class FilmController {
 // A VOIR PLUS TARD POUR LES GENRES!!!
 // $genres = filter_input(INPUT_POST, "genre");
 
+    header("Location:index.php?action=listFilms");
+  }
+
+
+  // supprimer un film
+  function supprimerFilm() {
+    $pdo = Connect::seconnecter();
+
+    $id = filter_input(INPUT_POST, "film");
+
+    $requete = $pdo->prepare("
+    DELETE FROM filmotheque
+    WHERE id_film = :id;
+
+    DELETE FROM casting
+    WHERE id_film = :id;
+
+    DELETE FROM film
+    WHERE id_film = :id;");
+
+    $requete->execute(["id" => $id]);
+    
     header("Location:index.php?action=listFilms");
   }
 }

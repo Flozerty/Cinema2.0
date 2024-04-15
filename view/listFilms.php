@@ -11,9 +11,26 @@ $films = $requete->fetchAll();
       <button class="createButton">créer un film</button>
     </a>
 
-    <a href="index.php?action=supprimerFilm?>">
+    <div class="removeContainer">
       <button class="removeButton">retirer un film</button>
-    </a>
+
+      <!-- insertion des films existants dans la liste -->
+      <form id="removeFilm" action="index.php?action=supprimerFilm" method="post">
+        <select name="film" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un film
+          </option>
+          <?php foreach($films as $film) { ?>
+
+          <option value="<?= $film["id_film"] ?>">
+            <?= $film["nom_film"] ?>
+          </option>
+
+          <?php } ?>
+        </select>
+        <input type="submit" value="valider">
+      </form>
+    </div>
   </div>
 
   <p class="subtitle">Sélectionnez un film :</p>
