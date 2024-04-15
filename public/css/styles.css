@@ -408,7 +408,6 @@ header {
     font-size: 1.5rem;
     cursor: pointer;
 
-
     i {
       color: white;
     }
@@ -857,6 +856,10 @@ header {
     transform: scale(0.8);
     transition: 0s;
   }
+}
+
+#castingRole {
+  margin: 15px 0;
 }
 
 #formsGenre {

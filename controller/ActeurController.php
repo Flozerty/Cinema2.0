@@ -16,8 +16,8 @@ class ActeurController {
 
     $requete->execute(["id" => $id]);
 
-// requete films de l'acteur
-$requeteFilms = $pdo->prepare('
+  // requete films de l'acteur
+    $requeteFilms = $pdo->prepare('
     SELECT *, CONCAT(p.prenom, " ", p.nom) AS fullName
     FROM acteur a
     INNER JOIN personne p ON p.id_personne = a.id_personne
@@ -28,6 +28,10 @@ $requeteFilms = $pdo->prepare('
     ORDER BY date_sortie DESC');
 
     $requeteFilms->execute(["id" => $id]);
+
+    $requeteAllFilms = $pdo->query("
+    SELECT nom_film, id_film
+    FROM film");
 
     require "view/detailActeur.php";
   }
