@@ -23,13 +23,16 @@
 
       <div class="acteurCard">
         <!-- import cartes -->
-        <?php require "templates/personCard.php"; ?>
-
+        <div class="acteurFigure">
+          <?php require "templates/personCard.php"; ?>
+        </div>
         <div class="castingRole">
           <p>Dans le rôle de :</p>
           <p class="subtitle"><?= $person["nom_role"] ?></p>
         </div>
+        <i class="fa-solid fa-pen editButton"></i>
       </div>
+
       <?php } 
           break;
         } ?>

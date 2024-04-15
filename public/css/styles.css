@@ -273,9 +273,6 @@ hr {
   transition: var(--transitionTime);
 
   figure {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-
     width: 200px;
     font-weight: 600;
     position: relative;
@@ -294,6 +291,7 @@ hr {
   }
 
   img {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     height: 280px;
   }
 
@@ -662,10 +660,30 @@ header {
   margin: 0 25px;
   border: 2px solid #2B2D42;
   border-radius: 20px;
+  position: relative;
 
   figure {
     margin-right: 20px;
   }
+
+  .editButton {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transitionTime);
+
+    &:hover {
+      transform: scale(1.5);
+    }
+
+    &:active {
+      transform: scale(0.8);
+      transition: 0s;
+    }
+  }
+
 }
 
 /* //////////////////////////////// */
@@ -1074,6 +1092,8 @@ header {
     figcaption {
       margin: 15px 0;
     }
+
+
   }
 }
 

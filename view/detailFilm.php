@@ -72,11 +72,10 @@ $acteurs = $requeteActeurs->fetchAll();
 <hr>
 
 <h4>Les acteurs :</h4>
-<?php $typeCarrousel = "acteurs";
-        require "templates/carrousel.php";
-      ?>
 
-<?php
+<?php $typeCarrousel = "acteurs";
+  require "templates/carrousel.php";
+  
 
 $titre = $detailFilm["nom_film"];
 $titre_secondaire = $detailFilm["nom_film"];
