@@ -12,7 +12,7 @@ $films = $requete->fetchAll();
     </a>
 
     <div class="removeContainer">
-      <button class="removeButton">retirer un film</button>
+      <button class="removeButton">supprimer un film</button>
 
       <!-- insertion des films existants dans la liste -->
       <form id="removeFilm" action="index.php?action=supprimerFilm" method="post">
