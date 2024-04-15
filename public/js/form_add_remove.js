@@ -1,5 +1,5 @@
-const addContainer = document.querySelector('.addFilmContainer');
-const removeContainer = document.querySelector('.removeFilmContainer');
+const addContainer = document.querySelector('.addContainer');
+const removeContainer = document.querySelector('.removeContainer');
 
 if (addContainer) {
   const addButton = addContainer.querySelector('.addButton')
