@@ -87,14 +87,14 @@ $acteurs = $requeteActeurs->fetchAll();
 
     <form id="removeCasting" class="divWarning"
       action="index.php?action=supprimerCastingFilm&id=<?= $detailFilm["id_film"] ?>" method="post">
-      <select name="acteur" class="warner" required>
+      <select name="role" class="warner" required>
         <option selected="true" value="" disabled="disabled">
-          Choisissez un acteur
+          Choisissez un role
         </option>
-        <?php foreach($acteurs as $acteur) { ?>
+        <?php foreach($acteurs as $casting) { ?>
 
-        <option value="<?= $acteur["id_acteur"] ?>">
-          <?= $acteur["fullName"] ?>
+        <option value="<?= $casting["id_role"] ?>">
+          <?= $casting["nom_role"] ?>
         </option>
 
         <?php } ?>

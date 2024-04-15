@@ -49,9 +49,27 @@ $acteurFilms = $requeteFilms->fetchAll(); ?>
       <button class="addButton">ajouter un rôle</button>
     </a>
 
-    <a href="#">
-      <button class="removeButton">supprimer un rôle</button>
-    </a>
+    <div class="removeContainer">
+      <button class="removeButton">retirer un casting</button>
+
+      <form id="removeCasting" class="divWarning"
+        action="index.php?action=supprimerCastingActeur&id=<?= $detailActeur["id_acteur"] ?>" method="post">
+        <select name="role" class="warner" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un role
+          </option>
+          <?php foreach($acteurFilms as $casting) { ?>
+
+          <option value="<?= $casting["id_role"] ?>">
+            <?= $casting["nom_role"] ?>
+          </option>
+
+          <?php } ?>
+        </select>
+        <span class="warningMessage warningCache">Supprimer ce role?</span>
+        <input type="submit" value="valider">
+      </form>
+    </div>
   </div>
 
   <table class="tableFilms">

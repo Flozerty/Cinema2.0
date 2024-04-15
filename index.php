@@ -1,6 +1,7 @@
 <?php 
 
 use Controller\ActeurController;
+use Controller\CastingController;
 use Controller\CinemaController;
 use Controller\FilmController;
 use Controller\GenresController;
@@ -17,6 +18,7 @@ $ctrlRea = new RealisateurController();
 $ctrlFilm = new FilmController();
 $ctrlGenre = new GenresController();
 $ctrlPersonne = new PersonneController();
+$ctrlCasting = new CastingController();
 
 $id= (isset($_GET["id"])) ? $_GET["id"] : null;
 
@@ -57,9 +59,10 @@ if(isset($_GET["action"])){
     case "creerFormRealisateur": $ctrlPersonne->creerFormPersonne("realisateur");break;  
     case "creerPersonne": $ctrlPersonne->creerPersonne();break;
 
-    // supprimer personne
+    // suppression
     case "supprimerActeur": $ctrlActeur->supprimerActeur();break;
     case "supprimerRealisateur": $ctrlRea->supprimerRealisateur();break;
-    case "supprimerCastingFilm": $ctrlFilm->supprimerCasting($id);break;
+    case "supprimerCastingFilm": $ctrlCasting->supprimerCastingFilm($id);break;
+    case "supprimerCastingActeur": $ctrlCasting->supprimerCastingActeur($id);break;
   }
 }
