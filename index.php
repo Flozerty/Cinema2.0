@@ -60,7 +60,7 @@ if(isset($_GET["action"])){
     // supprimer personne
 
     case "supprimerActeur": $ctrlActeur->supprimerActeur();break;
-    case "supprimerRealisateur": $ctrlActeur->supprimerActeur();break;
+    case "supprimerRealisateur": $ctrlRea->supprimerRealisateur();break;
     
   }
 }

@@ -44,4 +44,19 @@ class RealisateurController {
 
     require "view/detailRealisateur.php";
   }
+
+  public function supprimerRealisateur() {
+    $pdo = Connect::seconnecter();
+
+    $id_rea = filter_input(INPUT_POST,'rea', FILTER_SANITIZE_NUMBER_INT);
+
+    // on supprime toute trace de l'acteur
+    $requete = $pdo->prepare("
+    DELETE FROM realisateur
+    WHERE id_realisateur = :id;
+    ");
+    $requete->execute(["id"=>$id_rea]);
+
+    header("Location:index.php?action=listRealisateurs");
+  }
 }

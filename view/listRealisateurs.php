@@ -8,9 +8,27 @@ $realisateurs = $requete->fetchAll() ?>
       <button class="addButton">créer un réalisateur</button>
     </a>
 
-    <a href="#">
-      <button class="removeButton">supprimer un réalisateur</button>
-    </a>
+    <!-- supprimer rea -->
+
+    <div class="removeContainer">
+      <button class="removeButton">retirer un réalisateur</button>
+
+      <form id="removeRea" action="index.php?action=supprimerRealisateur" method="post">
+        <select name="rea" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un réalisateur
+          </option>
+          <?php foreach($realisateurs as $rea) { ?>
+
+          <option value="<?= $rea["id_realisateur"] ?>">
+            <?= $rea["fullName"] ?>
+          </option>
+
+          <?php } ?>
+        </select>
+        <input type="submit" value="valider">
+      </form>
+    </div>
   </div>
 
 
