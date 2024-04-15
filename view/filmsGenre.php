@@ -16,7 +16,7 @@ $otherFilms = $requeteOtherFilms->fetchAll();
       <button class="createButton">créer un film</button>
     </a>
 
-    <div class="addFilmContainer">
+    <div class="addContainer">
       <button class="addButton">ajouter un film</button>
 
       <!-- insertion des films nonexistants dans la liste -->
@@ -51,7 +51,7 @@ if(!$films) { ?>
 } else { ?>
 
 
-  <div class="removeFilmContainer">
+  <div class="removeContainer">
     <button class="removeButton">retirer un film</button>
 
     <!-- insertion des films existants dans la liste -->

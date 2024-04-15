@@ -12,7 +12,7 @@ $acteurs = $requete->fetchAll();
 
     <!-- supprimer acteur -->
 
-    <div class="removeFilmContainer">
+    <div class="removeContainer">
       <button class="removeButton">retirer un acteur</button>
 
       <!-- insertion des films existants dans la liste -->
