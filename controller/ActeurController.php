@@ -9,7 +9,7 @@ class ActeurController {
   public function detailActeur($id) {
     $pdo = Connect::seConnecter();
     $requete = $pdo->prepare("
-    SELECT *, CONCAT(p.prenom, ' ', p.nom) AS fullName
+    SELECT *, CONCAT(p.prenom, ' ', p.nom) AS fullName, DATE_FORMAT(date_naissance, '%d/%m/%Y') AS date_naissance
     FROM acteur 
     INNER JOIN personne p ON p.id_personne = acteur.id_personne
     WHERE id_acteur = :id");

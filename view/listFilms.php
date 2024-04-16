@@ -66,7 +66,7 @@ $films = $requete->fetchAll();
         </td>
 
         <td class="filmTableDate">
-          <?= $film["date_sortie"] ?>
+          <?= $film["annee_sortie"] ?>
         </td>
       </tr>
 

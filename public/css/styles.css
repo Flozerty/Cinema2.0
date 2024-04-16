@@ -458,7 +458,6 @@ header {
   border-radius: 15px;
   overflow: hidden;
   height: 700px;
-  position: relative;
 
   figure {
     width: auto;
@@ -480,6 +479,7 @@ header {
 
   /*//////// ASIDE ////////*/
   aside {
+    position: relative;
     padding: 20px;
 
     .title {
@@ -532,9 +532,15 @@ header {
         color: white;
       }
 
-      .cards-container img {
-        width: 115px;
-        height: 150px;
+      .cards-container {
+        figure {
+          flex-direction: row;
+        }
+
+        img {
+          width: 115px;
+          height: 150px;
+        }
       }
     }
   }

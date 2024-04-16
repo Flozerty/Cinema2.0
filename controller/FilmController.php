@@ -24,7 +24,7 @@ class FilmController {
     // LEFT JOIN pour remédier a la 
     // non-existance d'un realisateur
     $requeteFilm = $pdo->prepare('
-      SELECT *, DATE_FORMAT(SEC_TO_TIME(duree * 60), "%H:%i") AS duree, CONCAT(p.prenom, " ", p.nom) AS rea
+      SELECT *, DATE_FORMAT(SEC_TO_TIME(duree * 60), "%H:%i") AS duree, CONCAT(p.prenom, " ", p.nom) AS rea, DATE_FORMAT(date_sortie, "%d/%m/%Y") AS date_sortie
       FROM film
       LEFT JOIN realisateur r ON r.id_realisateur = film.id_realisateur
       LEFT JOIN personne p ON p.id_personne = r.id_personne

@@ -24,7 +24,7 @@ class RealisateurController {
 
 // requete infos du realisateur
     $requeteRea = $pdo->prepare('
-    SELECT id_realisateur, CONCAT(p.prenom, " ", p.nom) AS fullName, sexe, date_naissance, photo 
+    SELECT id_realisateur, CONCAT(p.prenom, " ", p.nom) AS fullName, sexe, date_naissance, photo, DATE_FORMAT(date_naissance, "%d/%m/%Y") AS date_naissance
     FROM realisateur 
     INNER JOIN personne p ON p.id_personne = realisateur.id_personne
     WHERE id_realisateur = :id');
