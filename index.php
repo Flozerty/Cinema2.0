@@ -80,5 +80,10 @@ if(isset($_GET["action"])){
     // modifFilm
     case "modifFilmForm": $ctrlFilm->modifFilmForm($id);break;
     case "modifFilm": $ctrlFilm->modifFilm($id);break;
+
+    default: $ctrlCinema->Accueil();
+
   }
+} else {
+  $ctrlCinema->Accueil();
 }
