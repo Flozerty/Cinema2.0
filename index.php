@@ -77,6 +77,8 @@ if(isset($_GET["action"])){
     case "modifRealisateurForm": $ctrlPersonne->modifPersonneForm($id, "realisateur");break;
     case "modifPersonne": $ctrlPersonne->modifPersonne($id);break;
 
-    // case "modifFilmForm": $ctrlFilm->modifFilmForm($id);break;
+    // modifFilm
+    case "modifFilmForm": $ctrlFilm->modifFilmForm($id);break;
+    case "modifFilm": $ctrlFilm->modifFilm($id);break;
   }
 }

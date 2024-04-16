@@ -140,18 +140,25 @@ class FilmController {
     $reaId = filter_input(INPUT_POST, "realisateur");
     
     $requeteCreation = $pdo->prepare("
-    INSERT INTO film
+    INSERT INTO film 
     (nom_film, duree, date_sortie, synopsis, affiche, note, id_realisateur)
-    VALUES ('$nom', '$duree', '$date', '$synopsis', '$affiche', '$note', ".($reaId == "" ? "NULL" : "'$reaId'").")
+    VALUES (:nom, :duree, :date, :synopsis, :affiche, :note, :reaId)
     ");
-    $requeteCreation->execute();
+    $requeteCreation->execute([
+      "nom" => $nom,
+      "duree" => $duree,
+      "date" => $date,
+      "synopsis" => $synopsis,
+      "affiche" => $affiche,
+      "note" => $note,
+      "reaId" => $reaId,
+  ]);
 
 // A VOIR PLUS TARD POUR LES GENRES!!!
 // $genres = filter_input(INPUT_POST, "genre");
 
     header("Location:index.php?action=listFilms");
   }
-
 
   // supprimer un film
   function supprimerFilm() {
@@ -171,6 +178,75 @@ class FilmController {
 
     $requete->execute(["id" => $id]);
     
+    header("Location:index.php?action=listFilms");
+  }
+
+  // Formulaire modification de film
+  public function modifFilmForm($id) {
+    $pdo = Connect::seconnecter();
+
+    // Récupération de tous les réalisateurs
+    $requeteRealisateurs = $pdo->query("
+      SELECT *, CONCAT(p.prenom, ' ', p.nom) AS fullName
+      FROM realisateur r
+      INNER JOIN personne p ON p.id_personne = r.id_personne
+      ORDER BY nom");
+
+    // Récupération de tous les genres
+    $requeteGenres = $pdo->query("
+      SELECT *
+      FROM genre
+      ORDER BY nom_genre");
+
+    // récupération du film
+    $requeteFilm = $pdo->prepare("
+    SELECT *
+    FROM film
+    WHERE id_film = :id
+    ");
+
+    $requeteFilm->execute(["id" => $id]);
+
+    $modif = true;
+
+    require "view/form/formCreerFilm.php";    
+  }
+
+  // Mise a jour du film
+  public function modifFilm($id) {
+    $pdo = Connect::seconnecter();
+    
+    $nom = filter_input(INPUT_POST, "nom_film", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
+    $date = filter_input(INPUT_POST, "date_sortie");
+    $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_URL);
+    $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_FLOAT);
+    $reaId = filter_input(INPUT_POST, "realisateur");
+   
+    $requete = $pdo->prepare("
+    UPDATE film
+    SET
+        nom_film = :nom,
+        duree = :duree,
+        date_sortie = :date,
+        synopsis = :synopsis,
+        affiche = :affiche,
+        note = :note,
+        id_realisateur = :reaId
+    WHERE id_film = :id
+    ");
+    $requete->execute([
+      "nom" => $nom,
+      "duree" => $duree,
+      "date" => $date,
+      "synopsis" => $synopsis,
+      "affiche" => $affiche,
+      "note" => $note,
+      "reaId" => $reaId,
+      "id" => $id,
+  ]);
+
     header("Location:index.php?action=listFilms");
   }
 }

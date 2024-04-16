@@ -2,7 +2,14 @@
 $realisateurs = $requeteRealisateurs->fetchAll();
 $genres = $requeteGenres->fetchAll();
 
-// Récupération des données en fonction du type de GET
+// Sur ce formulaire on aura également récupéré $modif qui est utilisé si on veut modifier des données.
+// On utilisera donc beaucoup la ternaire <?= isset($modif) ? "" : "" ? >
+
+if (isset($modif)) {
+  $filmModif = $requeteFilm->fetch();
+}
+
+// Récupération des données en fonction du type de GET (création seulement)
 if(isset($_GET["genre"])) {
   $genreGet = $requeteGetGenre->fetch();
 }
@@ -13,39 +20,42 @@ if(isset($_GET["acteur"])) {
   $acteurGet = $requeteGetActeur->fetch();
 } ?>
 
-<form id="create" action="index.php?action=creationFilm" method="post">
+<form id="create"
+  action="index.php?action=<?= isset($modif) ? "modifFilm&id=".$filmModif["id_film"] : "creationFilm" ?>" method="post">
 
   <fieldset id="globalFormInfo">
     <legend>Merci de renseigner tous les champs</legend>
 
     <div id="formNom">
       <label for="nom_film">Nom du film :</label>
-      <input type="text" name="nom_film" required>
+      <input type="text" name="nom_film" <?= isset($modif) ? "value='".$filmModif["nom_film"]."'" : null ?> required>
     </div>
 
     <div id="formDuree">
       <label for="duree">Durée en minutes :</label>
-      <input type="number" name="duree">
+      <input type="number" name="duree" <?= isset($modif) ? "value='".$filmModif["duree"]."'" : null ?>>
     </div>
 
     <div id="formDate">
       <label for="date_sortie">Date de sortie :</label>
-      <input type="date" name="date_sortie">
+      <input type="date" name="date_sortie" <?= isset($modif) ? "value='".$filmModif["date_sortie"]."'" : null ?>>
     </div>
 
     <div id="formSynopsis">
       <label for="synopsis">Synopsis :</label>
-      <textarea name="synopsis" rows="6" placeholder="Ecrivez une courte synopsis"></textarea>
+      <textarea name="synopsis" rows="6"
+        placeholder="Ecrivez une courte synopsis"><?= isset($modif) ? $filmModif["synopsis"] : null ?></textarea>
     </div>
 
     <div id="formImg">
       <label for="affiche">url de l'affiche :</label>
-      <input type="text" name="affiche">
+      <input type="text" name="affiche" <?= isset($modif) ? "value='".$filmModif["affiche"]."'" : null ?>>
     </div>
 
     <div id="formNote">
       <label for="note">Note :</label>
-      <input type="number" min="0" max="5" name="note">
+      <input type="number" min="0" max="5" step="0.1" name="note"
+        <?= isset($modif) ? "value='".$filmModif["note"]."'" : null ?>>
     </div>
 
     <div id="formRea">
@@ -62,13 +72,17 @@ if(isset($_GET["acteur"])) {
       <select name="realisateur">
 
         <!-- value="" permet de forcer un autre choix avec le required -->
-        <option selected="true" value="" disabled="disabled">
+        <option value="" disabled="disabled" <?= isset($filmModif["id_realisateur"]) ? null : 'selected="true"' ?>>
           Qui est le réalisateur ?
         </option>
 
         <?php foreach($realisateurs as $rea) { ?>
 
-        <option value="<?= $rea["id_realisateur"] ?>">
+        <option value="<?= $rea["id_realisateur"] ?>"
+          <?=
+          // On va présélectionner le réalisateur s'il est déja choisi dans la base de donnée.
+          (isset($filmModif["id_realisateur"]) && $filmModif["id_realisateur"] == $rea["id_realisateur"]) ? 'selected="true"' : null ?>>
+
           <?= $rea["fullName"] ?>
         </option>
 
@@ -82,6 +96,8 @@ if(isset($_GET["acteur"])) {
       <?php } ?>
     </div>
   </fieldset>
+
+  <?php if (!isset($modif)) { ?>
 
   <fieldset id="formGenres">
 
@@ -105,11 +121,14 @@ if(isset($_GET["acteur"])) {
     <legend>Listez les acteurs et rôles</legend>
   </fieldset>
 
-  <input type="submit" value="Créer nouveau film" class="submit-button">
+  <?php } ?>
+
+  <input type="submit" value="<?= isset($modif) ? "Mettre à jour" : "Créer nouveau" ?> film" class="submit-button">
 </form>
 
 <?php
-$titre = "Création Film";
-$titre_secondaire = "Créer un film";
+
+$titre = (isset($modif) ? "Mise à jour" : "Création")." film";
+$titre_secondaire = (isset($modif) ? "Mettre à jour" : "Créer")." un film";
 $contenu = ob_get_clean();
 require "templates/template.php";
