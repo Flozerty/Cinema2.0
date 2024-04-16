@@ -107,7 +107,7 @@ if(isset($_GET["acteur"])) {
 
     <!-- Récupération des genres -->
     <?php foreach($genres as $genre) {?>
-    <span>
+    <span class="checkboxContainer">
       <!-- Création de chaque box et vérification d'un possible id dans l'url -->
       <input type="checkbox" name="<?= $genre["nom_genre"]?>" id="<?= $genre["nom_genre"]?>"
         <?= (isset($genreGet) && $genre["id_genre"] == $genreGet["id_genre"] ) ? "checked" : "" ?> />

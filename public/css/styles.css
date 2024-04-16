@@ -961,21 +961,25 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
 
-    span {
-      margin: 2px 4px;
-      padding: 2px 4px;
-      border: 1px solid #2B2D42;
-      display: flex;
-      align-items: center;
-
-      label {
-        margin: 0;
-      }
-
-      input {
-        margin-right: 10px;
-      }
+    label {
+      margin: 0;
     }
+  }
+}
+
+.checkboxContainer {
+  margin: 2px 4px;
+  padding: 2px 4px;
+  border: 1px solid #2B2D42;
+  display: flex;
+  align-items: center;
+
+  label {
+    margin: 0;
+  }
+
+  input {
+    margin-right: 10px;
   }
 }
 

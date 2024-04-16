@@ -16,18 +16,19 @@ if (isset($modif)) {
 
     <div id="formNom">
       <label for="nom">Nom :</label>
-      <input type="text" name="nom" <?= isset($modif) ? "value='".$personne["nom"]."'" : null ?> required>
+      <input type="text" name="nom" id="nom" <?= isset($modif) ? "value='".$personne["nom"]."'" : null ?> required>
     </div>
 
     <div id="formPrenom">
       <label for="prenom">Prénom :</label>
-      <input type="text" name="prenom" <?= isset($modif) ? "value='".$personne["prenom"]."'" : null ?> required>
+      <input type="text" name="prenom" id="prenom" <?= isset($modif) ? "value='".$personne["prenom"]."'" : null ?>
+        required>
     </div>
 
     <div id="formSex">
       <label for="sex">Sexe :</label>
 
-      <select name="sex" required>
+      <select name="sex" id="sex" required>
 
         <!-- value="" permet de forcer un autre choix avec le required -->
         <option <?= isset($personne["sexe"]) ? null : 'selected="true"' ?> value="" disabled="disabled">
@@ -50,21 +51,22 @@ if (isset($modif)) {
 
     <div id="formDate">
       <label for="date_naissance">Date de naissance :</label>
-      <input type="date" name="date_naissance" <?= isset($modif) ? "value='".$personne["date_naissance"]."'" : null ?>
-        required>
+      <input type="date" name="date_naissance" id="date_naissance"
+        <?= isset($modif) ? "value='".$personne["date_naissance"]."'" : null ?> required>
     </div>
 
     <div id="formImg">
       <label for="photo">url d'une photo :</label>
-      <input type="text" name="photo" <?= isset($modif) ? "value='".$personne["photo"]."'" : null ?> required>
+      <input type="text" name="photo" id="photo" <?= isset($modif) ? "value='".$personne["photo"]."'" : null ?>
+        required>
     </div>
 
     <!-- On ne demande si c'est un acteur & réalisateur qu'à la création d'une nouvelle personne -->
 
     <?php if(!isset($modif)) { ?>
     <div id="isReaActeur">
-      <span>
-        <input type="checkbox" name="reaActeur">
+      <span class="checkboxContainer">
+        <input type="checkbox" name="reaActeur" id="reaActeur">
 
         <!-- Vérification si acteur & réalisateur -->
         <label for="reaActeur">
