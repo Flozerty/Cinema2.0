@@ -26,11 +26,17 @@ class PersonneController {
 
 // On créait la nouvelle personne
     $requetePersonne = $pdo->prepare("
-    INSERT INTO personne
+    INSERT INTO personne 
     (nom, prenom, sexe, photo, date_naissance)
-    VALUES ('$nom', '$prenom', '$sexe', '$photo', '$date')
+    VALUES (:nom, :prenom, :sexe, :photo, :date)
     ");
-    $requetePersonne->execute();
+    $requetePersonne->execute([
+      "nom" => $nom,
+      "prenom" => $prenom,
+      "sexe" => $sexe,
+      "photo" => $photo,
+      "date" => $date,
+  ]);
 
     // On peut récupérer l'id directement!
     $id = $pdo->lastInsertId();
@@ -83,7 +89,7 @@ class PersonneController {
     
     $nom = filter_input(INPUT_POST,'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $prenom = filter_input(INPUT_POST,'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $sexe = filter_input(INPUT_POST,'sex');
+    $sexe = filter_input(INPUT_POST,'sex', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $date = filter_input(INPUT_POST,'date_naissance');
     $photo = filter_input(INPUT_POST,'photo', FILTER_SANITIZE_URL);
 
@@ -92,14 +98,21 @@ class PersonneController {
     $requetePersonne = $pdo->prepare("
     UPDATE personne
     SET
-      nom = '$nom',
-      prenom = '$prenom',
-      sexe = '$sexe',
-      photo = '$photo',
-      date_naissance = '$date'
+      nom = :nom,
+      prenom = :prenom,
+      sexe = :sexe,
+      photo = :photo,
+      date_naissance = :date
     WHERE id_personne = :id
     ");
-    $requetePersonne->execute(["id" => $id]);
+    $requetePersonne->execute([
+      "nom" => $nom,
+      "prenom" => $prenom,
+      "sexe" => $sexe,
+      "photo" => $photo,
+      "date" => $date,
+      "id" => $id,
+    ]);
 
     header("Location:index.php?action=list".ucwords($type)."s");
   }

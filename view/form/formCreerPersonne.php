@@ -1,7 +1,7 @@
 <?php ob_start(); 
 
 // Sur ce formulaire on aura également récupéré $modif qui est utilisé si on veut modifier des données.
-// On utilisera donc beaucoup la ternaire <?= $modif ? "" : "" ? >
+// On utilisera donc beaucoup la ternaire <?= isset($modif) ? "" : "" ? >
 if (isset($modif)) {
   $personne = $requete->fetch();
 }
