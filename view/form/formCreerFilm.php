@@ -28,28 +28,30 @@ if(isset($_GET["acteur"])) {
 
     <div id="formNom">
       <label for="nom_film">Nom du film :</label>
-      <input type="text" name="nom_film" <?= isset($modif) ? "value='".$filmModif["nom_film"]."'" : null ?> required>
+      <input type="text" name="nom_film" id="nom_film"
+        <?= isset($modif) ? "value='".$filmModif["nom_film"]."'" : null ?> required>
     </div>
 
     <div id="formDuree">
       <label for="duree">Durée en minutes :</label>
-      <input type="number" name="duree" <?= isset($modif) ? "value='".$filmModif["duree"]."'" : null ?>>
+      <input type="number" name="duree" id="duree" <?= isset($modif) ? "value='".$filmModif["duree"]."'" : null ?>>
     </div>
 
     <div id="formDate">
       <label for="date_sortie">Date de sortie :</label>
-      <input type="date" name="date_sortie" <?= isset($modif) ? "value='".$filmModif["date_sortie"]."'" : null ?>>
+      <input type="date" name="date_sortie" id="date_sortie"
+        <?= isset($modif) ? "value='".$filmModif["date_sortie"]."'" : null ?>>
     </div>
 
     <div id="formSynopsis">
       <label for="synopsis">Synopsis :</label>
-      <textarea name="synopsis" rows="6"
+      <textarea name="synopsis" id="synopsis" rows="6"
         placeholder="Ecrivez une courte synopsis"><?= isset($modif) ? $filmModif["synopsis"] : null ?></textarea>
     </div>
 
     <div id="formImg">
       <label for="affiche">url de l'affiche :</label>
-      <input type="text" name="affiche" <?= isset($modif) ? "value='".$filmModif["affiche"]."'" : null ?>>
+      <input type="text" name="affiche" id="affiche" <?= isset($modif) ? "value='".$filmModif["affiche"]."'" : null ?>>
     </div>
 
     <div id="formNote">
@@ -107,7 +109,7 @@ if(isset($_GET["acteur"])) {
     <?php foreach($genres as $genre) {?>
     <span>
       <!-- Création de chaque box et vérification d'un possible id dans l'url -->
-      <input type="checkbox" name="<?= $genre["nom_genre"]?>" <?php if(isset($genreGet)){
+      <input type="checkbox" name="<?= $genre["nom_genre"]?>" id="<?= $genre["nom_genre"]?>" <?php if(isset($genreGet)){
         echo ($genre["id_genre"] == $genreGet["id_genre"] ) ? "checked" : "";
       } ?> />
 
