@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
 
 use Controller\ActeurController;
 use Controller\CastingController;
@@ -82,7 +82,6 @@ if(isset($_GET["action"])){
     case "modifFilm": $ctrlFilm->modifFilm($id);break;
 
     default: $ctrlCinema->Accueil();
-
   }
 } else {
   $ctrlCinema->Accueil();

@@ -156,6 +156,13 @@ class FilmController {
       "reaId" => $reaId,
   ]);
 
+    // + la notif de création
+    $_SESSION["ValidatorMessages"][] = "
+    <div class='notification add'>
+      <p>La création du nouveau film $nom est bien effectuée</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
+
   // On récupère l'id du film créé
   $id_film = $pdo->lastInsertId();
 
@@ -181,6 +188,23 @@ class FilmController {
         "film" => $id_film,
         "genre" => $id_genre
       ]);
+
+      // On récupère le nom des genres pour la notif
+      $requeteGenre = $pdo->prepare("
+      SELECT *
+      FROM genre
+      WHERE id_genre = :id
+      ");
+      $requeteGenre->execute(["id" => $id_genre]);
+      $genre = $requeteGenre->fetch();
+      $nomGenre = $genre["nom_genre"];
+
+      // + la notif d'ajout'
+      $_SESSION["ValidatorMessages"][] = "
+      <div class='notification add'>
+        <p>Le film $nom s'est vu attribuer le genre $nomGenre </p>
+        <i class='fa-solid fa-circle-xmark'></i>
+      </div>";
     }
     
     header("Location:index.php?action=listFilms");
@@ -192,6 +216,17 @@ class FilmController {
 
     $id = filter_input(INPUT_POST, "film");
 
+    // on récup le nom du film pour la notif
+    $requeteNom = $pdo->prepare("
+    SELECT nom_film
+    FROM film
+    WHERE id_film = :id
+    ");
+    $requeteNom->execute(["id"=>$id]);
+    $film = $requeteNom->fetch();
+    $nomFilm = $film["nom_film"];
+
+    // requetes de suppression
     $requete = $pdo->prepare("
     DELETE FROM filmotheque
     WHERE id_film = :id;
@@ -203,6 +238,13 @@ class FilmController {
     WHERE id_film = :id;");
 
     $requete->execute(["id" => $id]);
+
+    // + la notif
+    $_SESSION["ValidatorMessages"][] = "
+    <div class='notification remove'>
+      <p>Toute trace du film $nomFilm a bien été supprimée </p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
     
     header("Location:index.php?action=listFilms");
   }
@@ -276,6 +318,12 @@ class FilmController {
       "reaId" => $reaId,
       "id" => $id,
   ]);
+
+  $_SESSION["ValidatorMessages"][] = "
+    <div class='notification add'>
+      <p>Les informations sur le film $nom ont été mises à jour</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
 
     header("Location:index.php?action=listFilms");
   }

@@ -37,7 +37,13 @@ class PersonneController {
       "sexe" => $sexe,
       "photo" => $photo,
       "date" => $date,
-  ]);
+    ]);
+
+    $_SESSION["ValidatorMessages"][] = "
+      <div class='notification add'>
+        <p>Une nouvelle personne a été créée</p>
+        <i class='fa-solid fa-circle-xmark'></i>
+      </div>";
 
     // On récupère l'id directement!
     $id = $pdo->lastInsertId();
@@ -49,15 +55,29 @@ class PersonneController {
       ");
     $requeteType->execute();
 
+    // + la notif
+    $_SESSION["ValidatorMessages"][] = "
+    <div class='notification add'>
+      <p>La création ".($type == "acteur" ? "de l'acteur" : "du réalisateur")." est bien effectuée</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
+
 // Si c'est les 2 types, alors on le créait dans l'autre table.
     if($isReaActeur) {
       $otherType = (($type == 'acteur') ? "realisateur" : "acteur");
-      
+
       $requeteOtherType = $pdo->prepare("
         INSERT INTO $otherType (id_personne)
         VALUES ('$id')
         ");
       $requeteOtherType->execute([]);
+
+    // + notif
+      $_SESSION["ValidatorMessages"][] = "
+      <div class='notification add'>
+        <p>La création ".($otherType == "acteur" ? "de l'acteur" : "du réalisateur")." est bien effectuée</p>
+        <i class='fa-solid fa-circle-xmark'></i>
+      </div>";
     }
 
     // Retour a la page de liste du type sélectionné
@@ -67,7 +87,7 @@ class PersonneController {
   // Form de modification d'un personne
   public function modifPersonneForm($id, $type) {
     $pdo = Connect::seconnecter();
-    
+
     $requete = $pdo->prepare("
     SELECT *
     FROM $type r
@@ -83,7 +103,6 @@ class PersonneController {
   }
 
   // Mise a jour de la personne
-
   public function modifPersonne($id) {
     $pdo = Connect::seconnecter();
     
@@ -113,6 +132,13 @@ class PersonneController {
       "date" => $date,
       "id" => $id,
     ]);
+
+    // + notif
+    $_SESSION["ValidatorMessages"][] = "
+      <div class='notification add'>
+        <p>Les informations ".($type == "acteur" ? "de l'acteur" : "du réalisateur")." ont bien été mises à jour</p>
+        <i class='fa-solid fa-circle-xmark'></i>
+      </div>";
 
     header("Location:index.php?action=list".ucwords($type)."s");
   }

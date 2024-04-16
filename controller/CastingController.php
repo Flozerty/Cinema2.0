@@ -13,12 +13,38 @@ class CastingController {
 
     $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_NUMBER_INT);
 
+      // récupération de l'acteur et du film pour la notif
+      $requeteCasting = $pdo->prepare("
+      SELECT CONCAT(prenom, ' ', nom) AS fullName, nom_film
+      FROM acteur a
+      INNER JOIN personne p ON p.id_personne = a.id_personne
+      INNER JOIN casting c ON c.id_acteur = a.id_acteur
+      INNER JOIN role ON role.id_role = c.id_role
+      INNER JOIN film ON film.id_film = c.id_film
+      WHERE c.id_role = :idRole AND c.id_film = :idFilm
+      ");
+      $requeteCasting->execute([
+        "idRole"=>$role,
+        "idFilm"=>$id 
+      ]);
+      $casting = $requeteCasting->fetch();
+      $nomFilm = $casting["nom_film"];
+      $nomActeur = $casting["fullName"];
+
+      // suppression du casting
       $requete = $pdo->prepare("
       DELETE FROM casting
       WHERE id_film = :id
       AND id_role = $role
       ");
       $requete->execute(["id"=>$id]);
+
+      // + la notif
+      $_SESSION["ValidatorMessages"][] = "
+    <div class='notification remove'>
+      <p>Le casting de $nomActeur dans $nomFilm est bien supprimé</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
 
       header("Location:index.php?action=detailFilm&id=$id");
     }
@@ -29,12 +55,38 @@ class CastingController {
 
   $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_NUMBER_INT);
 
+  // récupération de l'acteur et du film pour la notif
+  $requeteCasting = $pdo->prepare("
+  SELECT CONCAT(prenom, ' ', nom) AS fullName, nom_film
+  FROM acteur a
+  INNER JOIN personne p ON p.id_personne = a.id_personne
+  INNER JOIN casting c ON c.id_acteur = a.id_acteur
+  INNER JOIN role ON role.id_role = c.id_role
+  INNER JOIN film ON film.id_film = c.id_film
+  WHERE c.id_role = :idRole AND c.id_acteur = :idActeur
+  ");
+  $requeteCasting->execute([
+    "idRole"=>$role,
+    "idActeur"=>$id 
+  ]);
+  $casting = $requeteCasting->fetch();
+  $nomFilm = $casting["nom_film"];
+  $nomActeur = $casting["fullName"];
+
+    // suppression du casting
     $requete = $pdo->prepare("
     DELETE FROM casting
     WHERE id_acteur = :id
     AND id_role = $role
     ");
     $requete->execute(["id"=>$id]);
+
+    // + la notif
+    $_SESSION["ValidatorMessages"][] = "
+    <div class='notification remove'>
+      <p>Le casting de $nomActeur dans $nomFilm est bien supprimé</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
 
     header("Location:index.php?action=detailActeur&id=$id");
   }
@@ -79,6 +131,23 @@ class CastingController {
     ");
     $creationCasting->execute();
 
+    // On récupère le nom du film pour la notif
+    $requeteFilm = $pdo->prepare('
+    SELECT nom_film
+    FROM film
+    WHERE id_film = :id
+    ');
+    $requeteFilm->execute(["id"=>$idFilm]);
+    $film = $requeteFilm->fetch();
+    $nomFilm = $film["nom_film"];
+
+    // + la notif
+    $_SESSION["ValidatorMessages"][] = "
+    <div class='notification add'>
+      <p>Un nouveau casting dans $nomFilm a été créé</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
+
     header("Location:index.php?action=detailActeur&id=$idActeur");
   }
   
@@ -121,6 +190,24 @@ class CastingController {
     VALUES ('$idFilm', '$idActeur', '$idRole')
     ");
     $creationCasting->execute();
+
+    // On récupère le nom de l'acteur pour la notif
+    $requeteActeur = $pdo->prepare("
+    SELECT CONCAT(prenom, ' ', nom) AS fullName
+    FROM acteur
+    INNER JOIN personne p ON p.id_personne = acteur.id_personne
+    WHERE id_acteur = :id
+    ");
+    $requeteActeur->execute(["id"=>$idActeur]);
+    $acteur = $requeteActeur->fetch();
+    $nomActeur = $acteur["fullName"];
+
+    // + la notif
+    $_SESSION["ValidatorMessages"][] = "
+    <div class='notification add'>
+      <p>Un nouveau casting de $nomActeur a été créé</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
 
     header("Location:index.php?action=detailFilm&id=$idFilm");
   }

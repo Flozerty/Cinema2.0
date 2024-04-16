@@ -45,10 +45,22 @@ class RealisateurController {
     require "view/detailRealisateur.php";
   }
 
+  ///////////////// supprimer un réalisateur /////////////////
   public function supprimerRealisateur() {
     $pdo = Connect::seconnecter();
 
     $id_rea = filter_input(INPUT_POST,'rea', FILTER_SANITIZE_NUMBER_INT);
+
+    // on récup le nom du réalisateur pour la notif
+    $requeteRea = $pdo->prepare("
+    SELECT CONCAT(prenom, ' ', nom) as fullName
+    FROM personne p
+    INNER JOIN realisateur r ON r.id_personne = p.id_personne
+    WHERE id_realisateur = :id
+    ");
+    $requeteRea->execute(["id"=>$id_rea]);
+    $rea = $requeteRea->fetch();
+    $nomRea = $rea["fullName"];
 
     // on supprime toute trace du réalisateur
     $requete = $pdo->prepare("
@@ -60,6 +72,13 @@ class RealisateurController {
     WHERE id_realisateur = :id;
     ");
     $requete->execute(["id"=>$id_rea]);
+
+        // + notif
+        $_SESSION["ValidatorMessages"][] = "
+        <div class='notification remove'>
+          <p>Toute trace du réalisateur ".$nomRea." a été supprimée</p>
+          <i class='fa-solid fa-circle-xmark'></i>
+        </div>";
 
     header("Location:index.php?action=listRealisateurs");
   }
