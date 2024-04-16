@@ -57,4 +57,21 @@ class PersonneController {
     // Retour a la page de liste du type sélectionné
     header("Location:index.php?action=list".ucwords($type)."s");
   }
+
+  public function modifPersonneForm($id, $type) {
+    $pdo = Connect::seconnecter();
+    
+    $requete = $pdo->prepare("
+    SELECT *
+    FROM $type r
+    INNER JOIN personne p ON p.id_personne = r.id_personne
+    WHERE id_$type = :id
+    ");
+
+    $requete->execute(["id" => $id]);
+
+    $modif = true;
+
+    require "view/form/formCreerPersonne.php";    
+  }
 }

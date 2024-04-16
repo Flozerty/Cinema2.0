@@ -63,22 +63,4 @@ class RealisateurController {
 
     header("Location:index.php?action=listRealisateurs");
   }
-
-  public function modifRealisateurForm($id) {
-    $pdo = Connect::seconnecter();
-    
-    $requete = $pdo->prepare("
-    SELECT *
-    FROM realisateur r
-    INNER JOIN personne p ON p.id_personne = r.id_personne
-    WHERE id_realisateur = :id
-    ");
-
-    $requete->execute(["id" => $id]);
-
-    $modif = true;
-    $type= "realisateur";
-
-    require "view/form/formCreerPersonne.php";    
-  }
 }
