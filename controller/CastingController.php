@@ -4,7 +4,10 @@ namespace Controller;
 use Model\Connect;
 
 class CastingController {
+  
+  ////////////// SUPPRIMER CASTING //////////////
 
+  // supprimer casting en fonction du film
   public function supprimerCastingFilm($id) {
       $pdo = Connect::seconnecter();
 
@@ -20,6 +23,7 @@ class CastingController {
       header("Location:index.php?action=detailFilm&id=$id");
     }
 
+  // supprimer casting en fonction de l'acteur
   public function supprimerCastingActeur($id) {
     $pdo = Connect::seconnecter();
 
@@ -66,7 +70,7 @@ class CastingController {
       ");
       $roleResult = $findRole->fetch();
     }
-// puis, on récupère l'idRole et on a les 3 id.
+    // puis, on récupère l'idRole et on a les 3 id.
     $idRole = $roleResult["id_role"];
     
     $creationCasting = $pdo->prepare("
@@ -109,7 +113,7 @@ class CastingController {
       ");
       $roleResult = $findRole->fetch();
     }
-// puis, on récupère l'idRole et on a les 3 id.
+    // puis, on récupère l'idRole et on a les 3 id.
     $idRole = $roleResult["id_role"];
     
     $creationCasting = $pdo->prepare("

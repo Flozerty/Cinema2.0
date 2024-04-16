@@ -5,7 +5,7 @@ use Model\Connect;
 
 class RealisateurController {
   
-  //////////// VIEW DE LA PAGE listRealisateurs ////////////
+  ////////// VIEW DE LA PAGE listRealisateurs //////////
   public function listRealisateurs() {
     $pdo = Connect::seConnecter();
     $requete = $pdo->query("
@@ -18,7 +18,7 @@ class RealisateurController {
     require "view/listRealisateurs.php";
   }
 
-  //////////// VIEW DE LA PAGE detailRealisateur ////////////
+  ////////// VIEW DE LA PAGE detailRealisateur //////////
   public function detailRealisateur($id) {
     $pdo = Connect::seConnecter();
 
@@ -50,7 +50,7 @@ class RealisateurController {
 
     $id_rea = filter_input(INPUT_POST,'rea', FILTER_SANITIZE_NUMBER_INT);
 
-    // on supprime toute trace de l'acteur
+    // on supprime toute trace du réalisateur
     $requete = $pdo->prepare("
     UPDATE film
     SET id_realisateur = NULL

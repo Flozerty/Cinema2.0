@@ -21,8 +21,7 @@ class FilmController {
   public function detailFilm($id) {
     $pdo = Connect::seConnecter();
 
-    // LEFT JOIN pour remédier a la 
-    // non-existance d'un realisateur
+    // LEFT JOIN pour remédier a la non-existance d'un realisateur
     $requeteFilm = $pdo->prepare('
       SELECT *, DATE_FORMAT(SEC_TO_TIME(duree * 60), "%H:%i") AS duree, CONCAT(p.prenom, " ", p.nom) AS rea, DATE_FORMAT(date_sortie, "%d/%m/%Y") AS date_sortie
       FROM film
@@ -65,8 +64,10 @@ class FilmController {
 
     require "view/detailFilm.php";
   }
-
-  ////////// VIEW DE LA PAGE DU FORMULAIRE //////////
+  
+  ////////////////////////////////////////////////////
+  ////////////// FORMULAIRE DE CREATION //////////////
+  ////////////////////////////////////////////////////
   function creerFilmForm(){
     $pdo = Connect::seconnecter();
 
@@ -127,7 +128,7 @@ class FilmController {
     require "view/form/formCreerFilm.php";
   }
 
-  // Création du film
+  //////////// Création du film ////////////
   function creationFilm(){
     $pdo = Connect::seconnecter();
 
@@ -185,7 +186,7 @@ class FilmController {
     header("Location:index.php?action=listFilms");
   }
 
-  // supprimer un film
+  //////////////// supprimer un film ////////////////
   function supprimerFilm() {
     $pdo = Connect::seconnecter();
 
@@ -206,7 +207,11 @@ class FilmController {
     header("Location:index.php?action=listFilms");
   }
 
-  // Formulaire modification de film
+  ////////////////////////////////////////////////
+  ////////////////// MODIF FILM //////////////////
+  ////////////////////////////////////////////////
+
+  // Formulaire modification de film //
   public function modifFilmForm($id) {
     $pdo = Connect::seconnecter();
 

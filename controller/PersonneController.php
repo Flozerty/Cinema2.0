@@ -5,13 +5,14 @@ use Model\Connect;
 
 class PersonneController {
 
-// Création de nouvelle personne
+// Formulaire de nouvelle personne
   public function creerFormPersonne($type) {
     $pdo = Connect::seconnecter();
     // $requete = $pdo->query('');
     require "view/form/formCreerPersonne.php";
   }
 
+  //Création de la nouvelle personne
   public function creerPersonne() {
     $pdo = Connect::seconnecter();
 
@@ -24,7 +25,7 @@ class PersonneController {
     $type =  filter_input(INPUT_POST,'type');
     $isReaActeur = isset($_POST["reaActeur"]) ? true : false;
 
-// On créait la nouvelle personne
+    // On créait la personne
     $requetePersonne = $pdo->prepare("
     INSERT INTO personne 
     (nom, prenom, sexe, photo, date_naissance)
@@ -38,7 +39,7 @@ class PersonneController {
       "date" => $date,
   ]);
 
-    // On peut récupérer l'id directement!
+    // On récupère l'id directement!
     $id = $pdo->lastInsertId();
 
 // On créait le nouveau acteur ou réa en fonction du type choisi
@@ -49,7 +50,6 @@ class PersonneController {
     $requeteType->execute();
 
 // Si c'est les 2 types, alors on le créait dans l'autre table.
-
     if($isReaActeur) {
       $otherType = (($type == 'acteur') ? "realisateur" : "acteur");
       
@@ -57,7 +57,7 @@ class PersonneController {
         INSERT INTO $otherType (id_personne)
         VALUES ('$id')
         ");
-      $requeteOtherType->execute();
+      $requeteOtherType->execute([]);
     }
 
     // Retour a la page de liste du type sélectionné

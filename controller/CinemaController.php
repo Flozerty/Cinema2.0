@@ -37,6 +37,8 @@ class CinemaController {
     LIMIT 2
     ");
 
+    // liste des genres " ' " préférés " ' "
+
     // liste films d'action
     $requeteAction = $pdo->query("
     SELECT *

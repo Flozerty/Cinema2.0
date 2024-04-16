@@ -97,11 +97,9 @@ class GenresController {
     header('Location:index.php?action=listGenres');
   }
 
-        /////////////////////////////////////////////
-        ////////////// GENRES D'1 FILM //////////////
-        /////////////////////////////////////////////
+    ////////////// GENRES D'1 FILM //////////////
 
-  /////////////// Ajouter le genre d'un film ///////////////
+  ///////////// Ajouter le genre d'un film /////////////
   public function ajouterGenreFilm($id) {
     $pdo = Connect::seconnecter();
 
@@ -116,7 +114,7 @@ class GenresController {
     header('Location:index.php?action=filmsGenre&id='.$id);
   }
 
-  ////////////// Supprimer le genre d'un film //////////////
+  //////////// Supprimer le genre d'un film ////////////
   public function supprimerGenreFilm($id) {
     $pdo = Connect::seconnecter();
 
