@@ -214,6 +214,25 @@ hr {
   }
 }
 
+.modifLink {
+  margin-top: 10px;
+  align-self: center;
+  transition: var(--transitionTime);
+
+  a {
+    color: white;
+
+    i {
+      color: white;
+      margin-right: 10px;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
 /*//////// Warning Message ////////*/
 .warningMessage {
   color: #520000;
@@ -695,6 +714,7 @@ header {
 #personInfos {
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 
   figure {
     width: 50%;

@@ -69,6 +69,12 @@ $acteursAll = $requeteActeursAll->fetchAll();
     </p>
   </section>
 </article>
+<div class="modifLink">
+  <a href="index.php?action=modifFilmForm&id=<?= $detailFilm["id_film"] ?>">
+    <i class="fa-solid fa-pen editButton"></i>
+    modifier les infos
+  </a>
+</div>
 
 <hr>
 

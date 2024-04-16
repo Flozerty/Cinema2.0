@@ -60,15 +60,24 @@ if(isset($_GET["action"])){
     case "creerFormRealisateur": $ctrlPersonne->creerFormPersonne("realisateur");break;  
     case "creerPersonne": $ctrlPersonne->creerPersonne();break;
 
-    // suppression
+    // supprimer personne
     case "supprimerActeur": $ctrlActeur->supprimerActeur();break;
     case "supprimerRealisateur": $ctrlRea->supprimerRealisateur();break;
-    // casting
+    
+    // supprimer casting
     case "supprimerCastingFilm": $ctrlCasting->supprimerCastingFilm($id);break;
     case "supprimerCastingActeur": $ctrlCasting->supprimerCastingActeur($id);break;
   
     // créer casting
     case "creerCastingFilm": $ctrlCasting->creerCastingFilm($id);break;
     case "creerCastingActeur": $ctrlCasting->creerCastingActeur($id);break;
+    
+    // modif personne
+    case "modifActeurForm": $ctrlPersonne->modifActeurForm($id);break;
+    case "modifRealisateurForm": $ctrlPersonne->modifRealisateurForm($id);break;
+
+    // case "modifFilmForm": $ctrlFilm->modifFilmForm($id);break;
+
+
   }
 }

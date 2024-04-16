@@ -30,6 +30,13 @@ $reaFilms = $requeteFilms->fetchAll(); ?>
   </figure>
 </section>
 
+<div class="modifLink">
+  <a href="index.php?action=modifRealisateurForm&id=<?= $detailRealisateur["id_realisateur"] ?>">
+    <i class="fa-solid fa-pen editButton"></i>
+    modifier les infos
+  </a>
+</div>
+
 <hr>
 <!-- Films du realisateur -->
 <section id="realisations">
