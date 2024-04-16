@@ -21,7 +21,7 @@ class PersonneController {
     $date = filter_input(INPUT_POST,'date_naissance');
     $photo = filter_input(INPUT_POST,'photo', FILTER_SANITIZE_URL);
 
-    $type =  filter_input(INPUT_POST,'type');;
+    $type =  filter_input(INPUT_POST,'type');
     $isReaActeur = isset($_POST["reaActeur"]) ? true : false;
 
 // On créait la nouvelle personne
@@ -58,6 +58,7 @@ class PersonneController {
     header("Location:index.php?action=list".ucwords($type)."s");
   }
 
+  // Form de modification d'un personne
   public function modifPersonneForm($id, $type) {
     $pdo = Connect::seconnecter();
     
@@ -73,5 +74,33 @@ class PersonneController {
     $modif = true;
 
     require "view/form/formCreerPersonne.php";    
+  }
+
+  // Mise a jour de la personne
+
+  public function modifPersonne($id) {
+    $pdo = Connect::seconnecter();
+    
+    $nom = filter_input(INPUT_POST,'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $prenom = filter_input(INPUT_POST,'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $sexe = filter_input(INPUT_POST,'sex');
+    $date = filter_input(INPUT_POST,'date_naissance');
+    $photo = filter_input(INPUT_POST,'photo', FILTER_SANITIZE_URL);
+
+    $type =  filter_input(INPUT_POST,'type');
+
+    $requetePersonne = $pdo->prepare("
+    UPDATE personne
+    SET
+      nom = '$nom',
+      prenom = '$prenom',
+      sexe = '$sexe',
+      photo = '$photo',
+      date_naissance = '$date'
+    WHERE id_personne = :id
+    ");
+    $requetePersonne->execute(["id" => $id]);
+
+    header("Location:index.php?action=list".ucwords($type)."s");
   }
 }

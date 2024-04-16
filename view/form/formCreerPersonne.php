@@ -7,7 +7,9 @@ if (isset($modif)) {
 }
 ?>
 
-<form id="create" action="index.php?action=<?= isset($modif) ? "modif" : "creer"?>Personne" method="post">
+<form id="create"
+  action="index.php?action=<?= isset($modif) ? "modifPersonne&id=".$personne["id_personne"] : "creerPersonne"?>"
+  method="post">
 
   <fieldset id="globalFormInfo">
     <legend>Merci de renseigner tous les champs</legend>
@@ -16,6 +18,7 @@ if (isset($modif)) {
       <label for="nom">Nom :</label>
       <input type="text" name="nom" <?= isset($modif) ? "value='".$personne["nom"]."'" : null ?> required>
     </div>
+
     <div id="formPrenom">
       <label for="prenom">Prénom :</label>
       <input type="text" name="prenom" <?= isset($modif) ? "value='".$personne["prenom"]."'" : null ?> required>
