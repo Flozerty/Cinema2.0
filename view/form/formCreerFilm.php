@@ -103,13 +103,13 @@ if(isset($_GET["acteur"])) {
 
   <fieldset id="formGenres">
 
-    <legend>Sélectionnez les genres (en développement, ne marche pas)</legend>
+    <legend>Sélectionnez les genres</legend>
 
     <!-- Récupération des genres -->
     <?php foreach($genres as $genre) {?>
     <span class="checkboxContainer">
       <!-- Création de chaque box et vérification d'un possible id dans l'url -->
-      <input type="checkbox" name="<?= $genre["nom_genre"]?>" id="<?= $genre["nom_genre"]?>"
+      <input type="checkbox" name="genres[]" id="<?= $genre["nom_genre"]?>" value="<?= $genre["id_genre"]?>"
         <?= (isset($genreGet) && $genre["id_genre"] == $genreGet["id_genre"] ) ? "checked" : "" ?> />
 
       <label for="<?= $genre["nom_genre"]?>"><?= $genre["nom_genre"]?></label>

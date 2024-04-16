@@ -139,6 +139,7 @@ class FilmController {
     $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_FLOAT);
     $reaId = filter_input(INPUT_POST, "realisateur");
     
+
     $requeteCreation = $pdo->prepare("
     INSERT INTO film 
     (nom_film, duree, date_sortie, synopsis, affiche, note, id_realisateur)
@@ -154,9 +155,33 @@ class FilmController {
       "reaId" => $reaId,
   ]);
 
-// A VOIR PLUS TARD POUR LES GENRES!!!
-// $genres = filter_input(INPUT_POST, "genre");
+  // On récupère l'id du film créé
+  $id_film = $pdo->lastInsertId();
 
+    // on veut un tableau de $genres 
+    $genres = [];
+
+    if (isset($_POST['genres'])) {
+
+      foreach ($_POST["genres"] as $genre) {
+        // on push chaque valeur filtrée dans le tableau $genres
+        $genres[] = filter_var($genre, FILTER_SANITIZE_NUMBER_INT);
+      }
+    }
+    // var_dump($genres);
+
+    foreach($genres as $id_genre) {
+      $requete = $pdo->prepare("
+      INSERT INTO filmotheque
+      (id_film, id_genre)
+      VALUES (:film, :genre)
+      ");
+      $requete->execute([
+        "film" => $id_film,
+        "genre" => $id_genre
+      ]);
+    }
+    
     header("Location:index.php?action=listFilms");
   }
 
