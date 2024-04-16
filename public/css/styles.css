@@ -214,25 +214,6 @@ hr {
   }
 }
 
-.modifLink {
-  margin-top: 10px;
-  align-self: center;
-  transition: var(--transitionTime);
-
-  a {
-    color: white;
-
-    i {
-      color: white;
-      margin-right: 10px;
-    }
-  }
-
-  &:hover {
-    transform: scale(1.2);
-  }
-}
-
 /*//////// Warning Message ////////*/
 .warningMessage {
   color: #520000;
@@ -245,7 +226,6 @@ hr {
 }
 
 /*/////////// CARROUSSEL ///////////*/
-
 .carroussel {
   margin: 20px 0;
   position: relative;
@@ -853,6 +833,20 @@ header {
     border: 2px solid var(--darkblue);
     border-radius: 10px;
     cursor: pointer;
+    transition: var(--transitionTime);
+
+    i {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(0.9);
+      transition: 0.1s;
+    }
   }
 
   div {
@@ -901,8 +895,8 @@ header {
 
   #nom_genre,
   #genres-select {
-    margin: 20px;
-    font-size: 1.2rem;
+    margin: 20px 0;
+    font-size: 1rem;
     background-color: var(--lightgrey);
   }
 
