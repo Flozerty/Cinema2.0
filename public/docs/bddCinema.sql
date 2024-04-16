@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `film` (
   `synopsis` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `note` float DEFAULT NULL,
   `affiche` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `id_realisateur` int NOT NULL DEFAULT '0',
+  `id_realisateur` int DEFAULT NULL,
   PRIMARY KEY (`id_film`),
   KEY `id_realisateur` (`id_realisateur`),
   CONSTRAINT `FK_film_realisateur` FOREIGN KEY (`id_realisateur`) REFERENCES `realisateur` (`id_realisateur`)
