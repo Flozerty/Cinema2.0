@@ -42,7 +42,7 @@ class CastingController {
       // + la notif
       $_SESSION["ValidatorMessages"][] = "
     <div class='notification remove'>
-      <p>Le casting de $nomActeur dans $nomFilm est bien supprimé</p>
+      <p>Le casting de <b>$nomActeur</b> dans <b>$nomFilm</b> est bien supprimé</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 
@@ -84,7 +84,7 @@ class CastingController {
     // + la notif
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification remove'>
-      <p>Le casting de $nomActeur dans $nomFilm est bien supprimé</p>
+      <p>Le casting de <b>$nomActeur</b> dans <b>$nomFilm</b> est bien supprimé</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 
@@ -144,7 +144,7 @@ class CastingController {
     // + la notif
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification add'>
-      <p>Un nouveau casting dans $nomFilm a été créé</p>
+      <p>Un nouveau casting dans <b>$nomFilm</b> a été créé</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 
@@ -205,7 +205,7 @@ class CastingController {
     // + la notif
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification add'>
-      <p>Un nouveau casting de $nomActeur a été créé</p>
+      <p>Un nouveau casting de <b>$nomActeur</b> a été créé</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 

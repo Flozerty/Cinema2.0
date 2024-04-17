@@ -249,7 +249,7 @@ hr {
     cursor: pointer;
     z-index: 3;
 
-    /* white back */
+    /* arrow white back */
     width: 1.8rem;
     height: 1.8rem;
     background-color: white;
@@ -266,8 +266,6 @@ hr {
   .arrow-right {
     right: -50px;
   }
-
-
 }
 
 
@@ -343,7 +341,7 @@ hr {
 }
 
 .disappear {
-  animation-duration: 1.5s;
+  animation-duration: 1.6s;
   animation-name: disappear;
 }
 

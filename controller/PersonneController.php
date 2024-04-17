@@ -41,7 +41,7 @@ class PersonneController {
 
     $_SESSION["ValidatorMessages"][] = "
       <div class='notification add'>
-        <p>Une nouvelle personne a été créée</p>
+        <p>La personne <b>$prenom $nom</b> a été créée</p>
         <i class='fa-solid fa-circle-xmark'></i>
       </div>";
 
@@ -58,7 +58,7 @@ class PersonneController {
     // + la notif
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification add'>
-      <p>La création ".($type == "acteur" ? "de l'acteur" : "du réalisateur")." est bien effectuée</p>
+      <p>La création <b>".($type == "acteur" ? "de l'acteur" : "du réalisateur")."</b> est bien effectuée</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 
@@ -75,7 +75,7 @@ class PersonneController {
     // + notif
       $_SESSION["ValidatorMessages"][] = "
       <div class='notification add'>
-        <p>La création ".($otherType == "acteur" ? "de l'acteur" : "du réalisateur")." est bien effectuée</p>
+        <p>La création <b>".($otherType == "acteur" ? "de l'acteur" : "du réalisateur")."</b> est bien effectuée</p>
         <i class='fa-solid fa-circle-xmark'></i>
       </div>";
     }
@@ -136,7 +136,7 @@ class PersonneController {
     // + notif
     $_SESSION["ValidatorMessages"][] = "
       <div class='notification add'>
-        <p>Les informations ".($type == "acteur" ? "de l'acteur" : "du réalisateur")." ont bien été mises à jour</p>
+        <p>Les informations <b>".($type == "acteur" ? "de l'acteur" : "du réalisateur")."</b> ont bien été mises à jour</p>
         <i class='fa-solid fa-circle-xmark'></i>
       </div>";
 

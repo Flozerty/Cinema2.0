@@ -80,7 +80,7 @@ class ActeurController {
     // + notif
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification remove'>
-      <p>Toute trace de l'acteur ".$nomActeur." a été supprimée</p>
+      <p>Toute trace de l'acteur <b>".$nomActeur."</b> a été supprimée</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 

@@ -159,7 +159,7 @@ class FilmController {
     // + la notif de création
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification add'>
-      <p>La création du nouveau film $nom est bien effectuée</p>
+      <p>La création du nouveau film <b>$nom</b> est bien effectuée</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 
@@ -202,7 +202,7 @@ class FilmController {
       // + la notif d'ajout'
       $_SESSION["ValidatorMessages"][] = "
       <div class='notification add'>
-        <p>Le film $nom s'est vu attribuer le genre $nomGenre </p>
+        <p>Le film <b>$nom</b> s'est vu attribuer le genre <b>$nomGenre</b></p>
         <i class='fa-solid fa-circle-xmark'></i>
       </div>";
     }
@@ -242,7 +242,7 @@ class FilmController {
     // + la notif
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification remove'>
-      <p>Toute trace du film $nomFilm a bien été supprimée </p>
+      <p>Le film <b>$nomFilm</b> a bien été supprimé</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
     
@@ -321,7 +321,7 @@ class FilmController {
 
   $_SESSION["ValidatorMessages"][] = "
     <div class='notification add'>
-      <p>Les informations sur le film $nom ont été mises à jour</p>
+      <p>Les informations sur le film <b>$nom</b> ont été mises à jour</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 

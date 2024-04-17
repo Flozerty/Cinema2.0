@@ -76,7 +76,7 @@ class GenresController {
 
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification add'>
-      <p>Le genre $nom_genre a bien été créé</p>
+      <p>Le genre <b>$nom_genre</b> a bien été créé</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 
@@ -111,7 +111,7 @@ class GenresController {
     // + notif
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification add'>
-      <p>Le genre $nom_genre a bien été créé</p>
+      <p>Le genre <b>$nom_genre</b> a bien été créé</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 
@@ -154,7 +154,7 @@ class GenresController {
     // + notif
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification add'>
-      <p>Le genre $nom_genre a été attibué au film $nom_film</p>
+      <p>Le genre <b>$nom_genre</b> a été attibué au film <b>$nom_film</b></p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 
@@ -197,7 +197,7 @@ class GenresController {
     // + la notif
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification remove'>
-      <p>$nomFilm est supprimé du genre $nomGenre</p>
+      <p><b>$nomFilm</b> est supprimé du genre <b>$nomGenre</b></p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 
