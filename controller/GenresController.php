@@ -74,6 +74,12 @@ class GenresController {
       ");
     $requete->execute();
 
+    $_SESSION["ValidatorMessages"][] = "
+    <div class='notification add'>
+      <p>Le genre $nom_genre a bien été créé</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
+
     header('Location:index.php?action=listGenres');
   }
 
@@ -83,6 +89,15 @@ class GenresController {
 
     $id_genre = filter_input(INPUT_POST,'genre', FILTER_SANITIZE_NUMBER_INT);
 
+    // on récupère le genre pour la notif
+    $requeteGenre = $pdo->prepare('
+    SELECT *
+    FROM genre
+    WHERE id_genre = :id');
+    $requeteGenre->execute(['id' => $id_genre]);
+    $genre = $requeteGenre->fetch();
+    $nom_genre = $genre['nom_genre'];
+
     // Suppression des films associés avant de supprimer le genre
     $requeteDel = $pdo->prepare("
       DELETE FROM filmotheque
@@ -91,8 +106,14 @@ class GenresController {
       DELETE FROM genre
       WHERE id_genre = :id;
     ");
-
     $requeteDel->execute(['id' => $id_genre]);
+
+    // + notif
+    $_SESSION["ValidatorMessages"][] = "
+    <div class='notification add'>
+      <p>Le genre $nom_genre a bien été créé</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
 
     header('Location:index.php?action=listGenres');
   }
@@ -107,9 +128,35 @@ class GenresController {
 
     $requete = $pdo->prepare("
       INSERT INTO filmotheque (id_film, id_genre)
-      VALUES ('$film', :id) 
+      VALUES (:idFilm, :idGenre) 
       ");
-    $requete->execute(["id" => $id]);
+    $requete->execute([
+      "idGenre" => $id,
+      "idFilm" => $film
+    ]);
+
+    // on récupère le nom du genre et du film pour la notif
+    $requeteInfos = $pdo->prepare("
+    SELECT nom_genre, nom_film
+    FROM filmotheque f
+    INNER JOIN film ON film.id_film = f.id_film
+    INNER JOIN genre ON genre.id_genre = f.id_genre
+    WHERE f.id_film = :idFilm AND f.id_genre = :idGenre
+    ");
+    $requeteInfos->execute([
+      "idGenre"=> $id,
+      "idFilm"=> $film
+    ]);
+    $filmo = $requeteInfos->fetch();
+    $nom_genre = $filmo["nom_genre"];
+    $nom_film = $filmo["nom_film"];
+
+    // + notif
+    $_SESSION["ValidatorMessages"][] = "
+    <div class='notification add'>
+      <p>Le genre $nom_genre a été attibué au film $nom_film</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
 
     header('Location:index.php?action=filmsGenre&id='.$id);
   }
@@ -120,12 +167,39 @@ class GenresController {
 
     $film = filter_input(INPUT_POST,'film', FILTER_VALIDATE_INT);
 
+    // on récupère les noms du genre et du film pour la notif
+    $requeteInfos = $pdo->prepare('
+    SELECT nom_genre, nom_film
+    FROM filmotheque f
+    INNER JOIN film ON film.id_film = f.id_film
+    INNER JOIN genre ON genre.id_genre = f.id_genre
+    WHERE f.id_film = :idFilm AND f.id_genre = :idGenre
+    ');
+    $requeteInfos->execute([
+      "idGenre" => $id,
+      "idFilm" => $film,
+    ]);
+    $filmo = $requeteInfos->fetch();
+    $nomGenre = $filmo["nom_genre"];
+    $nomFilm = $filmo["nom_film"];
+
+    // suppression du genre
     $requete = $pdo->prepare("
       DELETE FROM filmotheque
-      WHERE id_genre = :id
-      AND id_film = '$film'
+      WHERE id_genre = :idGenre
+      AND id_film = :idFilm
       ");
-    $requete->execute(["id" => $id]);
+    $requete->execute([
+      "idGenre" => $id,
+      "idFilm" => $film
+    ]);
+
+    // + la notif
+    $_SESSION["ValidatorMessages"][] = "
+    <div class='notification remove'>
+      <p>$nomFilm est supprimé du genre $nomGenre</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
 
     header('Location:index.php?action=filmsGenre&id='.$id);
   }
