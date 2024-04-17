@@ -73,6 +73,17 @@
   font-style: italic;
 }
 
+/* keyframes */
+
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
 
 /* /////// GENERAL /////// */
 * {
@@ -329,6 +340,11 @@ hr {
 
 .remove {
   background-color: rgba(135, 45, 45, 0.792);
+}
+
+.disappear {
+  animation-duration: 1.5s;
+  animation-name: disappear;
 }
 
 /* //////////////////////////////// */

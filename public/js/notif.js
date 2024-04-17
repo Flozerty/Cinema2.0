@@ -29,10 +29,15 @@ function affichageElements() {
     element.style.bottom = 50 + 70 * i + "px";
 
     let timeout = setTimeout(() => {
-      element.parentNode.removeChild(element);
-    }, 1500 * ((notifDiv.length - i) + 1));
-    timeouts.push(timeout)
+      element.classList.add('disappear')
 
+      setTimeout(() => {
+        element.parentNode.removeChild(element);
+      }, 1500)
+
+    }, 1500 * ((notifDiv.length - i) + 1));
+
+    timeouts.push(timeout)
     i++;
   })
 }
