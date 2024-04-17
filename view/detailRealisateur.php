@@ -1,6 +1,8 @@
 <?php ob_start(); 
 $detailRealisateur = $requeteRea->fetch();
-$reaFilms = $requeteFilms->fetchAll(); ?>
+$reaFilms = $requeteFilms->fetchAll();
+$otherFilms = $requeteOtherFilms->fetchAll();
+?>
 
 <h3><?= $detailRealisateur["fullName"] ?></h3>
 
@@ -54,17 +56,60 @@ $reaFilms = $requeteFilms->fetchAll(); ?>
   </p>
 
   <div class='buttons'>
+    <!-- créer un nouveau film -->
     <a href="index.php?action=creerFilm&rea=<?= $detailRealisateur["id_realisateur"] ?>">
       <button class="createButton">créer un film</button>
     </a>
 
-    <a href="#">
+    <!-- ajouter un film (sans rea) -->
+    <div class="addContainer">
       <button class="addButton">ajouter un film</button>
-    </a>
 
-    <a href="#">
-      <button class="removeButton">retirer un film</button>
-    </a>
+      <form id="addFilm" action="index.php?action=ajouterFilmRea&id=<?= $detailRealisateur["id_realisateur"] ?>"
+        method="post">
+
+        <!-- choix film -->
+        <select name="film" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un film
+          </option>
+          <?php foreach($otherFilms as $film) { ?>
+
+          <option value="<?= $film["id_film"] ?>">
+            <?= $film["nom_film"] ?>
+          </option>
+          <?php } ?>
+        </select>
+
+        <input type="submit" value="valider">
+      </form>
+    </div>
+
+    <!-- supprimer le réa d'un film -->
+    <div class="removeContainer">
+      <button class="removeButton">supprimer un film</button>
+
+      <form id="removeFilm" class="divWarning"
+        action="index.php?action=supprimerFilmRea&id=<?= $detailRealisateur["id_realisateur"] ?>" method="post">
+        <select name="film" class="warner" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un film
+          </option>
+          <?php foreach($reaFilms as $film) { ?>
+
+          <option value="<?= $film["id_film"] ?>">
+            <?= $film["nom_film"] ?>
+          </option>
+
+          <?php } ?>
+        </select>
+        <span class="warningMessage warningCache">
+          Attention, ce film n'aura plus de réalisateur dans la base de
+          donnée
+        </span>
+        <input type="submit" value="valider">
+      </form>
+    </div>
   </div>
 
   <table class="tableFilms">

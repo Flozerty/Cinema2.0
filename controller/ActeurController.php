@@ -49,7 +49,6 @@ class ActeurController {
     require "view/listActeurs.php";
   }
 
-
   // Supprimer un acteur
   public function supprimerActeur() {
     $pdo = Connect::seconnecter();

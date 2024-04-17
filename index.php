@@ -55,6 +55,10 @@ if(isset($_GET["action"])){
     case "creationFilm": $ctrlFilm->creationFilm();break; 
     case "supprimerFilm": $ctrlFilm->supprimerFilm();break; 
 
+    // films Realisateur
+    case "ajouterFilmRea": $ctrlRea->ajouterFilmRea($id);break;
+    case "supprimerFilmRea": $ctrlRea->supprimerFilmRea($id);break;
+
     // créer personne
     case "creerFormActeur": $ctrlPersonne->creerFormPersonne("acteur");break;
     case "creerFormRealisateur": $ctrlPersonne->creerFormPersonne("realisateur");break;  
