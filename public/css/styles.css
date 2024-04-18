@@ -146,7 +146,6 @@ h4 {
   width: fit-content;
 }
 
-
 h3 {
   margin: 10px auto 50px auto;
   font-size: 1.5rem;
@@ -308,6 +307,7 @@ hr {
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       height: 280px;
       position: relative;
+      border-radius: 15px;
 
       img {
         z-index: 2;
@@ -508,6 +508,8 @@ header {
   figure {
     width: auto;
     height: 100%;
+    overflow: hidden;
+    min-width: 40%;
 
     display: flex;
     align-items: center;
@@ -520,6 +522,10 @@ header {
       img {
         height: 100%;
       }
+    }
+
+    &:hover img {
+      transform: scale(1.1);
     }
   }
 
@@ -812,11 +818,13 @@ header {
 
     &:hover {
       color: white;
+      transform: scale(1.05);
     }
   }
 
   img {
     max-height: 100%;
+    border-radius: 15px;
   }
 }
 
@@ -872,7 +880,6 @@ header {
 
   td {
     text-align: center;
-    padding: 20px 0;
   }
 }
 
@@ -920,7 +927,9 @@ header {
     }
 
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
+      background-color: var(--darkblue);
+      color: white;
     }
 
     &:active {
