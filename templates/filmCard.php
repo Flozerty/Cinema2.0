@@ -1,6 +1,9 @@
 <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>">
   <figure>
-    <img src="<?= $film["affiche"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
+    <div class="affiche-container">
+      <img src="<?= $film["affiche"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
+    </div>
+
     <figcaption class="subtitle"><?= $film["nom_film"] ?></figcaption>
     <div class="note">
       <?= $film["note"] ?>

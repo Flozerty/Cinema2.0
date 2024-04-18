@@ -11,7 +11,9 @@ switch($type){
 
 <a href="<?= $href ?>">
   <figure>
-    <img src="<?= $person["photo"] ?>" alt="Photo de <?= $person["fullName"] ?>">
+    <div class="affiche-container">
+      <img src="<?= $person["photo"] ?>" alt="Photo de <?= $person["fullName"] ?>">
+    </div>
 
     <figcaption class="subtitle">
       <?= $person["fullName"] ?>

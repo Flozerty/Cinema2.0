@@ -10,7 +10,7 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 <!------------------------------------------------>
 
 <section id="une">
-  <h3>À la une :</h3>
+  <h3>À la une</h3>
   <article>
 
     <!------------- AFFICHE ------------->
@@ -50,14 +50,14 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
       <!-- 2 Acteurs les plus "connus" -->
 
       <div class="acteurs">
-        <p>Avec nos vedettes :</p>
+        <p>Avec nos vedettes</p>
         <div class='cards-container'>
-          <?php 
-            foreach($acteursFilmFav as $person) {
-       $type = "acteur";
-          require "templates/personCard.php";
 
-      } ?>
+          <?php foreach($acteursFilmFav as $person) {
+          $type = "acteur";
+          require "templates/personCard.php";
+          } ?>
+
         </div>
       </div>
 
@@ -78,7 +78,7 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 <!------------------------------------------------>
 
 <section id="dernieresSorties">
-  <h3>Les dernières sorties :</h3>
+  <h3>Les dernières sorties</h3>
   <div class=cards-container>
     <?php 
     foreach($filmsMoment as $film) {
@@ -96,7 +96,7 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 
 <section id="genres-accueil">
   <div id="genres-header">
-    <h3>Parcourez les genres :</h3>
+    <h3>Parcourez les genres</h3>
     <span class="link">
       <a href="index.php?action=listGenres">
         voir les genres ->
@@ -156,6 +156,6 @@ $filmsSf = $requeteSF->fetchAll();
 
 <?php
 $titre = "Accueil";
-$titre_secondaire = "Accueil";
+$titre_secondaire = "Trouvez toutes les informations sur votre film favori";
 $contenu = ob_get_clean();
 require "templates/template.php";

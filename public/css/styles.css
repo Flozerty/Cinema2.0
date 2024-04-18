@@ -87,7 +87,7 @@
 
 /* /////// GENERAL /////// */
 * {
-  color: #2B2D42;
+  color: var(--darkblue);
   margin: 0;
   padding: 0;
   vertical-align: top;
@@ -109,7 +109,7 @@ a {
 }
 
 #wrapper {
-  background-color: #8B939C;
+  background-color: var(--lightgrey);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -146,11 +146,6 @@ h4 {
   width: fit-content;
 }
 
-h2,
-h3 {
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-}
 
 h3 {
   margin: 10px auto 50px auto;
@@ -220,7 +215,6 @@ hr {
   &:hover {
     a {
       color: aqua;
-      transform: scale(1.25)
     }
   }
 }
@@ -281,7 +275,6 @@ hr {
   padding: 20px 0;
   padding-left: 10px;
   margin-right: 10px;
-  transition: var(--transitionTime);
 
   figure {
     width: 200px;
@@ -292,18 +285,29 @@ hr {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
     z-index: 1;
 
     &:hover {
-      transform: scale(1.1);
-      z-index: 2;
+      img {
+        transform: scale(1.1);
+      }
     }
   }
 
-  img {
+  .affiche-container {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     height: 280px;
+  }
+
+  img {
+    min-width: 100%;
+    min-height: 100%;
+    transition: var(--transitionTime);
   }
 
   figcaption {
@@ -384,6 +388,7 @@ header {
     }
   }
 
+
   #search {
     min-width: 250px;
     width: 25%;
@@ -462,12 +467,18 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 0 5%;
+
+  .subtitle {
+    margin: auto 0;
+    padding: 0;
+    width: 60%;
+    text-align: end;
+  }
 }
 
 /* //////////////////////////////// */
 /* /////////// ACCUEIL //////////// */
 /* //////////////////////////////// */
-
 
 
 /*/////////////// UNE ///////////////*/
@@ -547,7 +558,6 @@ header {
 
       p {
         color: white;
-
         margin: 10px;
       }
 
@@ -558,11 +568,11 @@ header {
       .cards-container {
         figure {
           flex-direction: row;
-        }
 
-        img {
-          width: 115px;
-          height: 150px;
+          .affiche-container {
+            height: 150px;
+            width: 200px;
+          }
         }
       }
     }
@@ -612,7 +622,7 @@ header {
 
 #genres-content {
   article {
-    margin: 25px 0 75px 0;
+    margin: 25px 0 50px 0;
     display: flex;
     flex-direction: column;
 
@@ -625,20 +635,19 @@ header {
       }
 
       a {
-        color: white;
+        color: var(--darkblue);
       }
     }
 
     /* LINKS HOVER SCALING */
     &:hover {
       .link {
-        margin: 0 5px;
 
         a {
-          color: aqua;
+          color: white;
 
           &:hover {
-            margin: 0 15px;
+            margin-left: 5px;
           }
         }
       }
@@ -1181,10 +1190,19 @@ header {
     figcaption {
       margin: 15px 0;
     }
+  }
 
+  .carroussel {
+    .arrow-left {
+      left: -30px;
+    }
 
+    .arrow-right {
+      right: -30px;
+    }
   }
 }
+
 
 /* ////////// MIN to MAX ////////// */
 
