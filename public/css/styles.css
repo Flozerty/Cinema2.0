@@ -211,6 +211,10 @@ hr {
 
   a {
     transition: var(--transitionTime);
+
+    &:hover {
+      color: var(--lightgrey);
+    }
   }
 
   &:hover {
@@ -690,12 +694,11 @@ header {
   width: 32%;
 
   .link a {
-    color: aqua;
-  }
+    color: white;
 
-  #filmGenres {
-    .link a {
-      color: white;
+    &:hover {
+      color: var(--darkblue);
+
     }
   }
 }
@@ -835,6 +838,7 @@ header {
   margin: 10px;
   width: auto;
   transition: var(--transitionTime);
+  border: 1px solid transparent;
   border-radius: 20px;
 
   a {
@@ -843,10 +847,12 @@ header {
   }
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
+    background-color: var(--lightgrey);
+    border-color: var(--darkblue);
 
     a {
-      color: aqua;
+      color: var(--darkblue);
     }
   }
 }
