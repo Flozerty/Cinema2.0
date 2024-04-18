@@ -275,6 +275,7 @@ hr {
   padding: 20px 0;
   padding-left: 10px;
   margin-right: 10px;
+  transition: var(--transitionTime);
 
   figure {
     width: 200px;
