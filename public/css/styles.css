@@ -179,6 +179,7 @@ h4 {
   border-radius: 5px;
   display: flex;
   align-items: center;
+  z-index: 3;
 
   i {
     color: yellow;
@@ -214,7 +215,7 @@ hr {
 
   &:hover {
     a {
-      color: aqua;
+      color: var(--lightgrey);
     }
   }
 }
@@ -262,7 +263,6 @@ hr {
   }
 }
 
-
 .carroussel-wrapper {
   overflow: hidden;
   width: 100%;
@@ -291,24 +291,31 @@ hr {
     &:hover {
       img {
         transform: scale(1.1);
+        opacity: 0.3;
       }
     }
-  }
 
-  .affiche-container {
-    overflow: hidden;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    height: 280px;
-  }
+    .affiche-container {
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      height: 280px;
+      position: relative;
 
-  img {
-    min-width: 100%;
-    min-height: 100%;
-    transition: var(--transitionTime);
+      img {
+        z-index: 2;
+        min-width: 100%;
+        min-height: 100%;
+        transition: var(--transitionTime);
+      }
+
+      .img-back {
+        position: absolute;
+      }
+    }
   }
 
   figcaption {
@@ -385,7 +392,7 @@ header {
     }
 
     &:hover {
-      transform: scale(1.25)
+      transform: scale(1.15)
     }
   }
 
@@ -527,7 +534,11 @@ header {
       color: white;
 
       a {
-        color: #89EAFF;
+        color: var(--lightgrey);
+
+        &:hover {
+          color: white;
+        }
       }
     }
 
@@ -543,10 +554,15 @@ header {
         a {
           color: var(--lightgrey);
         }
+      }
 
-        &:hover {
-          a {
-            color: aqua;
+      &:hover {
+        a {
+          color: white;
+
+          &:hover {
+            color: var(--lightgrey);
+            transform: scale(1.1);
           }
         }
       }
@@ -616,7 +632,7 @@ header {
 
   &:hover {
     a {
-      color: aqua;
+      color: white;
     }
   }
 }
@@ -735,7 +751,7 @@ header {
     transition: var(--transitionTime);
 
     &:hover {
-      transform: scale(1.5);
+      transform: scale(1.2);
     }
 
     &:active {
@@ -743,7 +759,6 @@ header {
       transition: 0s;
     }
   }
-
 }
 
 /* //////////////////////////////// */
@@ -790,15 +805,15 @@ header {
     align-items: center;
     color: var(--bluegrey);
     width: 100%;
-    height: 100px;
+    height: 120px;
 
     &:hover {
-      color: aqua;
+      color: white;
     }
   }
 
   img {
-    width: 100px;
+    max-height: 100%;
   }
 }
 

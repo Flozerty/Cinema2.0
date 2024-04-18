@@ -13,6 +13,9 @@ switch($type){
   <figure>
     <div class="affiche-container">
       <img src="<?= $person["photo"] ?>" alt="Photo de <?= $person["fullName"] ?>">
+      <p class="img-back">
+        <?= $person["fullName"] ?>
+      </p>
     </div>
 
     <figcaption class="subtitle">

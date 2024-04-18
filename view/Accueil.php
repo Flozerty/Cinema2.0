@@ -147,7 +147,6 @@ $filmsSf = $requeteSF->fetchAll();
       <?php $typeCarrousel = "films";
         require "templates/carrousel.php"; 
       ?>
-
     </article>
 
     <?php } ?>
@@ -156,6 +155,6 @@ $filmsSf = $requeteSF->fetchAll();
 
 <?php
 $titre = "Accueil";
-$titre_secondaire = "Trouvez toutes les informations sur votre film favori";
+$titre_secondaire = "Trouvez votre film favori";
 $contenu = ob_get_clean();
 require "templates/template.php";

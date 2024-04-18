@@ -2,6 +2,9 @@
   <figure>
     <div class="affiche-container">
       <img src="<?= $film["affiche"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
+      <p class="img-back">
+        <?= $film["nom_film"] ?>
+      </p>
     </div>
 
     <figcaption class="subtitle"><?= $film["nom_film"] ?></figcaption>
