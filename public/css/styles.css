@@ -109,10 +109,12 @@ a {
 
 #wrapper {
   background-color: var(--lightgrey);
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   justify-content: center;
 }
+
+
 
 main {
   padding-top: 120px;
@@ -378,28 +380,6 @@ header {
   background-color: var(--darkblue);
   box-shadow: rgb(35, 51, 67) 0px 20px 30px -10px;
 
-  #logo-container {
-    display: flex;
-    align-items: center;
-    transition: var(--transitionTime);
-
-    figcaption {
-      color: white;
-    }
-
-    img {
-      width: 50px;
-      background-color: #520000;
-      border-radius: 50%;
-      margin-right: 5px;
-    }
-
-    &:hover {
-      transform: scale(1.15)
-    }
-  }
-
-
   #search {
     min-width: 250px;
     width: 25%;
@@ -469,6 +449,27 @@ header {
     i {
       color: white;
     }
+  }
+}
+
+#logo-container {
+  display: flex;
+  align-items: center;
+  transition: var(--transitionTime);
+
+  figcaption {
+    color: white;
+  }
+
+  img {
+    width: 50px;
+    background-color: #520000;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  &:hover {
+    transform: scale(1.15)
   }
 }
 
@@ -1079,6 +1080,59 @@ header {
   align-self: center;
   padding: 2px 8px;
   margin: 20px;
+}
+
+/* //////////////////////////////// */
+/* //////////// FOOTER //////////// */
+/* //////////////////////////////// */
+
+footer {
+  height: 20vh;
+  background-color: var(--darkblue);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  * {
+    color: white;
+  }
+}
+
+#footerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  #footerDescription {
+    margin-top: 10px;
+  }
+
+  #contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    li {
+      padding: 5px;
+
+      i {
+        transition: var(--transitionTime);
+      }
+
+      &:hover {
+        i {
+          color: var(--lightgrey);
+          transform: scale(1.5);
+        }
+      }
+    }
+  }
+}
+
+.copy a {
+  margin-left: 5px;
 }
 
 /* //////////////////////////////// */

@@ -76,8 +76,58 @@
     </main>
   </div>
 
-  <footer>
+  <footer class="footer">
+    <div id="footerContainer">
+      <div>
+        <a href="#">
+          <figure id="logo-container">
+            <img src="public/img/logo.png" alt="logo">
+            <figcaption>
+              PDO-Cinema
+            </figcaption>
+          </figure>
+        </a>
 
+        <p id="footerDescription">
+          Trouvez votre film favori
+        </p>
+      </div>
+
+      <div id="contact">
+        <h3 class="subtitle">contact</h3>
+        <ul class="link">
+          <li>
+            <a href="#">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-brands fa-discord"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="copy link">
+      &#169; All Rights Reserved By <span id="me"><a href="#">Flozerty</a></span>
+    </p>
   </footer>
 
   <?php if(isset($_SESSION["ValidatorMessages"])) {
