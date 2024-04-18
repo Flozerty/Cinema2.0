@@ -113,17 +113,17 @@ class FilmController {
     }
 
     // Récupération du acteur si dans url
-    if (isset($_GET["acteur"])) { 
-      $id = $_GET["acteur"];
+    // if (isset($_GET["acteur"])) { 
+    //   $id = $_GET["acteur"];
 
-      $requeteGetActeur = $pdo->prepare("
-        SELECT *, CONCAT(prenom, ' ', nom) AS fullName
-        FROM acteur a
-        INNER JOIN personne p ON p.id_personne = a.id_personne
-        WHERE id_acteur = :id
-        ");
-      $requeteGetActeur->execute(["id" => $id]);
-    }
+    //   $requeteGetActeur = $pdo->prepare("
+    //     SELECT *, CONCAT(prenom, ' ', nom) AS fullName
+    //     FROM acteur a
+    //     INNER JOIN personne p ON p.id_personne = a.id_personne
+    //     WHERE id_acteur = :id
+    //     ");
+    //   $requeteGetActeur->execute(["id" => $id]);
+    // }
 
     require "view/form/formCreerFilm.php";
   }
