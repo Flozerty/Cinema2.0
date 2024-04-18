@@ -511,6 +511,7 @@ header {
     min-width: 40%;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -520,11 +521,14 @@ header {
 
       img {
         height: 100%;
+        transition: var(--transitionTime);
+        align-self: center;
       }
     }
 
     &:hover img {
       transform: scale(1.1);
+      align-self: center;
     }
   }
 
@@ -1366,5 +1370,9 @@ header {
   p,
   .synopsis {
     font-size: 1.5rem;
+  }
+
+  #une article figure {
+    align-items: baseline;
   }
 }
