@@ -6,16 +6,22 @@ carrousel.forEach(container => {
     previousButton = container.querySelector('.arrow-left'),
     cardsContainer = container.querySelector('.cards-container');
 
-  // console.log(cardsContainer.querySelectorAll(".acteurCard").length)
-  // console.log(cardsContainer.children[0].offsetWidth)
-
   let translateValue = 0
 
   // Valeur de translateX en fonction de la width du 1er enfant (card)
   const widthValue = cardsContainer.children[0].offsetWidth
 
-  // défilement à gauche
+  // les valeurs de width dont on a besoin
+  const carrouWidth = widthValue * cardsContainer.children.length;
+  const containerWidth = cardsContainer.offsetWidth;
 
+  // affichage des fleches seulement si besoin
+  if (carrouWidth - containerWidth < 0) {
+    nextButton.style.display = 'none'
+    previousButton.style.display = 'none'
+  }
+
+  // défilement à gauche
   previousButton.addEventListener("click", () => {
     if (translateValue < 0) {
       translateValue += widthValue
@@ -24,10 +30,9 @@ carrousel.forEach(container => {
   })
 
   // défilement à droite
-
   nextButton.addEventListener("click", () => {
     // console.log(cardsContainer.offsetWidth - ((cardsContainer.children.length) * 200))
-    if (translateValue > (cardsContainer.offsetWidth - (cardsContainer.children.length * widthValue))) {
+    if (translateValue > (containerWidth - carrouWidth)) {
       translateValue -= widthValue
       cardsContainer.style.transform = `translateX(${translateValue}px)`
     }
