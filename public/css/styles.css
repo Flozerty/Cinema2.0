@@ -808,26 +808,37 @@ header {
     border-bottom: 1px solid var(--bluegrey);
     text-align: center;
     vertical-align: middle;
-  }
 
-  div,
-  a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--bluegrey);
-    width: 100%;
-    height: 120px;
+    .link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--bluegrey);
 
-    &:hover {
-      color: white;
-      transform: scale(1.05);
+      a {
+        border-radius: 15px;
+        height: 120px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+
+      &:hover {
+        a {
+          color: white;
+        }
+
+        img {
+          transform: scale(1.05);
+        }
+      }
     }
   }
 
+
   img {
     max-height: 100%;
-    border-radius: 15px;
+    transition: var(--transitionTime);
   }
 }
 
