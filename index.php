@@ -20,7 +20,7 @@ $ctrlGenre = new GenresController();
 $ctrlPersonne = new PersonneController();
 $ctrlCasting = new CastingController();
 
-$id= (isset($_GET["id"])) ? filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS) : null;
+$id= (isset($_GET["id"])) ? filter_var(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS) : null;
 
 if(isset($_GET["action"])){
   switch($_GET["action"]){
